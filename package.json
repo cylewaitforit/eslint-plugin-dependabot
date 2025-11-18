@@ -45,6 +45,7 @@
 		"console-fail-test": "catalog:",
 		"cspell": "catalog:",
 		"eslint": "catalog:",
+		"eslint-plugin-eslint-plugin": "catalog:",
 		"eslint-plugin-jsdoc": "catalog:",
 		"eslint-plugin-jsonc": "catalog:",
 		"eslint-plugin-markdown": "catalog:",

@@ -36,6 +36,9 @@ catalogs:
     eslint:
       specifier: 9.39.1
       version: 9.39.1
+    eslint-plugin-eslint-plugin:
+      specifier: ^7.2.0
+      version: 7.2.0
     eslint-plugin-jsdoc:
       specifier: 52.0.0
       version: 52.0.0
@@ -143,6 +146,9 @@ importers:
       eslint:
         specifier: 'catalog:'
         version: 9.39.1(jiti@2.6.1)
+      eslint-plugin-eslint-plugin:
+        specifier: 'catalog:'
+        version: 7.2.0(eslint@9.39.1(jiti@2.6.1))
       eslint-plugin-jsdoc:
         specifier: 'catalog:'
         version: 52.0.0(eslint@9.39.1(jiti@2.6.1))
@@ -1984,6 +1990,12 @@ packages:
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=8'
+
+  eslint-plugin-eslint-plugin@7.2.0:
+    resolution: {integrity: sha512-3WOuoauBlxCItqpIdyajCOVQbCmAlqHNQq82QunpzuGkBNr6OqHRjdPZKpy2Z0rGb005mIO0HEP9aaDCzkApxQ==}
+    engines: {node: ^20.19.0 || ^22.13.1 || >=24.0.0}
+    peerDependencies:
+      eslint: '>=9.0.0'
 
   eslint-plugin-jsdoc@52.0.0:
     resolution: {integrity: sha512-KZjaoTWWUIml6K6zyPvwCYlLoMDQ69taSdTcdTIavBUoJCIWUfYcsRIw4n9dzllMouqdxiFfKW33EAbBLBu1HA==}
@@ -5284,6 +5296,12 @@ snapshots:
       '@eslint-community/regexpp': 4.12.2
       eslint: 9.39.1(jiti@2.6.1)
       eslint-compat-utils: 0.5.1(eslint@9.39.1(jiti@2.6.1))
+
+  eslint-plugin-eslint-plugin@7.2.0(eslint@9.39.1(jiti@2.6.1)):
+    dependencies:
+      '@eslint-community/eslint-utils': 4.9.0(eslint@9.39.1(jiti@2.6.1))
+      eslint: 9.39.1(jiti@2.6.1)
+      estraverse: 5.3.0
 
   eslint-plugin-jsdoc@52.0.0(eslint@9.39.1(jiti@2.6.1)):
     dependencies:

@@ -8,6 +8,7 @@ import markdown from "eslint-plugin-markdown";
 import n from "eslint-plugin-n";
 import packageJson from "eslint-plugin-package-json";
 import perfectionist from "eslint-plugin-perfectionist";
+import { configs } from "eslint-plugin-pnpm";
 import * as regexp from "eslint-plugin-regexp";
 import yml from "eslint-plugin-yml";
 import { defineConfig } from "eslint/config";
@@ -30,6 +31,8 @@ export default defineConfig([
 	packageJson.configs.recommended,
 	perfectionist.configs["recommended-natural"],
 	regexp.configs["flat/recommended"],
+	...configs.json,
+	...configs.yaml,
 	{
 		extends: [
 			tseslint.configs.strictTypeChecked,
@@ -72,7 +75,7 @@ export default defineConfig([
 		extends: [yml.configs["flat/standard"], yml.configs["flat/prettier"]],
 		files: ["**/*.{yml,yaml}"],
 		rules: {
-			"yml/file-extension": ["error", { extension: "yml" }],
+			"yml/file-extension": "error",
 			"yml/sort-keys": [
 				"error",
 				{ order: { type: "asc" }, pathPattern: "^.*$" },

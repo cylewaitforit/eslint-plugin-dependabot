@@ -36,6 +36,9 @@ catalogs:
     eslint:
       specifier: 9.39.1
       version: 9.39.1
+    eslint-plugin-eslint-plugin:
+      specifier: ^7.2.0
+      version: 7.2.0
     eslint-plugin-jsdoc:
       specifier: 52.0.0
       version: 52.0.0
@@ -144,7 +147,7 @@ importers:
         specifier: 'catalog:'
         version: 9.39.1(jiti@2.6.1)
       eslint-plugin-eslint-plugin:
-        specifier: ^7.2.0
+        specifier: 'catalog:'
         version: 7.2.0(eslint@9.39.1(jiti@2.6.1))
       eslint-plugin-jsdoc:
         specifier: 'catalog:'

@@ -17,6 +17,45 @@ describe("require-cooldown", () => {
 	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should pass valid cases", () => {
 		ruleTester.run("require-cooldown", requireCooldown, {
+			valid: [
+				{
+					code: fs.readFileSync(
+						path.join(
+							import.meta.dirname,
+							"fixtures/require-cooldown/valid-simple.yaml",
+						),
+						"utf8",
+					),
+					filename: "dependabot.yaml",
+					// @ts-expect-error -- ESLint types don't include language option yet
+					language: "yaml/yaml",
+				},
+				{
+					code: fs.readFileSync(
+						path.join(
+							import.meta.dirname,
+							"fixtures/require-cooldown/valid-with-all-options.yaml",
+						),
+						"utf8",
+					),
+					filename: "dependabot.yaml",
+					// @ts-expect-error -- ESLint types don't include language option yet
+					language: "yaml/yaml",
+				},
+				{
+					code: fs.readFileSync(
+						path.join(
+							import.meta.dirname,
+							"fixtures/require-cooldown/valid-multiple-ecosystems.yaml",
+						),
+						"utf8",
+					),
+					filename: "dependabot.yaml",
+					// @ts-expect-error -- ESLint types don't include language option yet
+					language: "yaml/yaml",
+				},
+			],
+			// eslint-disable-next-line perfectionist/sort-objects -- Valid cases should come before invalid for readability
 			invalid: [
 				{
 					code: fs.readFileSync(
@@ -82,44 +121,6 @@ describe("require-cooldown", () => {
 							messageId: "missingDefaultDays",
 						},
 					],
-					filename: "dependabot.yaml",
-					// @ts-expect-error -- ESLint types don't include language option yet
-					language: "yaml/yaml",
-				},
-			],
-			valid: [
-				{
-					code: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"fixtures/require-cooldown/valid-simple.yaml",
-						),
-						"utf8",
-					),
-					filename: "dependabot.yaml",
-					// @ts-expect-error -- ESLint types don't include language option yet
-					language: "yaml/yaml",
-				},
-				{
-					code: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"fixtures/require-cooldown/valid-with-all-options.yaml",
-						),
-						"utf8",
-					),
-					filename: "dependabot.yaml",
-					// @ts-expect-error -- ESLint types don't include language option yet
-					language: "yaml/yaml",
-				},
-				{
-					code: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"fixtures/require-cooldown/valid-multiple-ecosystems.yaml",
-						),
-						"utf8",
-					),
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",

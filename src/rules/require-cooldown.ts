@@ -55,9 +55,10 @@ export const requireCooldown: Rule.RuleModule = {
 				}
 
 				// Check if cooldown has default-days
-				const cooldown = cooldownPair.value as YAMLMap;
+				const cooldown = cooldownPair.value as YAMLMap | YAMLScalar;
 
-				if (!cooldown.items) {
+				// If cooldown is not a map or doesn't have items, it's invalid
+				if (!("items" in cooldown) || !cooldown.items) {
 					return;
 				}
 

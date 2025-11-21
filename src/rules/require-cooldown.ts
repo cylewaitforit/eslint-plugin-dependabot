@@ -59,6 +59,14 @@ export const requireCooldown: Rule.RuleModule = {
 
 				// If cooldown is not a map or doesn't have items, it's invalid
 				if (!("items" in cooldown) || !cooldown.items) {
+					context.report({
+						data: {
+							ecosystem: ecosystemName,
+						},
+						messageId: "missingDefaultDays",
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment -- ESLint node type is not fully typed for YAML
+						node: cooldownPair as any,
+					});
 					return;
 				}
 

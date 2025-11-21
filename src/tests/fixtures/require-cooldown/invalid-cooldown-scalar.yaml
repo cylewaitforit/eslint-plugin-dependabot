@@ -1,0 +1,7 @@
+updates:
+  - cooldown: 5
+    directory: /
+    package-ecosystem: npm
+    schedule:
+      interval: daily
+version: 2

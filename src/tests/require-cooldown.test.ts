@@ -125,6 +125,23 @@ describe("require-cooldown", () => {
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
 				},
+				{
+					code: fs.readFileSync(
+						path.join(
+							import.meta.dirname,
+							"fixtures/require-cooldown/invalid-cooldown-scalar.yaml",
+						),
+						"utf8",
+					),
+					errors: [
+						{
+							messageId: "missingDefaultDays",
+						},
+					],
+					filename: "dependabot.yaml",
+					// @ts-expect-error -- ESLint types don't include language option yet
+					language: "yaml/yaml",
+				},
 			],
 		});
 	});

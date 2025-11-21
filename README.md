@@ -17,6 +17,46 @@
 
 ## Usage
 
+### Installation
+
+```shell
+npm install eslint-plugin-dependabot eslint-yaml --save-dev
+```
+
+### Configuration
+
+This plugin requires the `eslint-yaml` package to parse YAML files.
+Add the plugin and language configuration to your `eslint.config.mjs`:
+
+<!-- eslint-skip -->
+
+```js
+import dependabot from "eslint-plugin-dependabot";
+import { yaml } from "eslint-yaml";
+
+export default [
+	{
+		files: ["**/.github/dependabot.{yml,yaml}"],
+		language: "yaml/yaml",
+		plugins: {
+			dependabot,
+			yaml,
+		},
+		...dependabot.configs.recommended,
+	},
+];
+```
+
+### Rules
+
+<!-- begin auto-generated rules list -->
+
+| Name                                               | Description                                                     | ✅  |
+| :------------------------------------------------- | :-------------------------------------------------------------- | :-- |
+| [require-cooldown](docs/rules/require-cooldown.md) | Require each package-ecosystem to have a cooldown configuration | ✅  |
+
+<!-- end auto-generated rules list -->
+
 ## Development
 
 See [`.github/CONTRIBUTING.md`](./.github/CONTRIBUTING.md), then [`.github/DEVELOPMENT.md`](./.github/DEVELOPMENT.md).

@@ -22,7 +22,7 @@ describe("require-cooldown", () => {
 					code: fs.readFileSync(
 						path.join(
 							import.meta.dirname,
-							"fixtures/require-cooldown/valid-simple.yaml",
+							"_fixtures_/require-cooldown/valid-simple/dependabot.yaml",
 						),
 						"utf8",
 					),
@@ -34,7 +34,7 @@ describe("require-cooldown", () => {
 					code: fs.readFileSync(
 						path.join(
 							import.meta.dirname,
-							"fixtures/require-cooldown/valid-with-all-options.yaml",
+							"_fixtures_/require-cooldown/valid-with-all-options/dependabot.yaml",
 						),
 						"utf8",
 					),
@@ -46,7 +46,7 @@ describe("require-cooldown", () => {
 					code: fs.readFileSync(
 						path.join(
 							import.meta.dirname,
-							"fixtures/require-cooldown/valid-multiple-ecosystems.yaml",
+							"_fixtures_/require-cooldown/valid-multiple-ecosystems/dependabot.yaml",
 						),
 						"utf8",
 					),
@@ -61,7 +61,7 @@ describe("require-cooldown", () => {
 					code: fs.readFileSync(
 						path.join(
 							import.meta.dirname,
-							"fixtures/require-cooldown/invalid-no-cooldown.yaml",
+							"_fixtures_/require-cooldown/invalid-no-cooldown/dependabot.yaml",
 						),
 						"utf8",
 					),
@@ -78,7 +78,7 @@ describe("require-cooldown", () => {
 					code: fs.readFileSync(
 						path.join(
 							import.meta.dirname,
-							"fixtures/require-cooldown/invalid-missing-default-days.yaml",
+							"_fixtures_/require-cooldown/invalid-missing-default-days/dependabot.yaml",
 						),
 						"utf8",
 					),
@@ -95,7 +95,7 @@ describe("require-cooldown", () => {
 					code: fs.readFileSync(
 						path.join(
 							import.meta.dirname,
-							"fixtures/require-cooldown/invalid-one-missing-cooldown.yaml",
+							"_fixtures_/require-cooldown/invalid-one-missing-cooldown/dependabot.yaml",
 						),
 						"utf8",
 					),
@@ -112,7 +112,7 @@ describe("require-cooldown", () => {
 					code: fs.readFileSync(
 						path.join(
 							import.meta.dirname,
-							"fixtures/require-cooldown/invalid-empty-cooldown.yaml",
+							"_fixtures_/require-cooldown/invalid-empty-cooldown/dependabot.yaml",
 						),
 						"utf8",
 					),
@@ -129,7 +129,7 @@ describe("require-cooldown", () => {
 					code: fs.readFileSync(
 						path.join(
 							import.meta.dirname,
-							"fixtures/require-cooldown/invalid-cooldown-scalar.yaml",
+							"_fixtures_/require-cooldown/invalid-cooldown-scalar/dependabot.yaml",
 						),
 						"utf8",
 					),

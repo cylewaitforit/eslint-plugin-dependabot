@@ -55,9 +55,11 @@ export const requireCooldown: Rule.RuleModule = {
 				}
 
 				// Check if cooldown has default-days
+				// YAMLNode is a union of YAMLMap | YAMLScalar, so this assertion is safe
 				const cooldown = cooldownPair.value as YAMLMap | YAMLScalar;
 
 				// If cooldown is not a map or doesn't have items, it's invalid
+				// This type guard checks for YAMLMap by checking for the 'items' property
 				if (!("items" in cooldown) || !cooldown.items) {
 					context.report({
 						data: {

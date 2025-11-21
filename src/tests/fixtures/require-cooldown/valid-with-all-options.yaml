@@ -1,0 +1,18 @@
+updates:
+  - cooldown:
+      default-days: 5
+      exclude:
+        - pandas
+      include:
+        - django
+        - numpy
+        - "pandas*"
+        - requests
+      semver-major-days: 30
+      semver-minor-days: 7
+      semver-patch-days: 3
+    directory: /
+    package-ecosystem: pip
+    schedule:
+      interval: daily
+version: 2

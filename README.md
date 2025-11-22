@@ -31,10 +31,12 @@ Add the plugin and language configuration to your `eslint.config.mjs`:
 <!-- eslint-skip -->
 
 ```js
+// eslint.config.mjs
+import { defineConfig } from "eslint/config";
 import dependabot from "eslint-plugin-dependabot";
 import { yaml } from "eslint-yaml";
 
-export default [
+export default defineConfig([
 	{
 		files: ["**/.github/dependabot.{yml,yaml}"],
 		language: "yaml/yaml",
@@ -44,18 +46,14 @@ export default [
 		},
 		...dependabot.configs.recommended,
 	},
-];
+]);
 ```
 
 ### Rules
 
-<!-- begin auto-generated rules list -->
-
 | Name                                               | Description                                                     | ✅  | 🔧  |
 | :------------------------------------------------- | :-------------------------------------------------------------- | :-- | :-- |
 | [require-cooldown](docs/rules/require-cooldown.md) | Require each package-ecosystem to have a cooldown configuration | ✅  |     |
-
-<!-- end auto-generated rules list -->
 
 ## Development
 

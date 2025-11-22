@@ -2,9 +2,7 @@
 
 Require each package-ecosystem to have a cooldown configuration.
 
-⚠️ This rule _warns_ in the ✅ `recommended` config.
-
-<!-- end auto-generated rule header -->
+🛑 This rule _errors_ in the ✅ `recommended` config.
 
 ## Rule Details
 

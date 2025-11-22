@@ -18,11 +18,11 @@ export default defineConfig([
 	{
 		ignores: [
 			"**/*.snap",
+			"**/_fixtures_/",
 			"coverage",
 			"lib",
 			"node_modules",
 			"pnpm-lock.yaml",
-			"src/tests/_fixtures_",
 		],
 	},
 	{ linterOptions: { reportUnusedDisableDirectives: "error" } },

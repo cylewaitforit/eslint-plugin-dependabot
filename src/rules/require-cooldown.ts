@@ -104,4 +104,4 @@ export const requireCooldown: Rule.RuleModule = {
 		schema: [],
 		type: "problem",
 	},
-};
+} satisfies Rule.RuleModule;

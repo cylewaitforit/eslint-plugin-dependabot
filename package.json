@@ -71,7 +71,8 @@
 		"tsdown": "catalog:",
 		"typescript": "catalog:",
 		"typescript-eslint": "catalog:",
-		"vitest": "catalog:"
+		"vitest": "catalog:",
+		"yaml": "catalog:"
 	},
 	"packageManager": "pnpm@10.4.0",
 	"engines": {

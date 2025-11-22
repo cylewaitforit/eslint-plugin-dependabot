@@ -1,18 +1,7 @@
-import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import type { ESLint } from "eslint";
 
+import packageJson from "../package.json" with { type: "json" };
 import { requireCooldown } from "./rules/require-cooldown.js";
-
-interface PackageJson {
-	version: string;
-}
-
-const packageJson: PackageJson = JSON.parse(
-	readFileSync(
-		fileURLToPath(new URL("../package.json", import.meta.url)),
-		"utf8",
-	),
-) as PackageJson;
 
 const plugin = {
 	configs: {
@@ -29,6 +18,6 @@ const plugin = {
 	rules: {
 		"require-cooldown": requireCooldown,
 	},
-};
+} satisfies ESLint.Plugin;
 
 export default plugin;

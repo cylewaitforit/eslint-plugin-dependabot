@@ -16,7 +16,14 @@ import tseslint from "typescript-eslint";
 
 export default defineConfig([
 	{
-		ignores: ["**/*.snap", "coverage", "lib", "node_modules", "pnpm-lock.yaml"],
+		ignores: [
+			"**/*.snap",
+			"coverage",
+			"lib",
+			"node_modules",
+			"pnpm-lock.yaml",
+			"src/tests/_fixtures_",
+		],
 	},
 	{ linterOptions: { reportUnusedDisableDirectives: "error" } },
 	eslintPlugin.configs.recommended,

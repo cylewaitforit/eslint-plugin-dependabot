@@ -51,9 +51,9 @@ export default [
 
 <!-- begin auto-generated rules list -->
 
-| Name                                               | Description                                                     | ✅  |
-| :------------------------------------------------- | :-------------------------------------------------------------- | :-- |
-| [require-cooldown](docs/rules/require-cooldown.md) | Require each package-ecosystem to have a cooldown configuration | ✅  |
+| Name                                               | Description                                                     | ✅  | 🔧  |
+| :------------------------------------------------- | :-------------------------------------------------------------- | :-- | :-- |
+| [require-cooldown](docs/rules/require-cooldown.md) | Require each package-ecosystem to have a cooldown configuration | ✅  |     |
 
 <!-- end auto-generated rules list -->
 

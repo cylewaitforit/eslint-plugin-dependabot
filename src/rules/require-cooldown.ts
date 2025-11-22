@@ -63,8 +63,8 @@ const requireCooldown = {
 				const cooldownValue = cooldownPair.value;
 
 				// Check if cooldown is a scalar (e.g., cooldown: 5)
-				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- value can be undefined in practice
 				if (
+					// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- runtime safety check
 					cooldownValue &&
 					"value" in cooldownValue &&
 					typeof cooldownValue.value === "number"
@@ -95,8 +95,8 @@ const requireCooldown = {
 				}
 
 				// Check if cooldown is a Map
-				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- value can be undefined in practice
 				if (
+					// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- runtime safety check
 					!cooldownValue ||
 					!("items" in cooldownValue) ||
 					!cooldownValue.items

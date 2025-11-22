@@ -29,9 +29,9 @@ This plugin requires the `eslint-yaml` package to parse YAML files.
 Add the plugin and language configuration to your `eslint.config.mjs`:
 
 ```js
+// eslint.config.mjs
 import dependabot from "eslint-plugin-dependabot";
 import { yaml } from "eslint-yaml";
-// eslint.config.mjs
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([

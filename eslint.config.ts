@@ -98,6 +98,30 @@ export default defineConfig([
 		},
 	},
 	{
+		files: [".github/workflows/**/*.{yml,yaml}"],
+		rules: {
+			"yml/sort-keys": [
+				"error",
+				{
+					order: [
+						"name",
+						"on",
+						"permissions",
+						"env",
+						"concurrency",
+						"jobs",
+						"asc",
+					],
+					pathPattern: "^$",
+				},
+				{
+					order: { type: "asc" },
+					pathPattern: "^jobs.*",
+				},
+			],
+		},
+	},
+	{
 		files: ["*.config.{js,ts}", "**/*.config.{js,ts}"],
 		rules: {
 			"@typescript-eslint/no-unsafe-member-access": "off",

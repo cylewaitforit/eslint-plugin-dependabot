@@ -1,0 +1,44 @@
+name: Publish Approved Pull Requests
+on:
+  pull_request_review:
+    types: [submitted]
+
+permissions: {}
+jobs:
+  check:
+    # First, trigger a permissions check on the user approving the pull request.
+    if: github.event.review.state == 'approved'
+    outputs:
+      has-permissions: ${{ steps.checkPermissions.outputs.require-result }}
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkPermissions
+        name: Check permissions
+        uses: actions-cool/check-user-permission@v2
+        with:
+          # In this example, the approver must have the write access
+          # to the repository to trigger the package preview.
+          require: write
+
+  publish:
+    # Publish the preview package only if the permissions check passed.
+    if: needs.check.outputs.has-permissions == 'true'
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version: 20
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - run: pnpm dlx pkg-pr-new publish

@@ -1,3 +1,14 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  id-token: write
+
 concurrency:
   group: ${{ github.workflow }}
 
@@ -16,14 +27,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         uses: JoshuaKGoldberg/release-it-action@v0.3.2
-
-name: Release
-
-on:
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: write
-  id-token: write

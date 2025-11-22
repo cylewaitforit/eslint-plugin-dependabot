@@ -1,5 +1,7 @@
+version: 2
 updates:
-  - cooldown:
+  - package-ecosystem: pip
+    cooldown:
       default-days: 5
       exclude:
         - pandas
@@ -12,7 +14,5 @@ updates:
       semver-minor-days: 7
       semver-patch-days: 3
     directory: /
-    package-ecosystem: pip
     schedule:
       interval: daily
-version: 2

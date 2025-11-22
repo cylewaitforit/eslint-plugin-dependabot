@@ -1,21 +1,21 @@
+version: 2
 updates:
-  - cooldown:
+  - package-ecosystem: npm
+    cooldown:
       default-days: 3
     directory: /
-    package-ecosystem: npm
     schedule:
       interval: daily
-  - cooldown:
+  - package-ecosystem: pip
+    cooldown:
       default-days: 7
       semver-major-days: 30
     directory: /python
-    package-ecosystem: pip
     schedule:
       interval: weekly
-  - cooldown:
+  - package-ecosystem: docker
+    cooldown:
       default-days: 1
     directory: /
-    package-ecosystem: docker
     schedule:
       interval: daily
-version: 2

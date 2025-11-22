@@ -20,84 +20,96 @@ See [GitHub's documentation on cooldown periods](https://docs.github.com/en/code
 
 ### ❌ Incorrect
 
+<!-- eslint-skip -->
+
 ```yaml
 # Missing cooldown configuration
+version: 2
 updates:
-  - directory: /
-    package-ecosystem: npm
+  - package-ecosystem: npm
+    directory: /
     schedule:
       interval: daily
-version: 2
 ```
+
+<!-- eslint-skip -->
 
 ```yaml
 # Cooldown exists but missing default-days
+version: 2
 updates:
-  - cooldown:
+  - package-ecosystem: npm
+    cooldown:
       semver-major-days: 30
     directory: /
-    package-ecosystem: npm
     schedule:
       interval: daily
-version: 2
 ```
+
+<!-- eslint-skip -->
 
 ```yaml
 # Invalid cooldown value (scalar instead of object)
+version: 2
 updates:
-  - cooldown: 5
+  - package-ecosystem: npm
+    cooldown: 5
     directory: /
-    package-ecosystem: npm
     schedule:
       interval: daily
-version: 2
 ```
 
 ### ✅ Correct
 
+<!-- eslint-skip -->
+
 ```yaml
 # Minimal valid configuration
+version: 2
 updates:
-  - cooldown:
+  - package-ecosystem: npm
+    cooldown:
       default-days: 5
     directory: /
-    package-ecosystem: npm
     schedule:
       interval: daily
-version: 2
 ```
+
+<!-- eslint-skip -->
 
 ```yaml
 # Configuration with multiple cooldown options
+version: 2
 updates:
-  - cooldown:
+  - package-ecosystem: npm
+    cooldown:
       default-days: 5
       semver-major-days: 30
       semver-minor-days: 7
       semver-patch-days: 3
     directory: /
-    package-ecosystem: npm
     schedule:
       interval: daily
-version: 2
 ```
+
+<!--eslint-skip -->
 
 ```yaml
 # Multiple ecosystems, each with cooldown
+version: 2
 updates:
-  - cooldown:
+  - package-ecosystem: npm
+    cooldown:
       default-days: 5
     directory: /
-    package-ecosystem: npm
     schedule:
       interval: daily
-  - cooldown:
+  - package-ecosystem: pip
+    cooldown:
       default-days: 3
     directory: /
-    package-ecosystem: pip
     schedule:
       interval: weekly
-version: 2
 ```
 
 ## When Not To Use It

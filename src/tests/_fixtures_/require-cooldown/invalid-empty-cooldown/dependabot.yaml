@@ -1,7 +1,7 @@
+version: 2
 updates:
-  - cooldown: {}
+  - package-ecosystem: npm
+    cooldown:
     directory: /
-    package-ecosystem: npm
     schedule:
       interval: daily
-version: 2

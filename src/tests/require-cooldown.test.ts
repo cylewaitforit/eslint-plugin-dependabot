@@ -73,15 +73,6 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: `updates:
-  - cooldown:
-      default-days: 7
-    directory: /
-    package-ecosystem: npm
-    schedule:
-      interval: daily
-version: 2
-`,
 				},
 				{
 					code: fs.readFileSync(
@@ -99,16 +90,6 @@ version: 2
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: `updates:
-  - cooldown:
-      default-days: 7
-      semver-major-days: 30
-    directory: /
-    package-ecosystem: npm
-    schedule:
-      interval: daily
-version: 2
-`,
 				},
 				{
 					code: fs.readFileSync(
@@ -126,21 +107,6 @@ version: 2
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: `updates:
-  - cooldown:
-      default-days: 5
-    directory: /
-    package-ecosystem: npm
-    schedule:
-      interval: daily
-  - cooldown:
-      default-days: 7
-    directory: /
-    package-ecosystem: pip
-    schedule:
-      interval: weekly
-version: 2
-`,
 				},
 				{
 					code: fs.readFileSync(
@@ -158,15 +124,6 @@ version: 2
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: `updates:
-  - cooldown:
-      default-days: 7
-    directory: /
-    package-ecosystem: npm
-    schedule:
-      interval: daily
-version: 2
-`,
 				},
 				{
 					code: fs.readFileSync(

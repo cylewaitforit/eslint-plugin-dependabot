@@ -1,18 +1,18 @@
+version: 2
 updates:
-  - cooldown:
+  - package-ecosystem: npm
+    cooldown:
       default-days: 5
     directory: /
-    package-ecosystem: npm
     schedule:
       interval: daily
-  - directory: /python
-    package-ecosystem: pip
+  - package-ecosystem: pip
+    directory: /python
     schedule:
       interval: weekly
-  - cooldown:
+  - package-ecosystem: docker
+    cooldown:
       default-days: 1
     directory: /
-    package-ecosystem: docker
     schedule:
       interval: daily
-version: 2

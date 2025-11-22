@@ -8,7 +8,8 @@ Require each package-ecosystem to have a cooldown configuration.
 
 This rule enforces that each `package-ecosystem` entry in your Dependabot configuration has a `cooldown` section with at least a `default-days` property set.
 
-The cooldown feature helps control when Dependabot attempts to update dependencies by setting a minimum package age before updates are attempted. This can be useful to:
+The cooldown feature helps control when Dependabot attempts to update dependencies by setting a minimum package age before updates are attempted.
+This can be useful to:
 
 - Avoid updating to packages that were just published and might have bugs
 - Reduce noise from frequent updates
@@ -114,7 +115,8 @@ updates:
 
 ## When Not To Use It
 
-If you want Dependabot to always update to the latest versions immediately regardless of package age, you can disable this rule. However, this is generally not recommended as it may lead to instability from newly-published packages.
+If you want Dependabot to always update to the latest versions immediately regardless of package age, you can disable this rule.
+However, this is generally not recommended as it may lead to instability from newly-published packages.
 
 ## Further Reading
 

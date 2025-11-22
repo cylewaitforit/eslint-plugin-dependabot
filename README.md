@@ -28,13 +28,11 @@ npm install eslint-plugin-dependabot eslint-yaml --save-dev
 This plugin requires the `eslint-yaml` package to parse YAML files.
 Add the plugin and language configuration to your `eslint.config.mjs`:
 
-<!-- eslint-skip: Example shows package usage, not a complete config file -->
-
 ```js
 // eslint.config.mjs
-import { defineConfig } from "eslint/config";
 import dependabot from "eslint-plugin-dependabot";
 import { yaml } from "eslint-yaml";
+import { defineConfig } from "eslint/config";
 
 export default defineConfig([
 	{

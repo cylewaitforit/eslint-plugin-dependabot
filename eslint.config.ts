@@ -46,6 +46,7 @@ export default defineConfig([
 			tseslint.configs.stylisticTypeChecked,
 		],
 		files: ["**/*.{js,ts}"],
+		ignores: ["**/*.md/**"],
 		languageOptions: {
 			parserOptions: {
 				projectService: { allowDefaultProject: ["*.config.*s"] },
@@ -70,8 +71,11 @@ export default defineConfig([
 	},
 	{
 		extends: [tseslint.configs.disableTypeChecked],
-		files: ["**/*.md/*.ts"],
-		rules: { "n/no-missing-import": "off" },
+		files: ["**/*.md/*.ts", "**/*.md/*.js"],
+		rules: {
+			"n/no-missing-import": "off",
+			"n/no-unpublished-import": "off",
+		},
 	},
 	{
 		extends: [vitest.configs.recommended],

@@ -53,7 +53,7 @@ export default defineConfig([
 
 | Name                                               | Description                                                     | ✅  | 🔧  |
 | :------------------------------------------------- | :-------------------------------------------------------------- | :-- | :-- |
-| [require-cooldown](docs/rules/require-cooldown.md) | Require each package-ecosystem to have a cooldown configuration | ✅  |     |
+| [require-cooldown](docs/rules/require-cooldown.md) | Require each package-ecosystem to have a cooldown configuration | ✅  | 🔧  |
 
 ## Development
 

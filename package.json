@@ -60,6 +60,7 @@
 		"lint-staged": "catalog:",
 		"markdownlint": "catalog:",
 		"markdownlint-cli": "catalog:",
+		"pkg-pr-new": "catalog:",
 		"prettier": "catalog:",
 		"prettier-plugin-curly": "catalog:",
 		"prettier-plugin-packagejson": "catalog:",

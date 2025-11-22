@@ -59,7 +59,6 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: readFixture("invalid-no-cooldown/dependabot.fixed.yaml"),
 				},
 				{
 					code: readFixture("invalid-missing-default-days/dependabot.yaml"),
@@ -71,9 +70,6 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: readFixture(
-						"invalid-missing-default-days/dependabot.fixed.yaml",
-					),
 				},
 				{
 					code: readFixture("invalid-one-missing-cooldown/dependabot.yaml"),
@@ -85,9 +81,6 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: readFixture(
-						"invalid-one-missing-cooldown/dependabot.fixed.yaml",
-					),
 				},
 				{
 					code: readFixture("invalid-empty-cooldown/dependabot.yaml"),
@@ -99,7 +92,6 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: readFixture("invalid-empty-cooldown/dependabot.fixed.yaml"),
 				},
 				{
 					code: readFixture("invalid-cooldown-scalar/dependabot.yaml"),
@@ -111,7 +103,6 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: readFixture("invalid-cooldown-scalar/dependabot.fixed.yaml"),
 				},
 			],
 		});

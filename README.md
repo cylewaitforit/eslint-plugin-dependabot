@@ -30,9 +30,9 @@ Add the plugin and language configuration to your `eslint.config.mjs`:
 
 ```js
 // eslint.config.mjs
+import { defineConfig } from "eslint/config";
 import dependabot from "eslint-plugin-dependabot";
 import { yaml } from "eslint-yaml";
-import { defineConfig } from "eslint/config";
 
 export default defineConfig([
 	{

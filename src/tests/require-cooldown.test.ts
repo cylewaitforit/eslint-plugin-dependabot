@@ -73,6 +73,13 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
+					output: fs.readFileSync(
+						path.join(
+							import.meta.dirname,
+							"_fixtures_/require-cooldown/invalid-no-cooldown/dependabot.fixed.yaml",
+						),
+						"utf8",
+					),
 				},
 				{
 					code: fs.readFileSync(
@@ -90,6 +97,13 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
+					output: fs.readFileSync(
+						path.join(
+							import.meta.dirname,
+							"_fixtures_/require-cooldown/invalid-missing-default-days/dependabot.fixed.yaml",
+						),
+						"utf8",
+					),
 				},
 				{
 					code: fs.readFileSync(
@@ -107,6 +121,13 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
+					output: fs.readFileSync(
+						path.join(
+							import.meta.dirname,
+							"_fixtures_/require-cooldown/invalid-one-missing-cooldown/dependabot.fixed.yaml",
+						),
+						"utf8",
+					),
 				},
 				{
 					code: fs.readFileSync(
@@ -124,6 +145,13 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
+					output: fs.readFileSync(
+						path.join(
+							import.meta.dirname,
+							"_fixtures_/require-cooldown/invalid-empty-cooldown/dependabot.fixed.yaml",
+						),
+						"utf8",
+					),
 				},
 				{
 					code: fs.readFileSync(
@@ -141,6 +169,13 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
+					output: fs.readFileSync(
+						path.join(
+							import.meta.dirname,
+							"_fixtures_/require-cooldown/invalid-cooldown-scalar/dependabot.fixed.yaml",
+						),
+						"utf8",
+					),
 				},
 			],
 		});

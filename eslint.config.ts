@@ -71,7 +71,7 @@ export default defineConfig([
 	},
 	{
 		extends: [tseslint.configs.disableTypeChecked],
-		files: ["**/*.md/*.ts", "**/*.md/*.js"],
+		files: ["**/*.md/*.{js,ts}"],
 		rules: {
 			"n/no-missing-import": "off",
 			"n/no-unpublished-import": "off",

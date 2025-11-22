@@ -81,6 +81,9 @@ catalogs:
     markdownlint-cli:
       specifier: 0.45.0
       version: 0.45.0
+    pkg-pr-new:
+      specifier: ^0.0.60
+      version: 0.0.60
     prettier:
       specifier: 3.6.1
       version: 3.6.1
@@ -192,7 +195,7 @@ importers:
         specifier: 'catalog:'
         version: 0.45.0
       pkg-pr-new:
-        specifier: ^0.0.60
+        specifier: 'catalog:'
         version: 0.0.60
       prettier:
         specifier: 'catalog:'

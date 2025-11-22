@@ -1,5 +1,5 @@
 import type { Rule } from "eslint";
-import type { Pair, Scalar, YAMLMap } from "yaml";
+import type { Pair, YAMLMap } from "yaml";
 
 const requireCooldown = {
 	create(context) {
@@ -8,8 +8,12 @@ const requireCooldown = {
 			Map(node: YAMLMap) {
 				// Check if this Map is an update entry
 				// It should have package-ecosystem but may be missing cooldown
+				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- items can be undefined in practice
 				const packageEcosystemPair = node.items?.find(
-					(item: Pair) => item.key && "value" in item.key && item.key.value === "package-ecosystem",
+					(item: Pair) =>
+						item.key &&
+						"value" in item.key &&
+						item.key.value === "package-ecosystem",
 				);
 
 				// If this node doesn't have package-ecosystem, it's not an update entry
@@ -19,17 +23,18 @@ const requireCooldown = {
 
 				const ecosystemValue = packageEcosystemPair.value;
 				const ecosystemName =
-					(ecosystemValue && "value" in ecosystemValue
-						? ecosystemValue.value
-						: "unknown"
-					)?.toString() ?? "unknown";
+					ecosystemValue && "value" in ecosystemValue
+						? String(ecosystemValue.value)
+						: "unknown";
 
 				// Check for cooldown
+				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- items can be undefined in practice
 				const cooldownPair = node.items?.find(
-					(item: Pair) => item.key && "value" in item.key && item.key.value === "cooldown",
+					(item: Pair) =>
+						item.key && "value" in item.key && item.key.value === "cooldown",
 				);
 
-				if (!cooldownPair || !cooldownPair.value) {
+				if (!cooldownPair?.value) {
 					context.report({
 						data: {
 							ecosystem: ecosystemName,
@@ -43,6 +48,7 @@ const requireCooldown = {
 							const nestedIndent = "      "; // 6 spaces for nested properties
 							const cooldownText = `\n${indent}cooldown:\n${nestedIndent}default-days: 7`;
 							return fixer.insertTextAfterRange(
+								// eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- YAML range types are not fully typed
 								packageEcosystemPair.range,
 								cooldownText,
 							);
@@ -57,7 +63,12 @@ const requireCooldown = {
 				const cooldownValue = cooldownPair.value;
 
 				// Check if cooldown is a scalar (e.g., cooldown: 5)
-				if (cooldownValue && "value" in cooldownValue && typeof cooldownValue.value === "number") {
+				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- value can be undefined in practice
+				if (
+					cooldownValue &&
+					"value" in cooldownValue &&
+					typeof cooldownValue.value === "number"
+				) {
 					// Scalar value - we need to convert it to a map with default-days
 					const scalarValue = cooldownValue.value;
 					context.report({
@@ -69,8 +80,9 @@ const requireCooldown = {
 								return null;
 							}
 							const indent = "      "; // 6 spaces for nested properties
-							const newCooldown = `\n${indent}default-days: ${scalarValue}`;
+							const newCooldown = `\n${indent}default-days: ${String(scalarValue)}`;
 							return fixer.insertTextAfterRange(
+								// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- YAML range types are not fully typed
 								[cooldownValue.range[0] - 1, cooldownValue.range[0] - 1],
 								newCooldown,
 							);
@@ -83,7 +95,12 @@ const requireCooldown = {
 				}
 
 				// Check if cooldown is a Map
-				if (!cooldownValue || !("items" in cooldownValue) || !cooldownValue.items) {
+				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- value can be undefined in practice
+				if (
+					!cooldownValue ||
+					!("items" in cooldownValue) ||
+					!cooldownValue.items
+				) {
 					context.report({
 						data: {
 							ecosystem: ecosystemName,
@@ -95,6 +112,7 @@ const requireCooldown = {
 							const indent = "      "; // 6 spaces for nested properties
 							const defaultDaysText = `\n${indent}default-days: 7`;
 							return fixer.insertTextAfterRange(
+								// eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- YAML range types are not fully typed
 								cooldownPair.range,
 								defaultDaysText,
 							);
@@ -106,11 +124,16 @@ const requireCooldown = {
 					return;
 				}
 
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- YAML items type is not fully typed
 				const defaultDaysPair = cooldownValue.items.find(
-					(item: Pair) => item.key && "value" in item.key && item.key.value === "default-days",
+					(item: Pair) =>
+						item.key &&
+						"value" in item.key &&
+						item.key.value === "default-days",
 				);
 
-				if (!defaultDaysPair || !defaultDaysPair.value) {
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- YAML value types are not fully typed
+				if (!defaultDaysPair?.value) {
 					context.report({
 						data: {
 							ecosystem: ecosystemName,
@@ -121,7 +144,9 @@ const requireCooldown = {
 							}
 							const indent = "      "; // 6 spaces for nested properties
 							const defaultDaysText = `\n${indent}default-days: 7`;
+
 							return fixer.insertTextAfterRange(
+								// eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- YAML range types are not fully typed
 								cooldownPair.range,
 								defaultDaysText,
 							);

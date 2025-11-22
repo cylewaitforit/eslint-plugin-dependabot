@@ -13,43 +13,35 @@ const ruleTester = new RuleTester({
 	},
 });
 
+/**
+ * Helper function to read a fixture file.
+ */
+function readFixture(fixturePath: string): string {
+	return fs.readFileSync(
+		path.join(import.meta.dirname, "_fixtures_/require-cooldown", fixturePath),
+		"utf8",
+	);
+}
+
 describe("require-cooldown", () => {
 	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should pass valid cases", () => {
 		ruleTester.run("require-cooldown", requireCooldown, {
 			valid: [
 				{
-					code: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"_fixtures_/require-cooldown/valid-simple/dependabot.yaml",
-						),
-						"utf8",
-					),
+					code: readFixture("valid-simple/dependabot.yaml"),
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
 				},
 				{
-					code: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"_fixtures_/require-cooldown/valid-with-all-options/dependabot.yaml",
-						),
-						"utf8",
-					),
+					code: readFixture("valid-with-all-options/dependabot.yaml"),
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
 				},
 				{
-					code: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"_fixtures_/require-cooldown/valid-multiple-ecosystems/dependabot.yaml",
-						),
-						"utf8",
-					),
+					code: readFixture("valid-multiple-ecosystems/dependabot.yaml"),
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
@@ -58,13 +50,7 @@ describe("require-cooldown", () => {
 			// eslint-disable-next-line perfectionist/sort-objects -- Valid cases should come before invalid for readability
 			invalid: [
 				{
-					code: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"_fixtures_/require-cooldown/invalid-no-cooldown/dependabot.yaml",
-						),
-						"utf8",
-					),
+					code: readFixture("invalid-no-cooldown/dependabot.yaml"),
 					errors: [
 						{
 							messageId: "missingCooldown",
@@ -73,22 +59,10 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"_fixtures_/require-cooldown/invalid-no-cooldown/dependabot.fixed.yaml",
-						),
-						"utf8",
-					),
+					output: readFixture("invalid-no-cooldown/dependabot.fixed.yaml"),
 				},
 				{
-					code: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"_fixtures_/require-cooldown/invalid-missing-default-days/dependabot.yaml",
-						),
-						"utf8",
-					),
+					code: readFixture("invalid-missing-default-days/dependabot.yaml"),
 					errors: [
 						{
 							messageId: "missingDefaultDays",
@@ -97,22 +71,12 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"_fixtures_/require-cooldown/invalid-missing-default-days/dependabot.fixed.yaml",
-						),
-						"utf8",
+					output: readFixture(
+						"invalid-missing-default-days/dependabot.fixed.yaml",
 					),
 				},
 				{
-					code: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"_fixtures_/require-cooldown/invalid-one-missing-cooldown/dependabot.yaml",
-						),
-						"utf8",
-					),
+					code: readFixture("invalid-one-missing-cooldown/dependabot.yaml"),
 					errors: [
 						{
 							messageId: "missingCooldown",
@@ -121,22 +85,12 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"_fixtures_/require-cooldown/invalid-one-missing-cooldown/dependabot.fixed.yaml",
-						),
-						"utf8",
+					output: readFixture(
+						"invalid-one-missing-cooldown/dependabot.fixed.yaml",
 					),
 				},
 				{
-					code: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"_fixtures_/require-cooldown/invalid-empty-cooldown/dependabot.yaml",
-						),
-						"utf8",
-					),
+					code: readFixture("invalid-empty-cooldown/dependabot.yaml"),
 					errors: [
 						{
 							messageId: "missingDefaultDays",
@@ -145,22 +99,10 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"_fixtures_/require-cooldown/invalid-empty-cooldown/dependabot.fixed.yaml",
-						),
-						"utf8",
-					),
+					output: readFixture("invalid-empty-cooldown/dependabot.fixed.yaml"),
 				},
 				{
-					code: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"_fixtures_/require-cooldown/invalid-cooldown-scalar/dependabot.yaml",
-						),
-						"utf8",
-					),
+					code: readFixture("invalid-cooldown-scalar/dependabot.yaml"),
 					errors: [
 						{
 							messageId: "missingDefaultDays",
@@ -169,13 +111,7 @@ describe("require-cooldown", () => {
 					filename: "dependabot.yaml",
 					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
-					output: fs.readFileSync(
-						path.join(
-							import.meta.dirname,
-							"_fixtures_/require-cooldown/invalid-cooldown-scalar/dependabot.fixed.yaml",
-						),
-						"utf8",
-					),
+					output: readFixture("invalid-cooldown-scalar/dependabot.fixed.yaml"),
 				},
 			],
 		});

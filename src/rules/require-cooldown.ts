@@ -1,24 +1,24 @@
 import type { Rule } from "eslint";
 
-interface YAMLMap {
+export interface YAMLMap {
 	items?: YAMLPair[];
 	range?: [number, number];
 }
 
-type YAMLNode = YAMLMap | YAMLScalar;
+export type YAMLNode = YAMLMap | YAMLScalar;
 
-interface YAMLPair {
+export interface YAMLPair {
 	key?: YAMLScalar;
 	range?: [number, number];
 	value?: YAMLNode;
 }
 
-interface YAMLScalar {
+export interface YAMLScalar {
 	range?: [number, number];
 	value?: boolean | null | number | string;
 }
 
-export const requireCooldown: Rule.RuleModule = {
+const requireCooldown = {
 	create(context) {
 		return {
 			// Visit all Map nodes (YAML objects)
@@ -60,7 +60,8 @@ export const requireCooldown: Rule.RuleModule = {
 							// We'll use the source code to determine proper indentation
 							const indent = "    "; // Standard 4-space indent for YAML list items
 
-							// Insert cooldown config right after package-ecosystem
+							// Insert cooldown config right after package-ecosystem line
+							// Insert at the end of the package-ecosystem pair range
 							const cooldownText = `\n${indent}cooldown:\n${indent}  default-days: 7`;
 
 							return fixer.insertTextAfterRange(
@@ -158,3 +159,5 @@ export const requireCooldown: Rule.RuleModule = {
 		type: "problem",
 	},
 } satisfies Rule.RuleModule;
+
+export { requireCooldown };

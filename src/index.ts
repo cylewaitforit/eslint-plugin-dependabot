@@ -12,7 +12,7 @@ const plugin = {
 		},
 	},
 	meta: {
-		name: "eslint-plugin-dependabot",
+		name: packageJson.name,
 		version: packageJson.version,
 	},
 	rules: {

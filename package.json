@@ -27,12 +27,9 @@
 		"lint:md": "markdownlint \"**/*.md\" \".github/**/*.md\" --rules sentences-per-line",
 		"lint:packages": "pnpm dedupe --check",
 		"lint:spelling": "cspell \"**\" \".github/**/*\"",
-		"prepare": "husky",
+		"prepare": "lefthook install",
 		"test": "vitest",
 		"tsc": "tsc"
-	},
-	"lint-staged": {
-		"*": "prettier --ignore-unknown --write"
 	},
 	"devDependencies": {
 		"@eslint-community/eslint-plugin-eslint-comments": "catalog:",
@@ -55,9 +52,8 @@
 		"eslint-plugin-pnpm": "catalog:",
 		"eslint-plugin-regexp": "catalog:",
 		"eslint-plugin-yml": "catalog:",
-		"husky": "catalog:",
 		"knip": "catalog:",
-		"lint-staged": "catalog:",
+		"lefthook": "catalog:",
 		"markdownlint": "catalog:",
 		"markdownlint-cli": "catalog:",
 		"pkg-pr-new": "catalog:",

@@ -16,7 +16,14 @@ import tseslint from "typescript-eslint";
 
 export default defineConfig([
 	{
-		ignores: ["**/*.snap", "coverage", "lib", "node_modules", "pnpm-lock.yaml"],
+		ignores: [
+			"**/*.snap",
+			"**/_fixtures_/",
+			"coverage",
+			"lib",
+			"node_modules",
+			"pnpm-lock.yaml",
+		],
 	},
 	{ linterOptions: { reportUnusedDisableDirectives: "error" } },
 	eslintPlugin.configs.recommended,
@@ -39,6 +46,7 @@ export default defineConfig([
 			tseslint.configs.stylisticTypeChecked,
 		],
 		files: ["**/*.{js,ts}"],
+		ignores: ["**/*.md/**"],
 		languageOptions: {
 			parserOptions: {
 				projectService: { allowDefaultProject: ["*.config.*s"] },
@@ -63,8 +71,11 @@ export default defineConfig([
 	},
 	{
 		extends: [tseslint.configs.disableTypeChecked],
-		files: ["**/*.md/*.ts"],
-		rules: { "n/no-missing-import": "off" },
+		files: ["**/*.md/*.{js,ts}"],
+		rules: {
+			"n/no-missing-import": "off",
+			"n/no-unpublished-import": "off",
+		},
 	},
 	{
 		extends: [vitest.configs.recommended],

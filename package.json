@@ -33,6 +33,7 @@
 	},
 	"devDependencies": {
 		"@eslint-community/eslint-plugin-eslint-comments": "catalog:",
+		"@eslint/core": "catalog:",
 		"@eslint/js": "catalog:",
 		"@release-it/conventional-changelog": "catalog:",
 		"@types/eslint-plugin-markdown": "catalog:",
@@ -52,6 +53,7 @@
 		"eslint-plugin-pnpm": "catalog:",
 		"eslint-plugin-regexp": "catalog:",
 		"eslint-plugin-yml": "catalog:",
+		"eslint-yaml": "catalog:",
 		"knip": "catalog:",
 		"lefthook": "catalog:",
 		"markdownlint": "catalog:",
@@ -66,7 +68,8 @@
 		"tsdown": "catalog:",
 		"typescript": "catalog:",
 		"typescript-eslint": "catalog:",
-		"vitest": "catalog:"
+		"vitest": "catalog:",
+		"yaml": "catalog:"
 	},
 	"packageManager": "pnpm@10.4.0",
 	"engines": {

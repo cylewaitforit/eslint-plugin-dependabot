@@ -43,7 +43,7 @@ const requireConfigVersion = {
 						item.key && isScalar(item.key) && item.key.value === "version",
 				);
 
-				if (!versionPair?.value) {
+				if (!versionPair) {
 					context.report({
 						messageId: "missingVersion",
 						node,

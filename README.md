@@ -38,6 +38,7 @@ export default defineConfig([
 	{
 		files: ["**/.github/dependabot.{yml,yaml}"],
 		language: "yaml/yaml",
+		name: "dependabot/recommended",
 		plugins: {
 			dependabot,
 			yaml,

@@ -20,6 +20,7 @@ const plugin = {
 	// eslint-disable-next-line perfectionist/sort-objects -- metadata should be at the top
 	configs: {
 		recommended: {
+			name: "dependabot/recommended",
 			rules: {
 				"dependabot/require-cooldown": "error",
 			},

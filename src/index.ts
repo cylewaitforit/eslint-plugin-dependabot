@@ -8,21 +8,20 @@ const rules: Record<string, RuleDefinition> = {
 	"require-config-version": requireConfigVersion as RuleDefinition,
 };
 
-const plugin: ESLint.Plugin = {
+const plugin = {
+	configs: {
+		recommended: {
+			name: "dependabot/recommended",
+			rules: {
+				"dependabot/require-config-version": "error",
+			},
+		},
+	},
 	meta: {
 		name: packageJson.name,
 		version: packageJson.version,
 	},
 	rules,
-};
-
-plugin.configs = {
-	recommended: {
-		name: "dependabot/recommended",
-		rules: {
-			"dependabot/require-config-version": "error",
-		},
-	},
-};
+} satisfies ESLint.Plugin;
 
 export default plugin;

@@ -1,14 +1,14 @@
-import type { RuleDefinition } from "@eslint/core";
 import type { ESLint } from "eslint";
 
 import packageJson from "../package.json" with { type: "json" };
-import { requireConfigVersion } from "./rules/require-config-version.js";
-
-const rules: Record<string, RuleDefinition> = {
-	"require-config-version": requireConfigVersion as RuleDefinition,
-};
+import { rules } from "./rules/all.js";
 
 const plugin = {
+	meta: {
+		name: packageJson.name,
+		version: packageJson.version,
+	},
+	// eslint-disable-next-line perfectionist/sort-objects -- meta should be at the top
 	configs: {
 		recommended: {
 			name: "dependabot/recommended",
@@ -16,10 +16,6 @@ const plugin = {
 				"dependabot/require-config-version": "error",
 			},
 		},
-	},
-	meta: {
-		name: packageJson.name,
-		version: packageJson.version,
 	},
 	rules,
 } satisfies ESLint.Plugin;

@@ -5,7 +5,9 @@ import type { YAMLRuleDefinition } from "./types.js";
 import packageJson from "../package.json" with { type: "json" };
 import { requireCooldown } from "./rules/require-cooldown.js";
 
-// Plugin type that allows YAML rule definitions in the rules object
+/**
+ * Plugin type that allows YAML rule definitions in the rules object.
+ */
 type YAMLPlugin = Omit<ESLint.Plugin, "rules"> & {
 	rules: Record<string, YAMLRuleDefinition>;
 };

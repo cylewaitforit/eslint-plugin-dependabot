@@ -1,14 +1,13 @@
-import { RuleTester } from "eslint";
 import { yaml } from "eslint-yaml";
 import fs from "fs";
 import path from "path";
 import { describe, it } from "vitest";
 
 import { requireCooldown } from "../rules/require-cooldown.js";
+import { YAMLRuleTester } from "./utils/yaml-rule-tester.js";
 
-const ruleTester = new RuleTester({
+const ruleTester = new YAMLRuleTester({
 	plugins: {
-		// @ts-expect-error -- ESLint types don't fully support language plugins yet
 		yaml,
 	},
 });
@@ -31,19 +30,16 @@ describe("require-cooldown", () => {
 				{
 					code: readFixture("valid-simple/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
 				},
 				{
 					code: readFixture("valid-with-all-options/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
 				},
 				{
 					code: readFixture("valid-multiple-ecosystems/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
 				},
 			],
@@ -57,7 +53,6 @@ describe("require-cooldown", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
 				},
 				{
@@ -68,7 +63,6 @@ describe("require-cooldown", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
 				},
 				{
@@ -79,7 +73,6 @@ describe("require-cooldown", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
 				},
 				{
@@ -90,7 +83,6 @@ describe("require-cooldown", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
 				},
 				{
@@ -101,7 +93,6 @@ describe("require-cooldown", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					// @ts-expect-error -- ESLint types don't include language option yet
 					language: "yaml/yaml",
 				},
 			],

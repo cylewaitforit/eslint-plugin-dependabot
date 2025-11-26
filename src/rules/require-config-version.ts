@@ -1,4 +1,3 @@
-import type { RuleDefinition } from "@eslint/core";
 import type { Rule } from "eslint";
 import type { YAMLMap } from "yaml";
 
@@ -58,4 +57,4 @@ export const requireConfigVersionRule = {
 			},
 		};
 	},
-} satisfies RuleDefinition;
+} satisfies Rule.RuleModule;

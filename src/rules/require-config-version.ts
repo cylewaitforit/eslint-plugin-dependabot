@@ -35,7 +35,6 @@ export const requireConfigVersionRule = {
 				}
 				hasCheckedRoot = true;
 
-				// Runtime type checking to work with YAML nodes from eslint-yaml
 				if (
 					typeof node !== "object" ||
 					!("items" in node) ||

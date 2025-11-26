@@ -52,6 +52,7 @@
 		"eslint-plugin-pnpm": "catalog:",
 		"eslint-plugin-regexp": "catalog:",
 		"eslint-plugin-yml": "catalog:",
+		"eslint-yaml": "catalog:",
 		"knip": "catalog:",
 		"lefthook": "catalog:",
 		"markdownlint": "catalog:",
@@ -66,7 +67,8 @@
 		"tsdown": "catalog:",
 		"typescript": "catalog:",
 		"typescript-eslint": "catalog:",
-		"vitest": "catalog:"
+		"vitest": "catalog:",
+		"yaml": "catalog:"
 	},
 	"packageManager": "pnpm@10.4.0",
 	"engines": {

@@ -33,7 +33,6 @@
 	},
 	"devDependencies": {
 		"@eslint-community/eslint-plugin-eslint-comments": "catalog:",
-		"@eslint/core": "catalog:",
 		"@eslint/js": "catalog:",
 		"@release-it/conventional-changelog": "catalog:",
 		"@types/eslint-plugin-markdown": "catalog:",

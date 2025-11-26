@@ -31,6 +31,9 @@
 		"test": "vitest",
 		"tsc": "tsc"
 	},
+	"dependencies": {
+		"yaml": "catalog:"
+	},
 	"devDependencies": {
 		"@eslint-community/eslint-plugin-eslint-comments": "catalog:",
 		"@eslint/js": "catalog:",
@@ -67,8 +70,7 @@
 		"tsdown": "catalog:",
 		"typescript": "catalog:",
 		"typescript-eslint": "catalog:",
-		"vitest": "catalog:",
-		"yaml": "catalog:"
+		"vitest": "catalog:"
 	},
 	"packageManager": "pnpm@10.4.0",
 	"engines": {

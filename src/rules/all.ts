@@ -4,9 +4,7 @@ import { requireConfigVersionRule } from "./require-config-version.js";
 
 /**
  * All rules exported by this plugin.
- * YAML rules are cast to RuleDefinition for ESLint compatibility.
- * This is because we're a rule plugin extending eslint-yaml (a language plugin).
- * The actual type safety is maintained at the rule definition level with YAMLRuleDefinition.
+ * Rules are standard ESLint RuleDefinition objects that work with eslint-yaml's language plugin.
  */
 export const rules = {
 	"require-config-version": requireConfigVersionRule,

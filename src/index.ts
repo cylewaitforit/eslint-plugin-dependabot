@@ -3,6 +3,24 @@ import type { ESLint } from "eslint";
 import packageJson from "../package.json" with { type: "json" };
 import { rules } from "./rules/all.js";
 
+/**
+ * ESLint plugin for Dependabot configuration files.
+ * This plugin works with eslint-yaml to lint `.github/dependabot.{yml,yaml}` files.
+ * @example
+ * ```js
+ * import dependabot from "eslint-plugin-dependabot";
+ * import { yaml } from "eslint-yaml";
+ *
+ * export default [
+ *   {
+ *     files: ["**\/.github\/dependabot.{yml,yaml}"],
+ *     language: "yaml/yaml",
+ *     plugins: { dependabot, yaml },
+ *     ...dependabot.configs.recommended,
+ *   }
+ * ];
+ * ```
+ */
 const plugin = {
 	meta: {
 		name: packageJson.name,

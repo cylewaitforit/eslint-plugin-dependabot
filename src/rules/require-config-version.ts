@@ -1,19 +1,15 @@
 import type { RuleDefinition } from "@eslint/core";
+import type { Rule } from "eslint";
 import type { YAMLMap } from "yaml";
 
 import { isScalar } from "yaml";
 
-import type {
-	YAMLRuleContext,
-	YAMLRuleDefinition,
-	YAMLRuleVisitor,
-} from "../types.js";
-
 /**
- * ESLint rule definition using satisfies to ensure it conforms to YAML rule interface.
- * This avoids type conflicts between YAML rules and ESLint's standard RuleDefinition.
+ * Rule to require a version property in Dependabot configuration files.
+ * Uses standard ESLint RuleDefinition and handles YAML nodes via runtime type checking.
+ * This approach is compatible with both eslint-yaml and other ESLint configurations.
  */
-const requireConfigVersion = {
+export const requireConfigVersionRule = {
 	meta: {
 		docs: {
 			description:
@@ -28,18 +24,28 @@ const requireConfigVersion = {
 		type: "problem" as const,
 	},
 	// eslint-disable-next-line perfectionist/sort-objects -- meta should be at the top
-	create(context: YAMLRuleContext<"missingVersion">): YAMLRuleVisitor {
+	create(context: Rule.RuleContext) {
 		let hasCheckedRoot = false;
 
 		return {
 			/** Visits Map nodes to check for version property at the root level. */
-			Map(node: YAMLMap) {
+			Map(node: Rule.Node) {
 				if (hasCheckedRoot) {
 					return;
 				}
 				hasCheckedRoot = true;
 
-				const versionPair = node.items.find(
+				// Runtime type checking to work with YAML nodes from eslint-yaml
+				if (
+					typeof node !== "object" ||
+					!("items" in node) ||
+					!Array.isArray(node.items)
+				) {
+					return;
+				}
+
+				const yamlMapNode = node as unknown as YAMLMap;
+				const versionPair = yamlMapNode.items.find(
 					(item) =>
 						item.key && isScalar(item.key) && item.key.value === "version",
 				);
@@ -53,8 +59,4 @@ const requireConfigVersion = {
 			},
 		};
 	},
-} satisfies YAMLRuleDefinition;
-
-export const requireConfigVersionRule =
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Plugin types require RuleDefinition. We check that the correct YAMLRuleDefinition is used above.
-	requireConfigVersion as any as RuleDefinition;
+} satisfies RuleDefinition;

@@ -1,3 +1,4 @@
+import type { RuleDefinition } from "@eslint/core";
 import type { RuleTester as RuleTesterType } from "eslint";
 
 import { RuleTester as ESLintRuleTester } from "eslint";
@@ -34,10 +35,11 @@ export class YAMLRuleTester extends ESLintRuleTester {
 	/**
 	 * Override the run method to support language option in test cases.
 	 * This allows us to specify `language: "yaml/yaml"` without TypeScript errors.
+	 * Accepts both YAML and standard rule definitions.
 	 */
 	run(
 		name: string,
-		rule: YAMLRuleDefinition,
+		rule: RuleDefinition | YAMLRuleDefinition,
 		tests: {
 			invalid: (Parameters<RuleTesterType["run"]>[2]["invalid"][number] & {
 				language?: string;
@@ -54,7 +56,7 @@ export class YAMLRuleTester extends ESLintRuleTester {
 	): void;
 	run(
 		name: string,
-		rule: Parameters<RuleTesterType["run"]>[1] | YAMLRuleDefinition,
+		rule: RuleDefinition | YAMLRuleDefinition,
 		tests: Parameters<RuleTesterType["run"]>[2],
 	): void {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument -- ESLint types don't fully support language plugins

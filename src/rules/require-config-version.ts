@@ -1,3 +1,4 @@
+import type { RuleDefinition } from "@eslint/core";
 import type { YAMLMap } from "yaml";
 
 import { isScalar } from "yaml";
@@ -54,4 +55,6 @@ const requireConfigVersion = {
 	},
 } satisfies YAMLRuleDefinition;
 
-export { requireConfigVersion };
+export const requireConfigVersionRule =
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Plugin types require RuleDefinition. We check that the correct YAMLRuleDefinition is used above.
+	requireConfigVersion as any as RuleDefinition;

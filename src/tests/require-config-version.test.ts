@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { describe, it } from "vitest";
 
-import { requireConfigVersion } from "../rules/require-config-version.js";
+import { requireConfigVersionRule } from "../rules/require-config-version.js";
 import { YAMLRuleTester } from "./utils/yaml-rule-tester.js";
 
 const ruleTester = new YAMLRuleTester({
@@ -29,7 +29,7 @@ function readFixture(fixturePath: string): string {
 describe("require-config-version", () => {
 	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should pass valid cases", () => {
-		ruleTester.run("require-config-version", requireConfigVersion, {
+		ruleTester.run("require-config-version", requireConfigVersionRule, {
 			valid: [
 				{
 					code: readFixture("valid-simple/dependabot.yaml"),

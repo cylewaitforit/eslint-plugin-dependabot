@@ -4,7 +4,7 @@
 		"requireCommits": true
 	},
 	"github": { "release": true, "releaseName": "v${version}" },
-	"npm": { "publishArgs": ["--access public", "--provenance"] },
+	"npm": false,
 	"plugins": {
 		"@release-it/conventional-changelog": {
 			"infile": "CHANGELOG.md",
@@ -21,6 +21,9 @@
 				{ "hidden": true, "type": "style" },
 				{ "hidden": true, "type": "test" }
 			]
+		},
+		"release-it-pnpm": {
+			"publishArgs": ["--access", "public", "--provenance"]
 		}
 	}
 }

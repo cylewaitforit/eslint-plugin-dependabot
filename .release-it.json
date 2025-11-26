@@ -23,7 +23,7 @@
 			]
 		},
 		"release-it-pnpm": {
-			"publishArgs": ["--access", "public", "--provenance"]
+			"publishCommand": "pnpm publish --access public --no-git-checks --provenance"
 		}
 	}
 }

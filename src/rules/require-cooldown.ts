@@ -27,7 +27,7 @@ export const requireCooldownRule = {
 	// eslint-disable-next-line perfectionist/sort-objects -- meta should be at the top
 	create(context: Rule.RuleContext) {
 		return {
-			/** Visits all Map nodes (YAML objects) to check for cooldown configuration. */
+			/** Visits Map nodes under "updates:" to check for cooldown configuration in each package-ecosystem. */
 			Map(node: Rule.Node) {
 				if (
 					typeof node !== "object" ||

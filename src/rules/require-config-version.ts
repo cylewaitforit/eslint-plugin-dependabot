@@ -1,6 +1,10 @@
 import type { Rule } from "eslint";
 
-import { createRootMapVisitor, findPairByKey } from "../utils/yaml.js";
+import {
+	createRootMapVisitor,
+	findPairByKey,
+	yamlNodeToRuleNode,
+} from "../utils/yaml.js";
 
 /**
  * Rule to require a version property in Dependabot configuration files.
@@ -22,7 +26,7 @@ export const requireConfigVersionRule = {
 		schema: [],
 		type: "problem" as const,
 	},
-
+	// eslint-disable-next-line perfectionist/sort-objects -- meta should be at the top
 	create(context: Rule.RuleContext) {
 		return createRootMapVisitor((rootMap) => {
 			const versionPair = findPairByKey(rootMap, "version");
@@ -30,7 +34,7 @@ export const requireConfigVersionRule = {
 			if (!versionPair) {
 				context.report({
 					messageId: "missingVersion",
-					node: rootMap,
+					node: yamlNodeToRuleNode(rootMap),
 				});
 			}
 		});

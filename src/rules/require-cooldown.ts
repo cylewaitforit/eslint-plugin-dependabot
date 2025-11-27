@@ -79,7 +79,7 @@ export const requireCooldownRule = {
 		schema: [],
 		type: "problem" as const,
 	},
-
+	// eslint-disable-next-line perfectionist/sort-objects -- meta should be at the top
 	create(context: Rule.RuleContext) {
 		return createRootMapVisitor((rootMap) => {
 			const updatesPair = findPairByKey(rootMap, "updates");

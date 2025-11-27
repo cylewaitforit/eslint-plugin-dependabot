@@ -1,34 +1,41 @@
 import type { ESLint } from "eslint";
 
-import type { YAMLRuleDefinition } from "./types.js";
-
 import packageJson from "../package.json" with { type: "json" };
-import { requireCooldown } from "./rules/require-cooldown.js";
+import { rules } from "./rules/all.js";
 
 /**
- * Plugin type that allows YAML rule definitions in the rules object.
+ * ESLint plugin for Dependabot configuration files.
+ * This plugin works with eslint-yaml to lint `.github/dependabot.{yml,yaml}` files.
+ * @example
+ * ```js
+ * import dependabot from "eslint-plugin-dependabot";
+ * import { yaml } from "eslint-yaml";
+ *
+ * export default [
+ *   {
+ *     files: ["**\/.github\/dependabot.{yml,yaml}"],
+ *     language: "yaml/yaml",
+ *     plugins: { dependabot, yaml },
+ *     ...dependabot.configs.recommended,
+ *   }
+ * ];
+ * ```
  */
-type YAMLPlugin = Omit<ESLint.Plugin, "rules"> & {
-	rules: Record<string, YAMLRuleDefinition>;
-};
-
 const plugin = {
 	meta: {
 		name: packageJson.name,
 		version: packageJson.version,
 	},
-	// eslint-disable-next-line perfectionist/sort-objects -- metadata should be at the top
+	// eslint-disable-next-line perfectionist/sort-objects -- meta should be at the top
 	configs: {
 		recommended: {
 			name: "dependabot/recommended",
 			rules: {
-				"dependabot/require-cooldown": "error",
+				"dependabot/require-config-version": "error",
 			},
 		},
 	},
-	rules: {
-		"require-cooldown": requireCooldown,
-	},
-} satisfies YAMLPlugin;
+	rules,
+} satisfies ESLint.Plugin;
 
 export default plugin;

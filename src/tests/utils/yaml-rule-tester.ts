@@ -1,63 +1,49 @@
-import type { RuleTester as RuleTesterType } from "eslint";
-
-import { RuleTester as ESLintRuleTester } from "eslint";
-
-import type { YAMLRuleDefinition } from "../../types.js";
+import { RuleTester } from "eslint";
 
 /**
- * Options for YAMLRuleTester constructor.
- * Extends ESLint RuleTester options to accept any plugin type,
- * since eslint-yaml plugin types are incompatible with @eslint/core types.
+ * Minimal wrapper around ESLint's RuleTester to support language plugins.
+ * @example
+ * ```ts
+ * const ruleTester = new YAMLRuleTester({
+ *   plugins: { yaml },
+ * });
+ *
+ * ruleTester.run("my-rule", rule, {
+ *   valid: [{
+ *     code: "version: 2",
+ *     language: "yaml/yaml",
+ *   }],
+ *   invalid: [],
+ * });
+ * ```
  */
-interface YAMLRuleTesterOptions {
-	env?: Record<string, unknown>;
-	globals?: Record<string, unknown>;
-	parserOptions?: Record<string, unknown>;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any -- plugin types are incompatible between packages
-	plugins?: Record<string, any>;
-}
-
-/**
- * Extended RuleTester that properly types language plugin support.
- * ESLint's RuleTester types don't fully support language plugins yet,
- * so we extend it to provide proper typing for YAML test cases.
- */
-export class YAMLRuleTester extends ESLintRuleTester {
+export class YAMLRuleTester extends RuleTester {
 	/**
-	 * Constructor that accepts plugin types without requiring `as any` cast.
+	 * Constructor that accepts any plugin type.
+	 * ESLint's RuleTester types are strict, but language plugins may not match perfectly.
 	 */
-	constructor(options: YAMLRuleTesterOptions) {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument -- ESLint types don't fully support language plugins
+	constructor(options: Record<string, unknown>) {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
 		super(options as any);
 	}
 
 	/**
-	 * Override the run method to support language option in test cases.
-	 * This allows us to specify `language: "yaml/yaml"` without TypeScript errors.
+	 * Run tests, allowing the `language` property in test cases.
+	 * This enables testing with language plugins like eslint-yaml.
 	 */
 	run(
 		name: string,
-		rule: YAMLRuleDefinition,
+		rule: Parameters<RuleTester["run"]>[1],
 		tests: {
-			invalid: (Parameters<RuleTesterType["run"]>[2]["invalid"][number] & {
+			invalid?: (Parameters<RuleTester["run"]>[2]["invalid"][number] & {
 				language?: string;
 			})[];
-			valid: (Parameters<RuleTesterType["run"]>[2]["valid"][number] & {
+			valid?: (Parameters<RuleTester["run"]>[2]["valid"][number] & {
 				language?: string;
 			})[];
 		},
-	): void;
-	run(
-		name: string,
-		rule: Parameters<RuleTesterType["run"]>[1],
-		tests: Parameters<RuleTesterType["run"]>[2],
-	): void;
-	run(
-		name: string,
-		rule: Parameters<RuleTesterType["run"]>[1] | YAMLRuleDefinition,
-		tests: Parameters<RuleTesterType["run"]>[2],
 	): void {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument -- ESLint types don't fully support language plugins
-		super.run(name, rule as any, tests as any);
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
+		super.run(name, rule, tests as any);
 	}
 }

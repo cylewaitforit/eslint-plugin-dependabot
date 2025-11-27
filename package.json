@@ -1,6 +1,6 @@
 {
 	"name": "eslint-plugin-dependabot",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Eslint Plugin to enforce Dependabot best practices",
 	"repository": {
 		"type": "git",
@@ -31,9 +31,11 @@
 		"test": "vitest",
 		"tsc": "tsc"
 	},
+	"dependencies": {
+		"yaml": "catalog:"
+	},
 	"devDependencies": {
 		"@eslint-community/eslint-plugin-eslint-comments": "catalog:",
-		"@eslint/core": "catalog:",
 		"@eslint/js": "catalog:",
 		"@release-it/conventional-changelog": "catalog:",
 		"@types/eslint-plugin-markdown": "catalog:",
@@ -64,12 +66,12 @@
 		"prettier-plugin-packagejson": "catalog:",
 		"prettier-plugin-sh": "catalog:",
 		"release-it": "catalog:",
+		"release-it-pnpm": "catalog:",
 		"sentences-per-line": "catalog:",
 		"tsdown": "catalog:",
 		"typescript": "catalog:",
 		"typescript-eslint": "catalog:",
-		"vitest": "catalog:",
-		"yaml": "catalog:"
+		"vitest": "catalog:"
 	},
 	"packageManager": "pnpm@10.4.0",
 	"engines": {

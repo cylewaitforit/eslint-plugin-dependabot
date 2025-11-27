@@ -32,6 +32,7 @@ const plugin = {
 			name: "dependabot/recommended",
 			rules: {
 				"dependabot/require-config-version": "error",
+				"dependabot/require-cooldown": "error",
 			},
 		},
 	},

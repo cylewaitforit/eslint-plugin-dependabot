@@ -1,18 +1,14 @@
+import type { Rule } from "eslint";
 import type { Pair, YAMLMap } from "yaml";
 
 import { isCollection, isScalar } from "yaml";
 
-import type {
-	YAMLRuleContext,
-	YAMLRuleDefinition,
-	YAMLRuleVisitor,
-} from "../types.js";
-
 /**
- * ESLint rule definition using satisfies to ensure it conforms to YAML rule interface.
- * This avoids type conflicts between YAML rules and ESLint's standard RuleDefinition.
+ * Rule to require cooldown configuration for each package-ecosystem in Dependabot files.
+ * Uses standard ESLint RuleDefinition and handles YAML nodes via runtime type checking.
+ * This approach is compatible with both eslint-yaml and other ESLint configurations.
  */
-const requireCooldown = {
+export const requireCooldownRule = {
 	meta: {
 		docs: {
 			description:
@@ -29,13 +25,20 @@ const requireCooldown = {
 		type: "problem" as const,
 	},
 	// eslint-disable-next-line perfectionist/sort-objects -- meta should be at the top
-	create(
-		context: YAMLRuleContext<"missingCooldown" | "missingDefaultDays">,
-	): YAMLRuleVisitor {
+	create(context: Rule.RuleContext) {
 		return {
 			/** Visits all Map nodes (YAML objects) to check for cooldown configuration. */
-			Map(node: YAMLMap) {
-				const packageEcosystemPair = node.items.find(
+			Map(node: Rule.Node) {
+				if (
+					typeof node !== "object" ||
+					!("items" in node) ||
+					!Array.isArray(node.items)
+				) {
+					return;
+				}
+
+				const yamlMapNode = node as unknown as YAMLMap;
+				const packageEcosystemPair = yamlMapNode.items.find(
 					(item) =>
 						item.key &&
 						isScalar(item.key) &&
@@ -51,7 +54,7 @@ const requireCooldown = {
 					? String(ecosystemValue.value)
 					: "unknown";
 
-				const cooldownPair = node.items.find(
+				const cooldownPair = yamlMapNode.items.find(
 					(item) =>
 						item.key && isScalar(item.key) && item.key.value === "cooldown",
 				);
@@ -78,7 +81,7 @@ const requireCooldown = {
 							ecosystem: ecosystemName,
 						},
 						messageId: "missingDefaultDays",
-						node: cooldownPair,
+						node,
 					});
 					return;
 				}
@@ -89,7 +92,7 @@ const requireCooldown = {
 							ecosystem: ecosystemName,
 						},
 						messageId: "missingDefaultDays",
-						node: cooldownPair,
+						node,
 					});
 					return;
 				}
@@ -109,12 +112,10 @@ const requireCooldown = {
 							ecosystem: ecosystemName,
 						},
 						messageId: "missingDefaultDays",
-						node: cooldownPair,
+						node,
 					});
 				}
 			},
 		};
 	},
-} satisfies YAMLRuleDefinition;
-
-export { requireCooldown };
+} satisfies Rule.RuleModule;

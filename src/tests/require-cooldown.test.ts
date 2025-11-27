@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { describe, it } from "vitest";
 
-import { requireCooldown } from "../rules/require-cooldown.js";
+import { requireCooldownRule } from "../rules/require-cooldown.js";
 import { YAMLRuleTester } from "./utils/yaml-rule-tester.js";
 
 const ruleTester = new YAMLRuleTester({
@@ -25,7 +25,7 @@ function readFixture(fixturePath: string): string {
 describe("require-cooldown", () => {
 	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should pass valid cases", () => {
-		ruleTester.run("require-cooldown", requireCooldown, {
+		ruleTester.run("require-cooldown", requireCooldownRule, {
 			valid: [
 				{
 					code: readFixture("valid-simple/dependabot.yaml"),

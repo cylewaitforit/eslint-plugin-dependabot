@@ -57,6 +57,7 @@ export default defineConfig([
 | Name                                                           | Description                                                       | ✅  | 🔧  |
 | :------------------------------------------------------------- | :---------------------------------------------------------------- | :-- | :-- |
 | [require-config-version](docs/rules/require-config-version.md) | Require Dependabot configuration files to have a version property | ✅  |     |
+| [require-cooldown](docs/rules/require-cooldown.md)             | Require each package-ecosystem to have a cooldown configuration   | ✅  |     |
 
 ## Development
 

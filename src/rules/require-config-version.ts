@@ -1,7 +1,6 @@
 import type { Rule } from "eslint";
-import type { YAMLMap } from "yaml";
 
-import { isScalar } from "yaml";
+import { createRootMapVisitor, findPairByKey } from "../utils/yaml.js";
 
 /**
  * Rule to require a version property in Dependabot configuration files.
@@ -14,6 +13,7 @@ export const requireConfigVersionRule = {
 			description:
 				"Require Dependabot configuration files to have a version property",
 			recommended: true,
+			url: "https://github.com/cylewaitforit/eslint-plugin-dependabot/blob/main/docs/rules/require-config-version.md",
 		},
 		messages: {
 			missingVersion:
@@ -22,39 +22,17 @@ export const requireConfigVersionRule = {
 		schema: [],
 		type: "problem" as const,
 	},
-	// eslint-disable-next-line perfectionist/sort-objects -- meta should be at the top
+
 	create(context: Rule.RuleContext) {
-		let hasCheckedRoot = false;
+		return createRootMapVisitor((rootMap) => {
+			const versionPair = findPairByKey(rootMap, "version");
 
-		return {
-			/** Visits Map nodes to check for version property at the root level. */
-			Map(node: Rule.Node) {
-				if (hasCheckedRoot) {
-					return;
-				}
-				hasCheckedRoot = true;
-
-				if (
-					typeof node !== "object" ||
-					!("items" in node) ||
-					!Array.isArray(node.items)
-				) {
-					return;
-				}
-
-				const yamlMapNode = node as unknown as YAMLMap;
-				const versionPair = yamlMapNode.items.find(
-					(item) =>
-						item.key && isScalar(item.key) && item.key.value === "version",
-				);
-
-				if (!versionPair) {
-					context.report({
-						messageId: "missingVersion",
-						node,
-					});
-				}
-			},
-		};
+			if (!versionPair) {
+				context.report({
+					messageId: "missingVersion",
+					node: rootMap,
+				});
+			}
+		});
 	},
 } satisfies Rule.RuleModule;

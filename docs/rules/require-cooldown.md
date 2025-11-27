@@ -93,7 +93,7 @@ updates:
       interval: daily
 ```
 
-<!--eslint-skip -->
+<!-- eslint-skip -->
 
 ```yaml
 # Multiple ecosystems, each with cooldown

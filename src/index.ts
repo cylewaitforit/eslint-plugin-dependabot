@@ -8,17 +8,22 @@ import { rules } from "./rules/all.js";
  * This plugin works with eslint-yaml to lint `.github/dependabot.{yml,yaml}` files.
  * @example
  * ```js
+ * // eslint.config.mjs
  * import dependabot from "eslint-plugin-dependabot";
  * import { yaml } from "eslint-yaml";
+ * import { defineConfig } from "eslint/config";
  *
- * export default [
+ * export default defineConfig([
  *   {
+ *     name: "dependabot config",
  *     files: ["**\/.github\/dependabot.{yml,yaml}"],
  *     language: "yaml/yaml",
  *     plugins: { dependabot, yaml },
- *     ...dependabot.configs.recommended,
- *   }
- * ];
+ *     rules: {
+ *       ...dependabot.configs.recommended.rules,
+ *     },
+ *   },
+ * ]);
  * ```
  */
 const plugin = {

@@ -24,7 +24,7 @@ function readFixture(fixturePath: string): string {
 
 describe("require-cooldown", () => {
 	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
-	it("should pass valid cases", () => {
+	it("should validate cooldown configurations", () => {
 		ruleTester.run("require-cooldown", requireCooldownRule, {
 			valid: [
 				{
@@ -39,6 +39,11 @@ describe("require-cooldown", () => {
 				},
 				{
 					code: readFixture("valid-multiple-ecosystems/dependabot.yaml"),
+					filename: "dependabot.yaml",
+					language: "yaml/yaml",
+				},
+				{
+					code: readFixture("valid-with-comments/dependabot.yaml"),
 					filename: "dependabot.yaml",
 					language: "yaml/yaml",
 				},

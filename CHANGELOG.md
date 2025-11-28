@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.0](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.1.0...0.2.0) (2025-11-28)
+
+### Features
+
+- add require-cooldown rule for Dependabot configuration validation ([#10](https://github.com/cylewaitforit/eslint-plugin-dependabot/issues/10)) ([c8e76f3](https://github.com/cylewaitforit/eslint-plugin-dependabot/commit/c8e76f3bce3f3dfacd118ca221ae87245dc2da8d))
+
 ## 0.1.0 (2025-11-27)
 
 ### Features

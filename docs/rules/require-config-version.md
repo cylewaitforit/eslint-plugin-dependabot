@@ -22,20 +22,28 @@ This rule accepts an options object with the following properties:
 
 ### Default Configuration
 
-```json
-{
-	"dependabot/require-config-version": ["error", { "version": 2 }]
-}
+```js
+export default [
+	{
+		rules: {
+			"dependabot/require-config-version": ["error", { version: 2 }],
+		},
+	},
+];
 ```
 
 ### Custom Configuration
 
 To require a different version:
 
-```json
-{
-	"dependabot/require-config-version": ["error", { "version": 3 }]
-}
+```js
+export default [
+	{
+		rules: {
+			"dependabot/require-config-version": ["error", { version: 3 }],
+		},
+	},
+];
 ```
 
 ## Examples

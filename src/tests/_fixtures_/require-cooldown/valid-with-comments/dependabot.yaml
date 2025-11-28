@@ -1,0 +1,14 @@
+# Dependabot configuration file
+# See: https://docs.github.com/en/code-security/dependabot
+version: 2
+
+updates:
+  # NPM ecosystem configuration
+  - package-ecosystem: npm # JavaScript/Node.js
+    directory: / # Root directory
+    schedule:
+      interval: daily # Check for updates daily
+    # Cooldown configuration to avoid updating to newly published packages
+    cooldown:
+      # Wait at least 5 days before updating
+      default-days: 5

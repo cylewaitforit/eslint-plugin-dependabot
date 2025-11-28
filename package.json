@@ -73,6 +73,10 @@
 		"typescript-eslint": "catalog:",
 		"vitest": "catalog:"
 	},
+	"peerDependencies": {
+		"eslint": ">=9.0.0",
+		"eslint-yaml": ">=0.1.0"
+	},
 	"packageManager": "pnpm@10.4.0",
 	"engines": {
 		"node": ">=22.0.0"

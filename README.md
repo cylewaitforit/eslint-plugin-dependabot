@@ -28,7 +28,7 @@ npm install eslint-plugin-dependabot eslint-yaml --save-dev
 This plugin requires the `eslint-yaml` package to parse YAML files.
 Add the plugin and language configuration to your `eslint.config.mjs`:
 
-<!-- eslint-disable perfectionist/sort-objects-->
+<!-- eslint-disable perfectionist/sort-objects -->
 
 ```js
 // eslint.config.mjs
@@ -57,6 +57,7 @@ export default defineConfig([
 | Name                                                           | Description                                                       | ✅  | 🔧  |
 | :------------------------------------------------------------- | :---------------------------------------------------------------- | :-- | :-- |
 | [require-config-version](docs/rules/require-config-version.md) | Require Dependabot configuration files to have a version property | ✅  |     |
+| [require-cooldown](docs/rules/require-cooldown.md)             | Require each package-ecosystem to have a cooldown configuration   | ✅  |     |
 
 ## Development
 

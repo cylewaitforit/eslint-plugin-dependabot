@@ -41,6 +41,33 @@ export default defineConfig([
 	...configs.json,
 	...configs.yaml,
 	{
+		files: ["**/*.{js,ts}"],
+		name: "tsdoc tags",
+		rules: {
+			// See: https://tsdoc.org/ and https://github.com/microsoft/tsdoc/blob/main/tsdoc/src/details/StandardTags.ts
+			"jsdoc/check-tag-names": [
+				"error",
+				{
+					definedTags: [
+						"alpha",
+						"beta",
+						"decorator",
+						"defaultValue",
+						"eventProperty",
+						"experimental",
+						"label",
+						"packageDocumentation",
+						"privateRemarks",
+						"remarks",
+						"sealed",
+						"typeParam",
+						"virtual",
+					],
+				},
+			],
+		},
+	},
+	{
 		extends: [
 			tseslint.configs.strictTypeChecked,
 			tseslint.configs.stylisticTypeChecked,

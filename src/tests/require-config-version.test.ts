@@ -28,7 +28,7 @@ function readFixture(fixturePath: string): string {
 
 describe("require-config-version", () => {
 	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
-	it("should pass valid cases", () => {
+	it("should validate config version", () => {
 		ruleTester.run("require-config-version", requireConfigVersionRule, {
 			valid: [
 				{

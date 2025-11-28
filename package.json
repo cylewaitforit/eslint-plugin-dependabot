@@ -2,6 +2,15 @@
 	"name": "eslint-plugin-dependabot",
 	"version": "0.2.0",
 	"description": "Eslint Plugin to enforce Dependabot best practices",
+	"keywords": [
+		"dependabot",
+		"eslint",
+		"eslint-plugin",
+		"eslintplugin",
+		"lint",
+		"yaml",
+		"yml"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/cylewaitforit/eslint-plugin-dependabot.git"

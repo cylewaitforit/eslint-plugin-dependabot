@@ -17,7 +17,8 @@ Currently, Dependabot supports version 2.
 
 This rule accepts an options object with the following properties:
 
-- `version` (number): The required version value. Defaults to `2`.
+- `version` (number): The required version value.
+  Defaults to `2`.
 
 ### Default Configuration
 

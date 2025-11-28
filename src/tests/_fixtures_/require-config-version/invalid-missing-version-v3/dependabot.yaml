@@ -1,0 +1,5 @@
+updates:
+  - directory: /
+    package-ecosystem: npm
+    schedule:
+      interval: daily

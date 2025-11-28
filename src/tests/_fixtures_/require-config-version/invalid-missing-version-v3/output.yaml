@@ -1,0 +1,6 @@
+version: 3
+updates:
+  - directory: /
+    package-ecosystem: npm
+    schedule:
+      interval: daily

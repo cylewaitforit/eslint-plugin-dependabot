@@ -45,9 +45,7 @@ export default defineConfig([
 			dependabot,
 			yaml,
 		},
-		rules: {
-			...dependabot.configs.recommended.rules,
-		},
+		extends: [dependabot.configs.recommended],
 	},
 ]);
 ```

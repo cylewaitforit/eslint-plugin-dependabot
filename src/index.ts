@@ -19,9 +19,7 @@ import { rules } from "./rules/all.js";
  *     files: ["**\/.github\/dependabot.{yml,yaml}"],
  *     language: "yaml/yaml",
  *     plugins: { dependabot, yaml },
- *     rules: {
- *       ...dependabot.configs.recommended.rules,
- *     },
+ *     extends: [dependabot.configs.recommended],
  *   },
  * ]);
  * ```

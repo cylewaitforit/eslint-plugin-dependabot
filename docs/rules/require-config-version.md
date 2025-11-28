@@ -11,7 +11,7 @@ Require Dependabot configuration files to have a version property.
 This rule enforces that Dependabot configuration files (`dependabot.yaml` or `dependabot.yml`) include a `version` property at the root level with the configured value.
 
 The `version` property is required by Dependabot to properly parse and validate the configuration file.
-Currently, Dependabot only supports version 2.
+Currently, Dependabot supports version 2.
 
 ## Options
 

@@ -53,13 +53,7 @@ describe("require-config-version", () => {
 					],
 					filename: "dependabot.yaml",
 					language: "yaml/yaml",
-					output: `version: 2
-updates:
-  - directory: /
-    package-ecosystem: npm
-    schedule:
-      interval: daily
-`,
+					output: readFixture("invalid-missing-version/output.yaml"),
 				},
 				{
 					code: readFixture("invalid-wrong-version/dependabot.yaml"),
@@ -70,13 +64,7 @@ updates:
 					],
 					filename: "dependabot.yaml",
 					language: "yaml/yaml",
-					output: `version: 2
-updates:
-  - directory: /
-    package-ecosystem: npm
-    schedule:
-      interval: daily
-`,
+					output: readFixture("invalid-wrong-version/output.yaml"),
 				},
 			],
 		});
@@ -87,13 +75,7 @@ updates:
 		ruleTester.run("require-config-version", requireConfigVersionRule, {
 			valid: [
 				{
-					code: `version: 3
-updates:
-  - directory: /
-    package-ecosystem: npm
-    schedule:
-      interval: daily
-`,
+					code: readFixture("valid-version-3/dependabot.yaml"),
 					filename: "dependabot.yaml",
 					language: "yaml/yaml",
 					options: [{ version: 3 }],
@@ -111,16 +93,10 @@ updates:
 					filename: "dependabot.yaml",
 					language: "yaml/yaml",
 					options: [{ version: 3 }],
-					output: `version: 3
-updates:
-  - directory: /
-    package-ecosystem: npm
-    schedule:
-      interval: daily
-`,
+					output: readFixture("valid-simple/output-v3.yaml"),
 				},
 				{
-					code: readFixture("invalid-missing-version/dependabot.yaml"),
+					code: readFixture("invalid-missing-version-v3/dependabot.yaml"),
 					errors: [
 						{
 							messageId: "missingVersion",
@@ -129,13 +105,7 @@ updates:
 					filename: "dependabot.yaml",
 					language: "yaml/yaml",
 					options: [{ version: 3 }],
-					output: `version: 3
-updates:
-  - directory: /
-    package-ecosystem: npm
-    schedule:
-      interval: daily
-`,
+					output: readFixture("invalid-missing-version-v3/output.yaml"),
 				},
 			],
 		});

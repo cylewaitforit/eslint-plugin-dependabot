@@ -66,7 +66,6 @@ export const requireConfigVersionRule = {
 						version: String(requiredVersion),
 					},
 					fix(fixer) {
-						// Insert version at the start of the file
 						if (rootRange) {
 							return fixer.insertTextBeforeRange(
 								[rootRange[0], rootRange[0]],
@@ -81,11 +80,9 @@ export const requireConfigVersionRule = {
 				return;
 			}
 
-			// Check if version value matches required version
 			const versionValue = versionPair.value;
 			if (isScalar(versionValue)) {
 				const actualValue = versionValue.value;
-				// Compare as numbers if possible, otherwise as strings
 				const actualNum =
 					typeof actualValue === "number"
 						? actualValue

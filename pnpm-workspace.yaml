@@ -32,6 +32,7 @@ catalog:
   release-it: 19.0.3
   release-it-pnpm: 4.6.6
   sentences-per-line: 0.3.0
+  should-semantic-release: ^0.3.5
   tsdown: 0.12.7
   typescript: 5.9.2
   typescript-eslint: 8.46.0

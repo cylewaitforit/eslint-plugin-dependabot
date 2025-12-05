@@ -37,6 +37,7 @@
 		"lint:packages": "pnpm dedupe --check",
 		"lint:spelling": "cspell \"**\" \".github/**/*\"",
 		"prepare": "lefthook install",
+		"should-semantic-release": "should-semantic-release --verbose",
 		"test": "vitest",
 		"tsc": "tsc"
 	},
@@ -77,6 +78,7 @@
 		"release-it": "catalog:",
 		"release-it-pnpm": "catalog:",
 		"sentences-per-line": "catalog:",
+		"should-semantic-release": "catalog:",
 		"tsdown": "catalog:",
 		"typescript": "catalog:",
 		"typescript-eslint": "catalog:",

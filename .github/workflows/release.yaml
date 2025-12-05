@@ -27,4 +27,7 @@ jobs:
       - run: pnpm build
       - env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        uses: JoshuaKGoldberg/release-it-action@v0.3.2
+        run: |
+          if pnpm run should-semantic-release ; then
+            pnpm release-it --verbose
+          fi

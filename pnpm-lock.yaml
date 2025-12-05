@@ -105,6 +105,9 @@ catalogs:
     sentences-per-line:
       specifier: 0.3.0
       version: 0.3.0
+    should-semantic-release:
+      specifier: ^0.3.5
+      version: 0.3.5
     tsdown:
       specifier: 0.12.7
       version: 0.12.7
@@ -229,7 +232,7 @@ importers:
         specifier: 'catalog:'
         version: 0.3.0
       should-semantic-release:
-        specifier: ^0.3.5
+        specifier: 'catalog:'
         version: 0.3.5
       tsdown:
         specifier: 'catalog:'

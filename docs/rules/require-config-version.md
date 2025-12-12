@@ -1,4 +1,10 @@
-# require-config-version
+# Require Dependabot configuration files to have a version property (`dependabot/require-config-version`)
+
+💼 This rule is enabled in the ✅ `recommended` config.
+
+🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
+
+<!-- end auto-generated rule header -->
 
 Require Dependabot configuration files to have a version property.
 

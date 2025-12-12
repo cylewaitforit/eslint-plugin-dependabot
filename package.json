@@ -33,7 +33,7 @@
 		"build:docs": "pnpm build && eslint-doc-generator && prettier --write README.md docs/rules/*.md",
 		"format": "prettier .",
 		"lint": "eslint . --max-warnings 0",
-		"lint:docs": "pnpm build && eslint-doc-generator && prettier --check README.md docs/rules/*.md",
+		"lint:docs": "pnpm build:docs && git diff --exit-code README.md docs/rules/*.md || (echo 'Documentation is out of date. Run: pnpm build:docs' && exit 1)",
 		"lint:knip": "knip",
 		"lint:md": "markdownlint \"**/*.md\" \".github/**/*.md\" --rules sentences-per-line",
 		"lint:packages": "pnpm dedupe --check",

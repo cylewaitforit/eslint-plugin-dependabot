@@ -25,6 +25,8 @@ jobs:
       - name: Use npm for OIDC
         run: npm install -g npm@11.5.2
       - run: pnpm build
+      - run: git config user.name "${GITHUB_ACTOR}"
+      - run: git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |

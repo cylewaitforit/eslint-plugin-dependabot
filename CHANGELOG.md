@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.1](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.3.0...0.3.1) (2025-12-12)
+
+### Bug Fixes
+
+- **release:** add git user for release ([#35](https://github.com/cylewaitforit/eslint-plugin-dependabot/issues/35)) ([1c94634](https://github.com/cylewaitforit/eslint-plugin-dependabot/commit/1c94634c04924c66d0705330a1ca2c7b55b1c068))
+
 ## [0.2.0](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.1.0...0.2.0) (2025-11-28)
 
 ### Features

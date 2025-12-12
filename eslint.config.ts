@@ -27,6 +27,15 @@ export default defineConfig([
 	},
 	{ linterOptions: { reportUnusedDisableDirectives: "error" } },
 	eslintPlugin.configs.recommended,
+	{
+		files: ["src/rules/**/*.ts"],
+		name: "eslint-plugin rules",
+		rules: {
+			"eslint-plugin/require-meta-docs-description": "error",
+			"eslint-plugin/require-meta-docs-url": "error",
+			"eslint-plugin/require-meta-schema": "error",
+		},
+	},
 	eslint.configs.recommended,
 	comments.recommended,
 	jsdoc.configs["flat/contents-typescript-error"],

@@ -59,6 +59,7 @@ describe("require-cooldown", () => {
 					],
 					filename: "dependabot.yaml",
 					language: "yaml/yaml",
+					output: readFixture("invalid-no-cooldown/output.yaml"),
 				},
 				{
 					code: readFixture("invalid-missing-default-days/dependabot.yaml"),
@@ -69,6 +70,7 @@ describe("require-cooldown", () => {
 					],
 					filename: "dependabot.yaml",
 					language: "yaml/yaml",
+					output: readFixture("invalid-missing-default-days/output.yaml"),
 				},
 				{
 					code: readFixture("invalid-one-missing-cooldown/dependabot.yaml"),
@@ -79,6 +81,7 @@ describe("require-cooldown", () => {
 					],
 					filename: "dependabot.yaml",
 					language: "yaml/yaml",
+					output: readFixture("invalid-one-missing-cooldown/output.yaml"),
 				},
 				{
 					code: readFixture("invalid-empty-cooldown/dependabot.yaml"),
@@ -89,6 +92,7 @@ describe("require-cooldown", () => {
 					],
 					filename: "dependabot.yaml",
 					language: "yaml/yaml",
+					output: readFixture("invalid-empty-cooldown/output.yaml"),
 				},
 				{
 					code: readFixture("invalid-cooldown-scalar/dependabot.yaml"),
@@ -99,6 +103,7 @@ describe("require-cooldown", () => {
 					],
 					filename: "dependabot.yaml",
 					language: "yaml/yaml",
+					output: readFixture("invalid-cooldown-scalar/output.yaml"),
 				},
 			],
 		});

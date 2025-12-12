@@ -1,4 +1,8 @@
-# require-cooldown
+# Require each package-ecosystem to have a cooldown configuration with default-days (`dependabot/require-cooldown`)
+
+💼 This rule is enabled in the ✅ `recommended` config.
+
+<!-- end auto-generated rule header -->
 
 Require each package-ecosystem to have a cooldown configuration.
 

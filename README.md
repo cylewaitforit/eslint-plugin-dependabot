@@ -52,10 +52,18 @@ export default defineConfig([
 
 ### Rules
 
-| Name                                                           | Description                                                       | ✅  | 🔧  |
-| :------------------------------------------------------------- | :---------------------------------------------------------------- | :-- | :-- |
-| [require-config-version](docs/rules/require-config-version.md) | Require Dependabot configuration files to have a version property | ✅  |     |
-| [require-cooldown](docs/rules/require-cooldown.md)             | Require each package-ecosystem to have a cooldown configuration   | ✅  |     |
+<!-- begin auto-generated rules list -->
+
+💼 Configurations enabled in.\
+✅ Set in the `recommended` configuration.\
+🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).
+
+| Name                                                           | Description                                                                       | 💼  | 🔧  |
+| :------------------------------------------------------------- | :-------------------------------------------------------------------------------- | :-- | :-- |
+| [require-config-version](docs/rules/require-config-version.md) | Require Dependabot configuration files to have a version property                 | ✅  | 🔧  |
+| [require-cooldown](docs/rules/require-cooldown.md)             | Require each package-ecosystem to have a cooldown configuration with default-days | ✅  |     |
+
+<!-- end auto-generated rules list -->
 
 ## Development
 

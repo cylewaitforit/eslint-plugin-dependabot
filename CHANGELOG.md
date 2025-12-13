@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.0](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.3.1...0.4.0) (2025-12-13)
+
+### Features
+
+- make require-cooldown rule fixable with configurable default-days ([#39](https://github.com/cylewaitforit/eslint-plugin-dependabot/issues/39)) ([65af5b9](https://github.com/cylewaitforit/eslint-plugin-dependabot/commit/65af5b9b2c794fc613f0b223eaa5446ee3982846))
+
 ## [0.3.1](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.3.0...0.3.1) (2025-12-12)
 
 ### Bug Fixes

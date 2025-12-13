@@ -1,7 +1,7 @@
 import type { Rule } from "eslint";
 import type { YAMLMap } from "yaml";
 
-import { isMap, isSeq } from "yaml";
+import { isMap, isNode, isScalar, isSeq } from "yaml";
 
 import {
 	createRootMapVisitor,
@@ -39,21 +39,19 @@ function validateEcosystemCooldown(
 	const cooldownPair = findPairByKey(ecosystemMap, "cooldown");
 
 	if (!cooldownPair?.value) {
-		// Find the position to insert cooldown after package-ecosystem
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- YAML node range is compatible with ESLint range
-		const packageEcosystemRange = packageEcosystemPair.value?.range;
+		const packageEcosystemValue = packageEcosystemPair.value;
+		const packageEcosystemRange = isScalar(packageEcosystemValue)
+			? packageEcosystemValue.range
+			: undefined;
 		context.report({
 			data: {
 				ecosystem: ecosystemName,
 			},
 			fix(fixer) {
 				if (packageEcosystemRange) {
-					// Insert cooldown after the package-ecosystem line
-					// We need to find the end of the line and insert after it
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- YAML node range is a tuple
-					const insertPosition = packageEcosystemRange[1] as number;
+					const insertPosition = packageEcosystemRange[1];
 					return fixer.insertTextAfterRange(
-						[insertPosition, insertPosition] as [number, number],
+						[insertPosition, insertPosition],
 						`\n    cooldown:\n      default-days: ${String(defaultDays)}`,
 					);
 				}
@@ -72,8 +70,9 @@ function validateEcosystemCooldown(
 		findPairByKey(cooldownValue, "default-days")?.value !== undefined;
 
 	if (!hasValidDefaultDays) {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- YAML node range is compatible with ESLint range
-		const cooldownRange = cooldownValue.range;
+		const cooldownRange = isNode(cooldownValue)
+			? cooldownValue.range
+			: undefined;
 		const cooldownKeyRange = cooldownPair.key.range;
 		context.report({
 			data: {
@@ -81,27 +80,18 @@ function validateEcosystemCooldown(
 			},
 			fix(fixer) {
 				if (isMap(cooldownValue) && cooldownRange) {
-					// If cooldown is a map but doesn't have default-days, add it
-					// Insert at the beginning of the cooldown map content
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- YAML node range is a tuple
-					const insertPosition = cooldownRange[0] as number;
+					const insertPosition = cooldownRange[0];
 					return fixer.insertTextBeforeRange(
-						[insertPosition, insertPosition] as [number, number],
+						[insertPosition, insertPosition],
 						`default-days: ${String(defaultDays)}\n      `,
 					);
 				}
 
 				if (cooldownKeyRange && cooldownRange) {
-					// If cooldown is not a map (scalar or empty), replace the value
-					// The range for empty scalar is [n, n, n], for non-empty it's [start, end, end]
-					// We want to replace whatever is there (including space) with our map structure
-
 					const keyEnd = cooldownKeyRange[1];
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access -- YAML node range is a tuple
 					const valueEnd = cooldownRange[1];
-					// Replace from after "cooldown" key to end of value
 					return fixer.replaceTextRange(
-						[keyEnd, valueEnd] as [number, number],
+						[keyEnd, valueEnd],
 						`:\n      default-days: ${String(defaultDays)}`,
 					);
 				}

@@ -1,7 +1,7 @@
 import type { Rule } from "eslint";
 import type { YAMLMap } from "yaml";
 
-import { isMap, isSeq } from "yaml";
+import { isMap, isNode, isScalar, isSeq } from "yaml";
 
 import {
 	createRootMapVisitor,
@@ -10,6 +10,14 @@ import {
 	yamlNodeToRuleNode,
 } from "../utils/yaml.js";
 
+/** Default cooldown days if not configured. */
+const DEFAULT_COOLDOWN_DAYS = 7;
+
+/** Options for the require-cooldown rule. */
+interface RuleOptions {
+	defaultDays?: number;
+}
+
 /**
  * Validates that a package-ecosystem entry has a valid cooldown configuration.
  * Reports an error if the cooldown is missing or invalid.
@@ -17,6 +25,7 @@ import {
 function validateEcosystemCooldown(
 	ecosystemMap: YAMLMap,
 	context: Rule.RuleContext,
+	defaultDays: number,
 ): void {
 	const packageEcosystemPair = findPairByKey(ecosystemMap, "package-ecosystem");
 
@@ -30,9 +39,23 @@ function validateEcosystemCooldown(
 	const cooldownPair = findPairByKey(ecosystemMap, "cooldown");
 
 	if (!cooldownPair?.value) {
+		const packageEcosystemValue = packageEcosystemPair.value;
+		const packageEcosystemRange = isScalar(packageEcosystemValue)
+			? packageEcosystemValue.range
+			: undefined;
 		context.report({
 			data: {
 				ecosystem: ecosystemName,
+			},
+			fix(fixer) {
+				if (packageEcosystemRange) {
+					const insertPosition = packageEcosystemRange[1];
+					return fixer.insertTextAfterRange(
+						[insertPosition, insertPosition],
+						`\n    cooldown:\n      default-days: ${String(defaultDays)}`,
+					);
+				}
+				return null;
 			},
 			messageId: "missingCooldown",
 			node: yamlNodeToRuleNode(packageEcosystemPair),
@@ -47,9 +70,33 @@ function validateEcosystemCooldown(
 		findPairByKey(cooldownValue, "default-days")?.value !== undefined;
 
 	if (!hasValidDefaultDays) {
+		const cooldownRange = isNode(cooldownValue)
+			? cooldownValue.range
+			: undefined;
+		const cooldownKeyRange = cooldownPair.key.range;
 		context.report({
 			data: {
 				ecosystem: ecosystemName,
+			},
+			fix(fixer) {
+				if (isMap(cooldownValue) && cooldownRange) {
+					const insertPosition = cooldownRange[0];
+					return fixer.insertTextBeforeRange(
+						[insertPosition, insertPosition],
+						`default-days: ${String(defaultDays)}\n      `,
+					);
+				}
+
+				if (cooldownKeyRange && cooldownRange) {
+					const keyEnd = cooldownKeyRange[1];
+					const valueEnd = cooldownRange[1];
+					return fixer.replaceTextRange(
+						[keyEnd, valueEnd],
+						`:\n      default-days: ${String(defaultDays)}`,
+					);
+				}
+
+				return null;
 			},
 			messageId: "missingDefaultDays",
 			node: yamlNodeToRuleNode(cooldownPair),
@@ -70,17 +117,33 @@ export const requireCooldownRule = {
 			recommended: true,
 			url: "https://github.com/cylewaitforit/eslint-plugin-dependabot/blob/main/docs/rules/require-cooldown.md",
 		},
+		fixable: "code" as const,
 		messages: {
 			missingCooldown:
 				"Package ecosystem '{{ ecosystem }}' is missing a cooldown configuration. Add a cooldown with at least default-days.",
 			missingDefaultDays:
 				"Package ecosystem '{{ ecosystem }}' has a cooldown configuration but is missing the required 'default-days' property.",
 		},
-		schema: [],
+		schema: [
+			{
+				additionalProperties: false,
+				properties: {
+					defaultDays: {
+						default: DEFAULT_COOLDOWN_DAYS,
+						description: "The default number of days for cooldown",
+						type: "number",
+					},
+				},
+				type: "object",
+			},
+		],
 		type: "problem" as const,
 	},
 	// eslint-disable-next-line perfectionist/sort-objects -- meta should be at the top
 	create(context: Rule.RuleContext) {
+		const options = (context.options[0] ?? {}) as RuleOptions;
+		const defaultDays = options.defaultDays ?? DEFAULT_COOLDOWN_DAYS;
+
 		return createRootMapVisitor((rootMap) => {
 			const updatesPair = findPairByKey(rootMap, "updates");
 
@@ -98,7 +161,7 @@ export const requireCooldownRule = {
 					continue;
 				}
 
-				validateEcosystemCooldown(item, context);
+				validateEcosystemCooldown(item, context, defaultDays);
 			}
 		});
 	},

@@ -60,9 +60,7 @@ To enable ESLint validation for YAML files in VSCode, add the following to your 
 
 ```json
 {
-	"eslint.validate": [
-		"yaml"
-	]
+	"eslint.validate": ["yaml"]
 }
 ```
 

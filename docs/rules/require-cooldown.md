@@ -2,6 +2,8 @@
 
 💼 This rule is enabled in the ✅ `recommended` config.
 
+🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
+
 <!-- end auto-generated rule header -->
 
 Require each package-ecosystem to have a cooldown configuration.
@@ -20,6 +22,39 @@ This can be useful to:
 - Give the community time to discover issues in new releases
 
 See [GitHub's documentation on cooldown periods](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/optimizing-pr-creation-version-updates#setting-up-a-cooldown-period-for-dependency-updates) for more information.
+
+## Options
+
+This rule accepts an options object with the following properties:
+
+- `defaultDays` (number): The default number of days for cooldown when auto-fixing.
+  Defaults to `7`.
+
+### Default Configuration
+
+```js
+export default [
+	{
+		rules: {
+			"dependabot/require-cooldown": ["error", { defaultDays: 7 }],
+		},
+	},
+];
+```
+
+### Custom Configuration
+
+To use a different default cooldown period:
+
+```js
+export default [
+	{
+		rules: {
+			"dependabot/require-cooldown": ["error", { defaultDays: 14 }],
+		},
+	},
+];
+```
 
 ## Examples
 

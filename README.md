@@ -53,7 +53,10 @@ export default defineConfig([
 ### VSCode Setup
 
 By default, the VSCode ESLint extension does not validate YAML files.
-To enable ESLint validation for YAML files in VSCode, add the following to your VSCode settings (`.vscode/settings.json` in your workspace or user settings):
+To enable ESLint validation for YAML files in VSCode, add the following to your VSCode settings:
+
+- For workspace settings: `.vscode/settings.json` in your project
+- For user settings: Command Palette > _Preferences: Open Settings (JSON)_
 
 ```json
 {

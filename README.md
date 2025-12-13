@@ -50,6 +50,25 @@ export default defineConfig([
 ]);
 ```
 
+### VSCode Setup
+
+By default, the VSCode ESLint extension does not validate YAML files.
+To enable ESLint validation for YAML files in VSCode, add the following to your VSCode settings (`.vscode/settings.json` in your workspace or user settings):
+
+```json
+{
+	"eslint.probe": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"yaml"
+	]
+}
+```
+
+This tells the VSCode ESLint extension to also run on YAML files, allowing you to see Dependabot linting errors and warnings directly in your editor.
+
 ### Rules
 
 <!-- begin auto-generated rules list -->

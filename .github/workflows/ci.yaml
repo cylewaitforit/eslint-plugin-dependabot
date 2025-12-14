@@ -39,7 +39,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/prepare
-      - run: pnpm lint:knip
+      - run: pnpm lint:knip --reporter github-actions
   lint_markdown:
     name: Lint Markdown
     runs-on: ubuntu-latest

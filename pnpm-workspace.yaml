@@ -21,7 +21,7 @@ catalog:
   eslint-plugin-regexp: 2.9.0
   eslint-plugin-yml: 1.18.0
   eslint-yaml: 0.1.0
-  knip: 5.61.2
+  knip: 5.72.0
   lefthook: 1.10.3
   markdownlint: 0.38.0
   markdownlint-cli: 0.45.0

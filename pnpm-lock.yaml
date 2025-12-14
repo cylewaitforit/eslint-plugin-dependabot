@@ -141,9 +141,6 @@ importers:
       '@eslint/js':
         specifier: 'catalog:'
         version: 9.34.0
-      '@eslint/json':
-        specifier: 0.4.0
-        version: 0.4.0(eslint@9.34.0(jiti@2.6.1))
       '@release-it/conventional-changelog':
         specifier: 'catalog:'
         version: 10.0.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.2.1)(release-it@19.0.3(@types/node@24.10.1)(magicast@0.3.5))
@@ -179,7 +176,7 @@ importers:
         version: 52.0.0(eslint@9.34.0(jiti@2.6.1))
       eslint-plugin-jsonc:
         specifier: 'catalog:'
-        version: 2.20.1(@eslint/json@0.4.0(eslint@9.34.0(jiti@2.6.1)))(eslint@9.34.0(jiti@2.6.1))
+        version: 2.20.1(eslint@9.34.0(jiti@2.6.1))
       eslint-plugin-markdown:
         specifier: 'catalog:'
         version: 5.1.0(eslint@9.34.0(jiti@2.6.1))
@@ -766,12 +763,6 @@ packages:
     resolution: {integrity: sha512-EoyvqQnBNsV1CWaEJ559rxXL4c8V92gxirbawSmVUOWXlsRxxQXl6LmCpdUblgxgSkDIqKnhzba2SjRTI/A5Rw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/json@0.4.0':
-    resolution: {integrity: sha512-1yhWrmsE0H97cS9FUEOY81FzndRJ69KmP3E6rjjL0vFq2A5wRM1JAmuZ67q4pFD/Ni3LzlwJ/EfeGiLNiYM9uQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      eslint: ^9.6.0
-
   '@eslint/object-schema@2.1.7':
     resolution: {integrity: sha512-VtAOaymWVfZcmZbp6E2mympDIHvyjXs/12LqWYjVw6qjrfF+VK+fyG33kChz3nnK+SU5/NeHOqrTEHS8sXO3OA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -795,10 +786,6 @@ packages:
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
     engines: {node: '>=12.22'}
-
-  '@humanwhocodes/momoa@3.3.10':
-    resolution: {integrity: sha512-KWiFQpSAqEIyrTXko3hFNLeQvSK8zXlJQzhhxsyVn58WFRYXST99b3Nqnu+ttOtjds2Pl2grUHGpe2NzhPynuQ==}
-    engines: {node: '>=18'}
 
   '@humanwhocodes/retry@0.4.3':
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
@@ -4613,11 +4600,6 @@ snapshots:
 
   '@eslint/js@9.34.0': {}
 
-  '@eslint/json@0.4.0(eslint@9.34.0(jiti@2.6.1))':
-    dependencies:
-      '@humanwhocodes/momoa': 3.3.10
-      eslint: 9.34.0(jiti@2.6.1)
-
   '@eslint/object-schema@2.1.7': {}
 
   '@eslint/plugin-kit@0.3.5':
@@ -4635,8 +4617,6 @@ snapshots:
       '@humanwhocodes/retry': 0.4.3
 
   '@humanwhocodes/module-importer@1.0.1': {}
-
-  '@humanwhocodes/momoa@3.3.10': {}
 
   '@humanwhocodes/retry@0.4.3': {}
 
@@ -6132,13 +6112,11 @@ snapshots:
     optionalDependencies:
       '@types/estree': 1.0.8
 
-  eslint-json-compat-utils@0.2.1(@eslint/json@0.4.0(eslint@9.34.0(jiti@2.6.1)))(eslint@9.34.0(jiti@2.6.1))(jsonc-eslint-parser@2.4.1):
+  eslint-json-compat-utils@0.2.1(eslint@9.34.0(jiti@2.6.1))(jsonc-eslint-parser@2.4.1):
     dependencies:
       eslint: 9.34.0(jiti@2.6.1)
       esquery: 1.6.0
       jsonc-eslint-parser: 2.4.1
-    optionalDependencies:
-      '@eslint/json': 0.4.0(eslint@9.34.0(jiti@2.6.1))
 
   eslint-plugin-es-x@7.8.0(eslint@9.34.0(jiti@2.6.1)):
     dependencies:
@@ -6169,12 +6147,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-jsonc@2.20.1(@eslint/json@0.4.0(eslint@9.34.0(jiti@2.6.1)))(eslint@9.34.0(jiti@2.6.1)):
+  eslint-plugin-jsonc@2.20.1(eslint@9.34.0(jiti@2.6.1)):
     dependencies:
       '@eslint-community/eslint-utils': 4.9.0(eslint@9.34.0(jiti@2.6.1))
       eslint: 9.34.0(jiti@2.6.1)
       eslint-compat-utils: 0.6.5(eslint@9.34.0(jiti@2.6.1))
-      eslint-json-compat-utils: 0.2.1(@eslint/json@0.4.0(eslint@9.34.0(jiti@2.6.1)))(eslint@9.34.0(jiti@2.6.1))(jsonc-eslint-parser@2.4.1)
+      eslint-json-compat-utils: 0.2.1(eslint@9.34.0(jiti@2.6.1))(jsonc-eslint-parser@2.4.1)
       espree: 10.4.0
       graphemer: 1.4.0
       jsonc-eslint-parser: 2.4.1

@@ -21,7 +21,5 @@ jobs:
       - name: Use npm for OIDC
         run: npm install -g npm@11.5.2
       - run: pnpm build
-      - env:
-          NPM_CONFIG_PROVENANCE: true
-        name: Publish to npm
-        run: pnpm publish --access public --no-git-checks
+      - name: Publish to npm
+        run: pnpm publish --provenance --access public --no-git-checks

@@ -31,7 +31,6 @@ catalog:
   prettier-plugin-packagejson: 2.5.15
   prettier-plugin-sh: 0.17.4
   release-it: 19.0.3
-  release-it-pnpm: 4.6.6
   sentences-per-line: 0.3.0
   should-semantic-release: ^0.3.5
   tsdown: 0.12.7

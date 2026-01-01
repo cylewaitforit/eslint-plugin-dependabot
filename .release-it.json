@@ -4,6 +4,9 @@
 		"requireCommits": true
 	},
 	"github": { "release": true, "releaseName": "v${version}" },
+	"npm": {
+		"publish": false
+	},
 	"plugins": {
 		"@release-it/conventional-changelog": {
 			"infile": "CHANGELOG.md",
@@ -20,9 +23,6 @@
 				{ "hidden": true, "type": "style" },
 				{ "hidden": true, "type": "test" }
 			]
-		},
-		"release-it-pnpm": {
-			"publishCommand": "pnpm publish --access public --no-git-checks --provenance"
 		}
 	}
 }

@@ -1,0 +1,27 @@
+name: Publish
+
+on:
+  release:
+    types:
+      - published
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.release.tag_name }}
+      - uses: ./.github/actions/prepare
+      - name: Use npm for OIDC
+        run: npm install -g npm@11.5.2
+      - run: pnpm build
+      - name: Publish to npm
+        env:
+          NPM_CONFIG_PROVENANCE: true
+        run: pnpm publish --access public --no-git-checks

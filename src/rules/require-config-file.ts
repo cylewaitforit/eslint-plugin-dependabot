@@ -4,22 +4,33 @@ import fs from "node:fs";
 import path from "node:path";
 
 /**
- * Finds the .github directory by traversing up from the current file.
+ * Finds the project root's .github directory by traversing up from the current file.
+ * In a monorepo, stops at the first package.json found when traversing upward,
+ * which should be the immediate project root for that package.json file.
  */
 function findGithubDirectory(sourceFile: string): string | undefined {
+	// Start from the directory containing the source file
 	let current = path.dirname(sourceFile);
 	const root = path.parse(current).root;
 
+	// For package.json files, the .github directory should be in the same directory
+	if (sourceFile.endsWith("package.json")) {
+		const githubDir = path.join(current, ".github");
+		return githubDir;
+	}
+
+	// For other files, traverse up to find package.json or .github
 	while (current !== root) {
 		const githubDir = path.join(current, ".github");
+		const packageJson = path.join(current, "package.json");
+
+		// If we find .github directory, use it
 		if (fs.existsSync(githubDir) && fs.statSync(githubDir).isDirectory()) {
 			return githubDir;
 		}
 
-		// Also check if we find package.json (likely root of project)
-		const packageJson = path.join(current, "package.json");
+		// If we find package.json, the .github should be here
 		if (fs.existsSync(packageJson)) {
-			// Return the .github path even if it doesn't exist yet
 			return path.join(current, ".github");
 		}
 

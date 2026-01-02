@@ -19,7 +19,10 @@ const NPM_ECOSYSTEM_TEMPLATE = `# Enable version updates for npm
 
 /** Options for the require-package-ecosystem rule. */
 interface RuleOptions {
-	/** The directory to check for package files. Defaults to cwd. Used primarily for testing. */
+	/**
+	 * The directory to check for package files. Defaults to cwd.
+	 * @internal
+	 */
 	checkDirectory?: string;
 	/** Array of package ecosystems to disable the rule for. */
 	disabledEcosystems?: string[];
@@ -44,13 +47,7 @@ export const requirePackageEcosystemRule = {
 		},
 		schema: [
 			{
-				additionalProperties: false,
 				properties: {
-					checkDirectory: {
-						description:
-							"The directory to check for package files. Defaults to the current working directory.",
-						type: "string",
-					},
 					disabledEcosystems: {
 						description:
 							"Array of package ecosystems to disable the rule for. For example, ['npm'] will disable checking for npm ecosystem.",

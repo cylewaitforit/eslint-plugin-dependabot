@@ -54,8 +54,8 @@ export const requirePackageEcosystemRule = {
 		const options = (context.options[0] ?? {}) as RuleOptions;
 
 		return createRootMapVisitor((rootMap) => {
-			// Get the directory to check - either from options or from getCwd()
-			const checkDir = options.checkDirectory ?? context.getCwd();
+			// Get the directory to check - either from options or from cwd
+			const checkDir = options.checkDirectory ?? context.cwd;
 
 			// Check if package.json exists at the check directory
 			const packageJsonPath = path.join(checkDir, "package.json");

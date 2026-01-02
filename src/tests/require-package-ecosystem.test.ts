@@ -41,6 +41,7 @@ describe("require-package-ecosystem", () => {
 	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should validate package-ecosystem configurations with npm", () => {
 		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
+			invalid: [],
 			valid: [
 				{
 					code: readFixture("valid-with-npm/dependabot.yaml"),
@@ -49,13 +50,13 @@ describe("require-package-ecosystem", () => {
 					options: [{ checkDirectory: getFixtureCwd("valid-with-npm") }],
 				},
 			],
-			invalid: [],
 		});
 	});
 
 	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should validate no error when package.json does not exist", () => {
 		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
+			invalid: [],
 			valid: [
 				{
 					code: readFixture("valid-no-package-json/dependabot.yaml"),
@@ -64,14 +65,12 @@ describe("require-package-ecosystem", () => {
 					options: [{ checkDirectory: getFixtureCwd("valid-no-package-json") }],
 				},
 			],
-			invalid: [],
 		});
 	});
 
 	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should error when npm ecosystem is missing", () => {
 		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
-			valid: [],
 			invalid: [
 				{
 					code: readFixture("invalid-missing-npm/dependabot.yaml"),
@@ -86,13 +85,13 @@ describe("require-package-ecosystem", () => {
 					output: readFixture("invalid-missing-npm/output.yaml"),
 				},
 			],
+			valid: [],
 		});
 	});
 
 	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should error when updates array is missing", () => {
 		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
-			valid: [],
 			invalid: [
 				{
 					code: readFixture("invalid-no-updates/dependabot.yaml"),
@@ -107,6 +106,7 @@ describe("require-package-ecosystem", () => {
 					output: readFixture("invalid-no-updates/output.yaml"),
 				},
 			],
+			valid: [],
 		});
 	});
 });

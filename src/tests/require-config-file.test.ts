@@ -14,7 +14,7 @@ describe("require-config-file", () => {
 		// Create a temporary directory for each test
 		tempDir = path.join(
 			import.meta.dirname,
-			`_fixtures_/require-config-file-temp-${Date.now()}`,
+			`_fixtures_/require-config-file-temp-${String(Date.now())}`,
 		);
 		fs.mkdirSync(tempDir, { recursive: true });
 	});
@@ -22,7 +22,7 @@ describe("require-config-file", () => {
 	afterEach(() => {
 		// Clean up temporary directory after each test
 		if (fs.existsSync(tempDir)) {
-			fs.rmSync(tempDir, { recursive: true, force: true });
+			fs.rmSync(tempDir, { force: true, recursive: true });
 		}
 	});
 

@@ -58,6 +58,7 @@
 		"cspell": "catalog:",
 		"eslint": "catalog:",
 		"eslint-doc-generator": "catalog:",
+		"eslint-plugin-dependabot": "catalog:",
 		"eslint-plugin-eslint-plugin": "catalog:",
 		"eslint-plugin-jsdoc": "catalog:",
 		"eslint-plugin-jsonc": "catalog:",

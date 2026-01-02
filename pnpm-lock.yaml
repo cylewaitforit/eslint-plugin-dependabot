@@ -39,6 +39,9 @@ catalogs:
     eslint-doc-generator:
       specifier: ^2.4.0
       version: 2.4.0
+    eslint-plugin-dependabot:
+      specifier: ^0.4.0
+      version: 0.4.0
     eslint-plugin-eslint-plugin:
       specifier: ^7.2.0
       version: 7.2.0
@@ -165,6 +168,9 @@ importers:
       eslint-doc-generator:
         specifier: 'catalog:'
         version: 2.4.0(eslint@9.34.0(jiti@2.6.1))(prettier@3.6.1)(typescript@5.9.2)
+      eslint-plugin-dependabot:
+        specifier: 'catalog:'
+        version: 0.4.0(eslint-yaml@0.1.0)(eslint@9.34.0(jiti@2.6.1))
       eslint-plugin-eslint-plugin:
         specifier: 'catalog:'
         version: 7.2.0(eslint@9.34.0(jiti@2.6.1))
@@ -2169,6 +2175,13 @@ packages:
     peerDependenciesMeta:
       '@eslint/json':
         optional: true
+
+  eslint-plugin-dependabot@0.4.0:
+    resolution: {integrity: sha512-5+LdXU5rqL1c/1ZRwj7vwaV4dliXZRSsv4TdtMJsjOJKU++X6T82jQyqPaWkx2dU+R0ELhxh9Eo9q+Eps5/EoA==}
+    engines: {node: '>=22.0.0'}
+    peerDependencies:
+      eslint: '>=9.0.0'
+      eslint-yaml: '>=0.1.0'
 
   eslint-plugin-es-x@7.8.0:
     resolution: {integrity: sha512-7Ds8+wAAoV3T+LAKeu39Y5BzXCrGKrcISfgKEqTS4BDN8SFEDQd0S43jiQ8vIa3wUKD07qitZdfzlenSi8/0qQ==}
@@ -5756,6 +5769,12 @@ snapshots:
       eslint: 9.34.0(jiti@2.6.1)
       esquery: 1.6.0
       jsonc-eslint-parser: 2.4.2
+
+  eslint-plugin-dependabot@0.4.0(eslint-yaml@0.1.0)(eslint@9.34.0(jiti@2.6.1)):
+    dependencies:
+      eslint: 9.34.0(jiti@2.6.1)
+      eslint-yaml: 0.1.0
+      yaml: 2.8.0
 
   eslint-plugin-es-x@7.8.0(eslint@9.34.0(jiti@2.6.1)):
     dependencies:

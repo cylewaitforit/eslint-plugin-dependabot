@@ -11,9 +11,15 @@ import {
 	yamlNodeToRuleNode,
 } from "../utils/yaml.js";
 
+/** Default npm ecosystem configuration template for auto-fix */
+const NPM_ECOSYSTEM_TEMPLATE = `# Enable version updates for npm
+  - package-ecosystem: "npm"
+    # Look for \`package.json\` and \`lock\` files in the \`root\` directory
+    directory: "/"`;
+
 /** Options for the require-package-ecosystem rule. */
 interface RuleOptions {
-	/** The directory to check for package files. Defaults to getCwd(). Used primarily for testing. */
+	/** The directory to check for package files. Defaults to cwd. Used primarily for testing. */
 	checkDirectory?: string;
 }
 
@@ -82,7 +88,7 @@ export const requirePackageEcosystemRule = {
 								if (versionRange) {
 									return fixer.insertTextAfterRange(
 										[versionRange[1], versionRange[1]],
-										`\nupdates:\n  # Enable version updates for npm\n  - package-ecosystem: "npm"\n    # Look for \`package.json\` and \`lock\` files in the \`root\` directory\n    directory: "/"`,
+										`\nupdates:\n  ${NPM_ECOSYSTEM_TEMPLATE}`,
 									);
 								}
 							}
@@ -135,14 +141,14 @@ export const requirePackageEcosystemRule = {
 							const insertPosition = firstItem.range[0] - 2;
 							return fixer.insertTextBeforeRange(
 								[insertPosition, insertPosition],
-								`# Enable version updates for npm\n  - package-ecosystem: "npm"\n    # Look for \`package.json\` and \`lock\` files in the \`root\` directory\n    directory: "/"\n  `,
+								`${NPM_ECOSYSTEM_TEMPLATE}\n  `,
 							);
 						} else if (updatesRange) {
 							// If no items exist yet, insert at the beginning
 							const insertPosition = updatesRange[0];
 							return fixer.insertTextAfterRange(
 								[insertPosition, insertPosition],
-								`\n  # Enable version updates for npm\n  - package-ecosystem: "npm"\n    # Look for \`package.json\` and \`lock\` files in the \`root\` directory\n    directory: "/"`,
+								`\n  ${NPM_ECOSYSTEM_TEMPLATE}`,
 							);
 						}
 						return null;

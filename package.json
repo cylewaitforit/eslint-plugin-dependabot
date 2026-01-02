@@ -79,7 +79,6 @@
 		"prettier-plugin-packagejson": "catalog:",
 		"prettier-plugin-sh": "catalog:",
 		"release-it": "catalog:",
-		"release-it-pnpm": "catalog:",
 		"sentences-per-line": "catalog:",
 		"should-semantic-release": "catalog:",
 		"tsdown": "catalog:",

@@ -21,6 +21,8 @@ const NPM_ECOSYSTEM_TEMPLATE = `# Enable version updates for npm
 interface RuleOptions {
 	/** The directory to check for package files. Defaults to cwd. Used primarily for testing. */
 	checkDirectory?: string;
+	/** Array of package ecosystems to disable the rule for. */
+	disabledEcosystems?: string[];
 }
 
 /**
@@ -49,6 +51,14 @@ export const requirePackageEcosystemRule = {
 							"The directory to check for package files. Defaults to the current working directory.",
 						type: "string",
 					},
+					disabledEcosystems: {
+						description:
+							"Array of package ecosystems to disable the rule for. For example, ['npm'] will disable checking for npm ecosystem.",
+						items: {
+							type: "string",
+						},
+						type: "array",
+					},
 				},
 				type: "object",
 			},
@@ -62,6 +72,12 @@ export const requirePackageEcosystemRule = {
 		return createRootMapVisitor((rootMap) => {
 			// Get the directory to check - either from options or from cwd
 			const checkDir = options.checkDirectory ?? context.cwd;
+
+			// Check if npm is in the disabled ecosystems list
+			const disabledEcosystems = options.disabledEcosystems ?? [];
+			if (disabledEcosystems.includes("npm")) {
+				return;
+			}
 
 			// Check if package.json exists at the check directory
 			const packageJsonPath = path.join(checkDir, "package.json");

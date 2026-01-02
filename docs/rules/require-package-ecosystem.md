@@ -87,6 +87,10 @@ This rule accepts an options object with the following properties:
   Defaults to the current working directory.
   This option is primarily used for testing purposes.
 
+- `disabledEcosystems` (string[]): Array of package ecosystems to disable the rule for.
+  For example, `["npm"]` will disable checking for npm ecosystem even if `package.json` exists.
+  This is useful if you want to manage specific ecosystems manually.
+
 ### Default Configuration
 
 ```js
@@ -94,6 +98,25 @@ export default [
 	{
 		rules: {
 			"dependabot/require-package-ecosystem": "error",
+		},
+	},
+];
+```
+
+### Custom Configuration
+
+To disable the rule for specific ecosystems:
+
+```js
+export default [
+	{
+		rules: {
+			"dependabot/require-package-ecosystem": [
+				"error",
+				{
+					disabledEcosystems: ["npm"],
+				},
+			],
 		},
 	},
 ];

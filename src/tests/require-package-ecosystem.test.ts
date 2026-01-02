@@ -109,4 +109,24 @@ describe("require-package-ecosystem", () => {
 			valid: [],
 		});
 	});
+
+	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
+	it("should not error when npm is in disabledEcosystems", () => {
+		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
+			invalid: [],
+			valid: [
+				{
+					code: readFixture("invalid-missing-npm/dependabot.yaml"),
+					filename: "dependabot.yaml",
+					language: "yaml/yaml",
+					options: [
+						{
+							checkDirectory: getFixtureCwd("invalid-missing-npm"),
+							disabledEcosystems: ["npm"],
+						},
+					],
+				},
+			],
+		});
+	});
 });

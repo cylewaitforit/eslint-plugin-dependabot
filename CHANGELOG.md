@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.5](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.5.4...0.5.5) (2026-01-03)
+
+### Bug Fixes
+
+- Add required schedule property to npm ecosystem template ([#63](https://github.com/cylewaitforit/eslint-plugin-dependabot/issues/63)) ([6a1842b](https://github.com/cylewaitforit/eslint-plugin-dependabot/commit/6a1842b10c8a83707050aa99cbcb7061193c982e))
+
 ## [0.5.4](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.5.3...0.5.4) (2026-01-03)
 
 ### Bug Fixes

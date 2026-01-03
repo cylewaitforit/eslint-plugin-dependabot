@@ -5,7 +5,7 @@ updates:
     # Look for `package.json` and lock files in the root directory
     directory: "/"
     schedule:
-      interval: daily
+      interval: weekly
   - package-ecosystem: "docker"
     directory: "/"
     schedule:

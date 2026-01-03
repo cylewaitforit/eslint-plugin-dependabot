@@ -17,7 +17,7 @@ const NPM_ECOSYSTEM_TEMPLATE = `# Enable version updates for npm
     # Look for \`package.json\` and lock files in the root directory
     directory: "/"
     schedule:
-      interval: daily
+      interval: weekly
   `;
 
 /** Options for the require-package-ecosystem rule. */

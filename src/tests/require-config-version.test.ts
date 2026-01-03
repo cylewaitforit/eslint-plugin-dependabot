@@ -27,7 +27,6 @@ function readFixture(fixturePath: string): string {
 }
 
 describe("require-config-version", () => {
-	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should validate config version with default (version 2)", () => {
 		ruleTester.run("require-config-version", requireConfigVersionRule, {
 			valid: [
@@ -70,7 +69,6 @@ describe("require-config-version", () => {
 		});
 	});
 
-	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should validate config version with custom version (version 3)", () => {
 		ruleTester.run("require-config-version", requireConfigVersionRule, {
 			valid: [

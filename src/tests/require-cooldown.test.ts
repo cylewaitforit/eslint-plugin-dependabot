@@ -23,7 +23,6 @@ function readFixture(fixturePath: string): string {
 }
 
 describe("require-cooldown", () => {
-	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should validate cooldown configurations", () => {
 		ruleTester.run("require-cooldown", requireCooldownRule, {
 			valid: [

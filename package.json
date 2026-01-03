@@ -1,6 +1,6 @@
 {
 	"name": "eslint-plugin-dependabot",
-	"version": "0.5.2",
+	"version": "0.5.3",
 	"description": "Eslint Plugin to enforce Dependabot best practices",
 	"keywords": [
 		"dependabot",

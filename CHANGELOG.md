@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.4](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.5.3...0.5.4) (2026-01-03)
+
+### Bug Fixes
+
+- bump release-it to 19.2.2 ([#61](https://github.com/cylewaitforit/eslint-plugin-dependabot/issues/61)) ([a6392c2](https://github.com/cylewaitforit/eslint-plugin-dependabot/commit/a6392c2b21eff922e7b6fb836d5939c13a1dc585))
+
 ## [0.5.3](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.5.2...0.5.3) (2026-01-03)
 
 ### Bug Fixes

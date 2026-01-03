@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.0](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.4.0...0.5.0) (2026-01-03)
+
+### Features
+
+- add require-package-ecosystem rule for npm detection ([#52](https://github.com/cylewaitforit/eslint-plugin-dependabot/issues/52)) ([8c26bb0](https://github.com/cylewaitforit/eslint-plugin-dependabot/commit/8c26bb0eedaa1d59d788b27f4f8cc4f696beddb1))
+
 ## [0.4.0](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.3.1...0.4.0) (2025-12-13)
 
 ### Features

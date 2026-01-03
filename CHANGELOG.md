@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.2](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.5.1...0.5.2) (2026-01-03)
+
+### Bug Fixes
+
+- release permissions ([#59](https://github.com/cylewaitforit/eslint-plugin-dependabot/issues/59)) ([64aeecc](https://github.com/cylewaitforit/eslint-plugin-dependabot/commit/64aeecc02e41a12c4371c44d279334a466192613))
+
 ## [0.5.1](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.5.0...0.5.1) (2026-01-03)
 
 ### Bug Fixes

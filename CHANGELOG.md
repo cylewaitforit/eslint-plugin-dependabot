@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.1](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.5.0...0.5.1) (2026-01-03)
+
+### Bug Fixes
+
+- release gh token ([#53](https://github.com/cylewaitforit/eslint-plugin-dependabot/issues/53)) ([c65f85f](https://github.com/cylewaitforit/eslint-plugin-dependabot/commit/c65f85ff86104e96c1bfa40f076e406748d69a2b))
+
 ## [0.5.0](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.4.0...0.5.0) (2026-01-03)
 
 ### Features

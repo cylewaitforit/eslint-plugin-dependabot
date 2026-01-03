@@ -23,9 +23,9 @@ jobs:
       - uses: ./.github/actions/prepare
       - run: git config user.name "${GITHUB_ACTOR}"
       - run: git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-      - env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        run: |
+      - run: |
           if pnpm run should-semantic-release ; then
             pnpm release-it --verbose
           fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

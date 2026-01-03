@@ -1,1 +1,9 @@
 version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: "npm"
+    cooldown:
+      default-days: 7
+    # Look for `package.json` and lock files in the root directory
+    directory: "/"
+  

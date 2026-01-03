@@ -78,7 +78,7 @@ This tells the VSCode ESLint extension to also run on YAML files, allowing you t
 | :------------------------------------------------------------------- | :-------------------------------------------------------------------------------- | :-- | :-- |
 | [require-config-version](docs/rules/require-config-version.md)       | Require Dependabot configuration files to have a version property                 | ✅  | 🔧  |
 | [require-cooldown](docs/rules/require-cooldown.md)                   | Require each package-ecosystem to have a cooldown configuration with default-days | ✅  | 🔧  |
-| [require-package-ecosystem](docs/rules/require-package-ecosystem.md) | Require package-ecosystem configurations based on files in the repository         |     | 🔧  |
+| [require-package-ecosystem](docs/rules/require-package-ecosystem.md) | Require package-ecosystem configurations based on files in the repository         | ✅  | 🔧  |
 
 <!-- end auto-generated rules list -->
 

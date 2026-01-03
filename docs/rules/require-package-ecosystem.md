@@ -1,5 +1,7 @@
 # Require package-ecosystem configurations based on files in the repository (`dependabot/require-package-ecosystem`)
 
+💼 This rule is enabled in the ✅ `recommended` config.
+
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
 <!-- end auto-generated rule header -->
@@ -19,9 +21,10 @@ This helps ensure that Dependabot is configured to monitor all package managers 
 
 Examples of **incorrect** code for this rule:
 
+<!-- eslint-skip -->
+
 ```yaml
 # package.json exists in the repository root
-# eslint-disable yml/plain-scalar, yml/sort-keys -- Example code
 version: 2
 updates:
   - package-ecosystem: "docker"
@@ -38,9 +41,10 @@ version: 2
 
 Examples of **correct** code for this rule:
 
+<!-- eslint-skip -->
+
 ```yaml
 # package.json exists in the repository root
-# eslint-disable yml/plain-scalar, yml/sort-keys -- Example code
 version: 2
 updates:
   - package-ecosystem: "npm"
@@ -49,9 +53,10 @@ updates:
       interval: daily
 ```
 
+<!-- eslint-skip -->
+
 ```yaml
 # package.json exists, along with other ecosystems
-# eslint-disable yml/plain-scalar, yml/sort-keys -- Example code
 version: 2
 updates:
   - package-ecosystem: "npm"
@@ -64,9 +69,10 @@ updates:
       interval: daily
 ```
 
+<!-- eslint-skip -->
+
 ```yaml
 # No package.json in the repository root - rule does not apply
-# eslint-disable yml/plain-scalar, yml/sort-keys -- Example code
 version: 2
 updates:
   - package-ecosystem: "docker"

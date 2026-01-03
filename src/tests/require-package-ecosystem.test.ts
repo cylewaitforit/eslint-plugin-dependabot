@@ -38,8 +38,7 @@ describe("require-package-ecosystem", () => {
 		},
 	});
 
-	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
-	it("should validate package-ecosystem configurations with npm", () => {
+	it("should pass when npm ecosystem is configured and package.json exists", () => {
 		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
 			invalid: [],
 			valid: [
@@ -53,7 +52,6 @@ describe("require-package-ecosystem", () => {
 		});
 	});
 
-	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should validate no error when package.json does not exist", () => {
 		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
 			invalid: [],
@@ -68,7 +66,6 @@ describe("require-package-ecosystem", () => {
 		});
 	});
 
-	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should error when npm ecosystem is missing", () => {
 		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
 			invalid: [
@@ -89,7 +86,6 @@ describe("require-package-ecosystem", () => {
 		});
 	});
 
-	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should error when updates array is missing", () => {
 		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
 			invalid: [
@@ -110,7 +106,6 @@ describe("require-package-ecosystem", () => {
 		});
 	});
 
-	// eslint-disable-next-line vitest/expect-expect -- RuleTester.run contains assertions
 	it("should not error when npm is in disabledEcosystems", () => {
 		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
 			invalid: [],

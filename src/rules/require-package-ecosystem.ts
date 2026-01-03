@@ -14,8 +14,9 @@ import {
 /** Default npm ecosystem configuration template for auto-fix */
 const NPM_ECOSYSTEM_TEMPLATE = `# Enable version updates for npm
   - package-ecosystem: "npm"
-    # Look for \`package.json\` and \`lock\` files in the \`root\` directory
-    directory: "/"`;
+    # Look for \`package.json\` and lock files in the root directory
+    directory: "/"
+  `;
 
 /** Options for the require-package-ecosystem rule. */
 interface RuleOptions {
@@ -37,7 +38,7 @@ export const requirePackageEcosystemRule = {
 		docs: {
 			description:
 				"Require package-ecosystem configurations based on files in the repository",
-			recommended: false,
+			recommended: true,
 			url: "https://github.com/cylewaitforit/eslint-plugin-dependabot/blob/main/docs/rules/require-package-ecosystem.md",
 		},
 		fixable: "code" as const,
@@ -67,46 +68,44 @@ export const requirePackageEcosystemRule = {
 		const options = (context.options[0] ?? {}) as RuleOptions;
 
 		return createRootMapVisitor((rootMap) => {
-			// Get the directory to check - either from options or from cwd
-			const checkDir = options.checkDirectory ?? context.cwd;
-
-			// Check if npm is in the disabled ecosystems list
+			const directoryToCheck = options.checkDirectory ?? context.cwd;
 			const disabledEcosystems = options.disabledEcosystems ?? [];
+
 			if (disabledEcosystems.includes("npm")) {
 				return;
 			}
 
-			// Check if package.json exists at the check directory
-			const packageJsonPath = path.join(checkDir, "package.json");
+			const packageJsonPath = path.join(directoryToCheck, "package.json");
 			const hasPackageJson = fs.existsSync(packageJsonPath);
 
-			// If no package.json, no need to check for npm ecosystem
 			if (!hasPackageJson) {
 				return;
 			}
 
-			// Find the updates array
 			const updatesPair = findPairByKey(rootMap, "updates");
 
 			if (!updatesPair) {
-				// If there's no updates array at all, report an error on the root
 				context.report({
 					fix(fixer) {
 						const rootRange = rootMap.range;
-						if (rootRange) {
-							// Add updates array after version
-							const versionPair = findPairByKey(rootMap, "version");
-							if (versionPair?.value && isScalar(versionPair.value)) {
-								const versionRange = versionPair.value.range;
-								if (versionRange) {
-									return fixer.insertTextAfterRange(
-										[versionRange[1], versionRange[1]],
-										`\nupdates:\n  ${NPM_ECOSYSTEM_TEMPLATE}`,
-									);
-								}
-							}
+						if (!rootRange) {
+							return null;
 						}
-						return null;
+
+						const versionPair = findPairByKey(rootMap, "version");
+						if (!versionPair?.value || !isScalar(versionPair.value)) {
+							return null;
+						}
+
+						const versionRange = versionPair.value.range;
+						if (!versionRange) {
+							return null;
+						}
+
+						return fixer.insertTextAfterRange(
+							[versionRange[1], versionRange[1]],
+							`\nupdates:\n  ${NPM_ECOSYSTEM_TEMPLATE}`,
+						);
 					},
 					messageId: "missingNpmEcosystem",
 					node: yamlNodeToRuleNode(rootMap),
@@ -114,57 +113,38 @@ export const requirePackageEcosystemRule = {
 				return;
 			}
 
-			const updatesValue = updatesPair.value;
-			if (!isSeq(updatesValue)) {
+			const updatesArray = updatesPair.value;
+			if (!isSeq(updatesArray)) {
 				return;
 			}
 
-			// Check if npm ecosystem already exists
-			let hasNpmEcosystem = false;
-			for (const item of updatesValue.items) {
+			const hasNpmEcosystem = updatesArray.items.some((item) => {
 				if (!isMap(item)) {
-					continue;
+					return false;
 				}
 
-				const packageEcosystemPair = findPairByKey(item, "package-ecosystem");
-				if (!packageEcosystemPair) {
-					continue;
+				const ecosystemPair = findPairByKey(item, "package-ecosystem");
+				if (!ecosystemPair) {
+					return false;
 				}
 
-				const ecosystemName = getScalarStringValue(packageEcosystemPair.value);
-				if (ecosystemName === "npm") {
-					hasNpmEcosystem = true;
-					break;
-				}
-			}
+				const ecosystemName = getScalarStringValue(ecosystemPair.value);
+				return ecosystemName === "npm";
+			});
 
-			// If npm ecosystem is missing, report error
 			if (!hasNpmEcosystem) {
-				// Find the first item in the updates array to insert before it
-				const firstItem = updatesValue.items[0];
-				const updatesRange = updatesValue.range;
+				const updatesRange = updatesArray.range;
 
 				context.report({
 					fix(fixer) {
-						if (firstItem && isMap(firstItem) && firstItem.range) {
-							// The range[0] points to the first character after '- '
-							// We need to insert before the '- ', so go back 2 positions
-							// However, we need to account for any whitespace/indentation
-							// The safest approach is to insert right at range[0] - 2 (before the '-')
-							const insertPosition = firstItem.range[0] - 2;
-							return fixer.insertTextBeforeRange(
-								[insertPosition, insertPosition],
-								`${NPM_ECOSYSTEM_TEMPLATE}\n  `,
-							);
-						} else if (updatesRange) {
-							// If no items exist yet, insert at the beginning
-							const insertPosition = updatesRange[0];
-							return fixer.insertTextAfterRange(
-								[insertPosition, insertPosition],
-								`\n  ${NPM_ECOSYSTEM_TEMPLATE}`,
-							);
+						if (!updatesRange) {
+							return null;
 						}
-						return null;
+
+						return fixer.insertTextBeforeRange(
+							[updatesRange[0], updatesRange[0]],
+							NPM_ECOSYSTEM_TEMPLATE,
+						);
 					},
 					messageId: "missingNpmEcosystem",
 					node: yamlNodeToRuleNode(updatesPair),

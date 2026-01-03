@@ -124,7 +124,13 @@ export default defineConfig([
 		extends: [vitest.configs.recommended],
 		files: ["**/*.test.*"],
 		name: "Test files",
-		rules: { "@typescript-eslint/no-unsafe-assignment": "off" },
+		rules: {
+			"@typescript-eslint/no-unsafe-assignment": "off",
+			"vitest/expect-expect": [
+				"error",
+				{ assertFunctionNames: ["ruleTester.run"] },
+			],
+		},
 	},
 	{
 		extends: [yml.configs["flat/standard"], yml.configs["flat/prettier"]],

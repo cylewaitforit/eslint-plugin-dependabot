@@ -2,3 +2,6 @@
 /coverage
 /lib
 /pnpm-lock.yaml
+
+# Test fixtures should preserve exact formatting
+**/_fixtures_/**

@@ -36,6 +36,7 @@ const plugin = {
 			rules: {
 				"dependabot/require-config-version": ["error", { version: 2 }],
 				"dependabot/require-cooldown": "error",
+				"dependabot/require-package-ecosystem": "error",
 			},
 		},
 	},

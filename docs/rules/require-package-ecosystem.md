@@ -41,6 +41,8 @@ updates:
 version: 2
 ```
 
+<!-- eslint-skip -->
+
 ```yaml
 # .github/workflows directory exists in the repository
 version: 2
@@ -93,6 +95,8 @@ updates:
       interval: daily
 ```
 
+<!-- eslint-skip -->
+
 ```yaml
 # .github/workflows directory exists
 version: 2
@@ -102,6 +106,8 @@ updates:
     schedule:
       interval: daily
 ```
+
+<!-- eslint-skip -->
 
 ```yaml
 # Both package.json and .github/workflows exist

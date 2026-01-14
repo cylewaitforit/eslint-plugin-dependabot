@@ -12,10 +12,12 @@ Require package-ecosystem configurations based on files in the repository.
 
 This rule enforces that your Dependabot configuration includes package-ecosystem entries for package managers detected in your repository.
 
-Currently, this rule checks for the `npm` package ecosystem.
-If a `package.json` file exists at the root of your repository, the rule will require an npm package-ecosystem entry in the `updates` array.
+This rule checks for:
 
-This helps ensure that Dependabot is configured to monitor all package managers used in your project.
+- The `npm` package ecosystem: If a `package.json` file exists at the root of your repository, the rule will require an npm package-ecosystem entry in the `updates` array.
+- The `github-actions` package ecosystem: If a `.github/workflows` directory exists in your repository, the rule will require a github-actions package-ecosystem entry in the `updates` array.
+
+This helps ensure that Dependabot is configured to monitor all package managers and ecosystems used in your project.
 
 ### Examples
 
@@ -37,6 +39,16 @@ updates:
 # package.json exists in the repository root, but no updates array
 
 version: 2
+```
+
+```yaml
+# .github/workflows directory exists in the repository
+version: 2
+updates:
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: daily
 ```
 
 Examples of **correct** code for this rule:
@@ -81,6 +93,30 @@ updates:
       interval: daily
 ```
 
+```yaml
+# .github/workflows directory exists
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: daily
+```
+
+```yaml
+# Both package.json and .github/workflows exist
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: daily
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: daily
+```
+
 ## When Not To Use It
 
 If you intentionally do not want Dependabot to manage dependencies for a package manager present in your repository, you can disable this rule.
@@ -91,6 +127,7 @@ This rule accepts an options object with the following properties:
 
 - `disabledEcosystems` (string[]): Array of package ecosystems to disable the rule for.
   For example, `["npm"]` will disable checking for npm ecosystem even if `package.json` exists.
+  Similarly, `["github-actions"]` will disable checking for github-actions ecosystem even if `.github/workflows` exists.
   This is useful if you want to manage specific ecosystems manually.
 
 ### Default Configuration
@@ -116,7 +153,7 @@ export default [
 			"dependabot/require-package-ecosystem": [
 				"error",
 				{
-					disabledEcosystems: ["npm"],
+					disabledEcosystems: ["npm", "github-actions"],
 				},
 			],
 		},

@@ -1,0 +1,12 @@
+version: 2
+updates:
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    # Look for workflow files in the `.github/workflows` directory
+    directory: "/"
+    schedule:
+      interval: weekly
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: daily

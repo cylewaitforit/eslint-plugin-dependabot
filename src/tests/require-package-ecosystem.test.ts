@@ -199,4 +199,34 @@ describe("require-package-ecosystem", () => {
 			],
 		});
 	});
+
+	it("should add github-actions before npm block with comment when both are missing", () => {
+		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
+			invalid: [
+				{
+					code: readFixture(
+						"invalid-missing-github-actions-with-npm/dependabot.yaml",
+					),
+					errors: [
+						{
+							messageId: "missingGithubActionsEcosystem",
+						},
+					],
+					filename: "dependabot.yaml",
+					language: "yaml/yaml",
+					options: [
+						{
+							checkDirectory: getFixtureCwd(
+								"invalid-missing-github-actions-with-npm",
+							),
+						},
+					],
+					output: readFixture(
+						"invalid-missing-github-actions-with-npm/output.yaml",
+					),
+				},
+			],
+			valid: [],
+		});
+	});
 });

@@ -18,7 +18,7 @@ const NPM_ECOSYSTEM_TEMPLATE = `# Enable version updates for npm
     directory: "/"
     schedule:
       interval: weekly
-  `;
+`;
 
 /** Default github-actions ecosystem configuration template for auto-fix */
 const GITHUB_ACTIONS_ECOSYSTEM_TEMPLATE = `# Enable version updates for GitHub Actions
@@ -27,7 +27,7 @@ const GITHUB_ACTIONS_ECOSYSTEM_TEMPLATE = `# Enable version updates for GitHub A
     directory: "/"
     schedule:
       interval: weekly
-  `;
+`;
 
 /** Options for the require-package-ecosystem rule. */
 interface RuleOptions {
@@ -187,9 +187,67 @@ export const requirePackageEcosystemRule = {
 								return null;
 							}
 
+							// Find the position to insert
+							// We need to insert at the beginning of the line (after the preceding \n)
+							// This ensures we insert before any comments and with proper indentation
+							let insertPosition = updatesRange[0];
+
+							if (updatesArray.items.length > 0) {
+								const sourceCode = context.sourceCode;
+								const fullText = sourceCode.getText();
+
+								// updatesRange[0] points to the first '-' character of the array
+								// Find the start of this line by searching backwards for the preceding \n
+								let lineStart = updatesRange[0];
+								while (lineStart > 0 && fullText[lineStart - 1] !== "\n") {
+									lineStart--;
+								}
+
+								// Now check if there's a comment line before the '-' line
+								// by checking the line before lineStart
+								if (lineStart > 0) {
+									const prevLineEnd = lineStart - 1; // This is the \n before current line
+									let prevLineStart = prevLineEnd;
+									while (
+										prevLineStart > 0 &&
+										fullText[prevLineStart - 1] !== "\n"
+									) {
+										prevLineStart--;
+									}
+
+									const prevLine = fullText.substring(
+										prevLineStart,
+										prevLineEnd,
+									);
+									const trimmedPrevLine = prevLine.trim();
+
+									// If the previous line is a comment, insert before it
+									if (trimmedPrevLine.startsWith("#")) {
+										insertPosition = prevLineStart;
+									} else {
+										insertPosition = lineStart;
+									}
+								} else {
+									insertPosition = lineStart;
+								}
+							}
+
+							// Add the indentation prefix to the template
+							const indent = "  ";
+							const templateWithIndent = ecosystem.template
+								.split("\n")
+								.map((line, index) => {
+									// First line gets the indent, others are already indented in the template
+									if (index === 0) {
+										return indent + line;
+									}
+									return line;
+								})
+								.join("\n");
+
 							return fixer.insertTextBeforeRange(
-								[updatesRange[0], updatesRange[0]],
-								ecosystem.template,
+								[insertPosition, insertPosition],
+								templateWithIndent,
 							);
 						},
 						messageId: ecosystem.messageId,

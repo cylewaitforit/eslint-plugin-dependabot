@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.0](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.5.5...0.6.0) (2026-01-25)
+
+### Features
+
+- add github-actions package ecosystem to require-package-ecosystem rule ([#69](https://github.com/cylewaitforit/eslint-plugin-dependabot/issues/69)) ([095b6ce](https://github.com/cylewaitforit/eslint-plugin-dependabot/commit/095b6ce7c7d1ecb87fb5f7e38f5f1b1c6aec86db))
+
 ## [0.5.5](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.5.4...0.5.5) (2026-01-03)
 
 ### Bug Fixes

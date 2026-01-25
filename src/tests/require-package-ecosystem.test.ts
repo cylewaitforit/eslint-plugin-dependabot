@@ -124,4 +124,109 @@ describe("require-package-ecosystem", () => {
 			],
 		});
 	});
+
+	it("should pass when github-actions ecosystem is configured and workflows exist", () => {
+		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
+			invalid: [],
+			valid: [
+				{
+					code: readFixture("valid-with-github-actions/dependabot.yaml"),
+					filename: "dependabot.yaml",
+					language: "yaml/yaml",
+					options: [
+						{ checkDirectory: getFixtureCwd("valid-with-github-actions") },
+					],
+				},
+			],
+		});
+	});
+
+	it("should validate no error when .github/workflows directory does not exist", () => {
+		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
+			invalid: [],
+			valid: [
+				{
+					code: readFixture("valid-no-workflows-directory/dependabot.yaml"),
+					filename: "dependabot.yaml",
+					language: "yaml/yaml",
+					options: [
+						{ checkDirectory: getFixtureCwd("valid-no-workflows-directory") },
+					],
+				},
+			],
+		});
+	});
+
+	it("should error when github-actions ecosystem is missing", () => {
+		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
+			invalid: [
+				{
+					code: readFixture("invalid-missing-github-actions/dependabot.yaml"),
+					errors: [
+						{
+							messageId: "missingGithubActionsEcosystem",
+						},
+					],
+					filename: "dependabot.yaml",
+					language: "yaml/yaml",
+					options: [
+						{
+							checkDirectory: getFixtureCwd("invalid-missing-github-actions"),
+						},
+					],
+					output: readFixture("invalid-missing-github-actions/output.yaml"),
+				},
+			],
+			valid: [],
+		});
+	});
+
+	it("should not error when github-actions is in disabledEcosystems", () => {
+		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
+			invalid: [],
+			valid: [
+				{
+					code: readFixture("invalid-missing-github-actions/dependabot.yaml"),
+					filename: "dependabot.yaml",
+					language: "yaml/yaml",
+					options: [
+						{
+							checkDirectory: getFixtureCwd("invalid-missing-github-actions"),
+							disabledEcosystems: ["github-actions"],
+						},
+					],
+				},
+			],
+		});
+	});
+
+	it("should add github-actions before npm block with comment when both are missing", () => {
+		ruleTester.run("require-package-ecosystem", requirePackageEcosystemRule, {
+			invalid: [
+				{
+					code: readFixture(
+						"invalid-missing-github-actions-with-npm/dependabot.yaml",
+					),
+					errors: [
+						{
+							messageId: "missingGithubActionsEcosystem",
+						},
+					],
+					filename: "dependabot.yaml",
+					language: "yaml/yaml",
+					options: [
+						{
+							checkDirectory: getFixtureCwd(
+								"invalid-missing-github-actions-with-npm",
+							),
+						},
+					],
+					output: readFixture(
+						"invalid-missing-github-actions-with-npm/output.yaml",
+					),
+				},
+			],
+			valid: [],
+		});
+	});
 });

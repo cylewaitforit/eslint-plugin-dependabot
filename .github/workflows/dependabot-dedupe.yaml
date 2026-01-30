@@ -16,8 +16,7 @@ jobs:
   dedupe:
     # Only run on Dependabot PRs with the 'needs dedupe' label
     if: >
-      github.event.label.name == 'needs dedupe' &&
-      github.actor == 'dependabot[bot]'
+      github.event.label.name == 'needs dedupe'
     name: Run pnpm dedupe
     runs-on: ubuntu-latest
     steps:

@@ -1,0 +1,42 @@
+name: Dependabot Dedupe
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  dedupe:
+    # Only run on Dependabot PRs
+    if: github.actor == 'dependabot[bot]'
+    name: Run pnpm dedupe
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Checkout the PR branch with token that can push
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: ./.github/actions/prepare
+
+      - name: Run pnpm dedupe
+        run: pnpm dedupe
+
+      - id: git-check
+        name: Check for changes
+        run: |
+          git diff --exit-code || echo "changes=true" >> $GITHUB_OUTPUT
+
+      - if: steps.git-check.outputs.changes == 'true'
+        name: Commit and push if changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add pnpm-lock.yaml
+          git commit -m 'chore: run pnpm dedupe'
+          git push

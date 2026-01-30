@@ -24,23 +24,43 @@ jobs:
     name: Run pnpm dedupe
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - id: pr
+        name: Get PR number
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pulls = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              head: `${context.repo.owner}:${{ github.event.workflow_run.head_branch }}`,
+              state: 'open'
+            });
+            if (pulls.data.length > 0) {
+              return pulls.data[0].number;
+            }
+            return null;
+
+      - if: steps.pr.outputs.result != 'null'
+        uses: actions/checkout@v4
         with:
           # Checkout the PR branch with token that can push
           ref: ${{ github.event.workflow_run.head_branch }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: ./.github/actions/prepare
+      - if: steps.pr.outputs.result != 'null'
+        uses: ./.github/actions/prepare
 
-      - name: Run pnpm dedupe
+      - if: steps.pr.outputs.result != 'null'
+        name: Run pnpm dedupe
         run: pnpm dedupe
 
       - id: git-check
+        if: steps.pr.outputs.result != 'null'
         name: Check for changes
         run: |
           git diff --exit-code || echo "changes=true" >> $GITHUB_OUTPUT
 
-      - if: steps.git-check.outputs.changes == 'true'
+      - if: steps.pr.outputs.result != 'null' && steps.git-check.outputs.changes == 'true'
         name: Commit and push if changes
         run: |
           git config --global user.name 'github-actions[bot]'

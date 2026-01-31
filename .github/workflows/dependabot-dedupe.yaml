@@ -20,8 +20,8 @@ jobs:
     name: Run pnpm dedupe
     runs-on: ubuntu-latest
     steps:
-      - name: Generate GitHub App token
-        id: generate-token
+      - id: generate-token
+        name: Generate GitHub App token
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
           app-id: ${{ vars.DEDUPEBOT_ID }}

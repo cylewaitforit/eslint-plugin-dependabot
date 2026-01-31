@@ -55,9 +55,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/prepare
       - run: pnpm lint:packages
-      - if: failure() && github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
+      - id: generate-token
+        if: failure() && github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
         name: Generate GitHub App token
-        id: generate-token
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
           app-id: ${{ vars.DEDUPEBOT_ID }}

@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.1](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.6.0...0.6.1) (2026-02-14)
+
+### Bug Fixes
+
+- inline comment preservation in require-cooldown autofix ([#92](https://github.com/cylewaitforit/eslint-plugin-dependabot/issues/92)) ([db3e6e6](https://github.com/cylewaitforit/eslint-plugin-dependabot/commit/db3e6e670df89b927c72f7236ed26b1348b0d587))
+
 ## [0.6.0](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.5.5...0.6.0) (2026-01-25)
 
 ### Features

@@ -58,6 +58,8 @@ function validateEcosystemCooldown(
 					) {
 						const sourceCode = context.sourceCode.getText();
 						const newlineAfterValue = sourceCode.indexOf("\n", insertPosition);
+						// If a newline is found, insert after it to preserve the inline comment
+						// If no newline is found (edge case: last line), the comment will remain inline
 						if (newlineAfterValue !== -1) {
 							insertPosition = newlineAfterValue;
 						}

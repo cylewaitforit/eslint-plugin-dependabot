@@ -49,7 +49,22 @@ function validateEcosystemCooldown(
 			},
 			fix(fixer) {
 				if (packageEcosystemRange) {
-					const insertPosition = packageEcosystemRange[1];
+					let insertPosition = packageEcosystemRange[1];
+
+					// If there's an inline comment, insert after it instead of before it
+					if (
+						isScalar(packageEcosystemValue) &&
+						packageEcosystemValue.comment
+					) {
+						const sourceCode = context.sourceCode.getText();
+						const newlineAfterValue = sourceCode.indexOf("\n", insertPosition);
+						// If a newline is found, insert after it to preserve the inline comment
+						// If no newline is found (edge case: last line), the comment will remain inline
+						if (newlineAfterValue !== -1) {
+							insertPosition = newlineAfterValue;
+						}
+					}
+
 					return fixer.insertTextAfterRange(
 						[insertPosition, insertPosition],
 						`\n    cooldown:\n      default-days: ${String(defaultDays)}`,

@@ -104,6 +104,17 @@ describe("require-cooldown", () => {
 					language: "yaml/yaml",
 					output: readFixture("invalid-cooldown-scalar/output.yaml"),
 				},
+				{
+					code: readFixture("invalid-with-inline-comment/dependabot.yaml"),
+					errors: [
+						{
+							messageId: "missingCooldown",
+						},
+					],
+					filename: "dependabot.yaml",
+					language: "yaml/yaml",
+					output: readFixture("invalid-with-inline-comment/output.yaml"),
+				},
 			],
 		});
 	});

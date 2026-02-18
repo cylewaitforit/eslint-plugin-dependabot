@@ -14,7 +14,7 @@ jobs:
     steps:
       - id: checkPermissions
         name: Check permissions
-        uses: actions-cool/check-user-permission@v2
+        uses: actions-cool/check-user-permission@7b90a27f92f3961b368376107661682c441f6103 # v2.3.0
         with:
           # In this example, the approver must have the write access
           # to the repository to trigger the package preview.
@@ -27,10 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - run: corepack enable
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           cache: pnpm
           node-version: 20

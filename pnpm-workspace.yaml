@@ -32,7 +32,7 @@ catalog:
   prettier-plugin-packagejson: 3.0.0
   prettier-plugin-sh: 0.17.4
   release-it: ^19.2.2
-  sentences-per-line: 0.3.0
+  sentences-per-line: 0.5.1
   should-semantic-release: ^0.3.5
   tsdown: 0.12.7
   typescript: 5.9.2

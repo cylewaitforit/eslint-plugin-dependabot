@@ -21,7 +21,13 @@
 		"email": "cyle@cylewaitfor.it"
 	},
 	"type": "module",
-	"main": "lib/index.js",
+	"exports": {
+		".": {
+			"types": "./lib/index.d.mts",
+			"default": "./lib/index.mjs"
+		}
+	},
+	"main": "lib/index.mjs",
 	"files": [
 		"lib/"
 	],

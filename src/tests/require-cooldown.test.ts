@@ -1,4 +1,4 @@
-import { yaml } from "eslint-yaml";
+import yml from "eslint-plugin-yml";
 import fs from "fs";
 import path from "path";
 import { describe, it } from "vitest";
@@ -8,7 +8,7 @@ import { YAMLRuleTester } from "./utils/yaml-rule-tester.js";
 
 const ruleTester = new YAMLRuleTester({
 	plugins: {
-		yaml,
+		yml,
 	},
 });
 
@@ -29,22 +29,22 @@ describe("require-cooldown", () => {
 				{
 					code: readFixture("valid-simple/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 				},
 				{
 					code: readFixture("valid-with-all-options/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 				},
 				{
 					code: readFixture("valid-multiple-ecosystems/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 				},
 				{
 					code: readFixture("valid-with-comments/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 				},
 			],
 			// eslint-disable-next-line perfectionist/sort-objects -- Valid cases should come before invalid for readability
@@ -57,7 +57,7 @@ describe("require-cooldown", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					output: readFixture("invalid-no-cooldown/output.yaml"),
 				},
 				{
@@ -68,7 +68,7 @@ describe("require-cooldown", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					output: readFixture("invalid-missing-default-days/output.yaml"),
 				},
 				{
@@ -79,7 +79,7 @@ describe("require-cooldown", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					output: readFixture("invalid-one-missing-cooldown/output.yaml"),
 				},
 				{
@@ -90,7 +90,7 @@ describe("require-cooldown", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					output: readFixture("invalid-empty-cooldown/output.yaml"),
 				},
 				{
@@ -101,7 +101,7 @@ describe("require-cooldown", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					output: readFixture("invalid-cooldown-scalar/output.yaml"),
 				},
 				{
@@ -112,7 +112,7 @@ describe("require-cooldown", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					output: readFixture("invalid-with-inline-comment/output.yaml"),
 				},
 			],

@@ -1,8 +1,8 @@
 import type { Rule } from "eslint";
+import type { AST } from "yaml-eslint-parser";
 
 import fs from "node:fs";
 import path from "node:path";
-import { isMap, isScalar, isSeq } from "yaml";
 
 import {
 	createRootMapVisitor,
@@ -129,18 +129,8 @@ export const requirePackageEcosystemRule = {
 				const firstMissing = missingEcosystems[0];
 				context.report({
 					fix(fixer) {
-						const rootRange = rootMap.range;
-						if (!rootRange) {
-							return null;
-						}
-
 						const versionPair = findPairByKey(rootMap, "version");
-						if (!versionPair?.value || !isScalar(versionPair.value)) {
-							return null;
-						}
-
-						const versionRange = versionPair.value.range;
-						if (!versionRange) {
+						if (versionPair?.value?.type !== "YAMLScalar") {
 							return null;
 						}
 
@@ -150,7 +140,7 @@ export const requirePackageEcosystemRule = {
 							.join("");
 
 						return fixer.insertTextAfterRange(
-							[versionRange[1], versionRange[1]],
+							[versionPair.value.range[1], versionPair.value.range[1]],
 							`\nupdates:\n  ${allTemplates}`,
 						);
 					},
@@ -161,13 +151,17 @@ export const requirePackageEcosystemRule = {
 			}
 
 			const updatesArray = updatesPair.value;
-			if (!isSeq(updatesArray)) {
+			if (updatesArray?.type !== "YAMLSequence") {
 				return;
 			}
 
 			// Get list of existing ecosystems
-			const existingEcosystems = updatesArray.items
-				.filter(isMap)
+			const existingEcosystems = (
+				updatesArray.entries.filter(
+					(item): item is AST.YAMLMapping =>
+						item !== null && item.type === "YAMLMapping",
+				) as AST.YAMLMapping[]
+			)
 				.map((item) => {
 					const ecosystemPair = findPairByKey(item, "package-ecosystem");
 					return ecosystemPair
@@ -179,20 +173,16 @@ export const requirePackageEcosystemRule = {
 			// Check each missing ecosystem
 			for (const ecosystem of missingEcosystems) {
 				if (!existingEcosystems.includes(ecosystem.name)) {
-					const updatesRange = updatesArray.range;
-
 					context.report({
 						fix(fixer) {
-							if (!updatesRange) {
-								return null;
-							}
+							const updatesRange = updatesArray.range;
 
 							// Find the position to insert
 							// We need to insert at the beginning of the line (after the preceding \n)
 							// This ensures we insert before any comments and with proper indentation
 							let insertPosition = updatesRange[0];
 
-							if (updatesArray.items.length > 0) {
+							if (updatesArray.entries.length > 0) {
 								const sourceCode = context.sourceCode;
 								const fullText = sourceCode.getText();
 

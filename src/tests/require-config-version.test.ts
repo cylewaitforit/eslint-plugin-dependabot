@@ -1,4 +1,4 @@
-import { yaml } from "eslint-yaml";
+import yml from "eslint-plugin-yml";
 import fs from "fs";
 import path from "path";
 import { describe, it } from "vitest";
@@ -8,7 +8,7 @@ import { YAMLRuleTester } from "./utils/yaml-rule-tester.js";
 
 const ruleTester = new YAMLRuleTester({
 	plugins: {
-		yaml,
+		yml,
 	},
 });
 
@@ -33,12 +33,12 @@ describe("require-config-version", () => {
 				{
 					code: readFixture("valid-simple/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 				},
 				{
 					code: readFixture("valid-version-string/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 				},
 			],
 			// eslint-disable-next-line perfectionist/sort-objects -- Valid cases should come before invalid for readability
@@ -51,7 +51,7 @@ describe("require-config-version", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					output: readFixture("invalid-missing-version/output.yaml"),
 				},
 				{
@@ -62,7 +62,7 @@ describe("require-config-version", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					output: readFixture("invalid-wrong-version/output.yaml"),
 				},
 			],
@@ -75,7 +75,7 @@ describe("require-config-version", () => {
 				{
 					code: readFixture("valid-version-3/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					options: [{ version: 3 }],
 				},
 			],
@@ -89,7 +89,7 @@ describe("require-config-version", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					options: [{ version: 3 }],
 					output: readFixture("valid-simple/output-v3.yaml"),
 				},
@@ -101,7 +101,7 @@ describe("require-config-version", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					options: [{ version: 3 }],
 					output: readFixture("invalid-missing-version-v3/output.yaml"),
 				},

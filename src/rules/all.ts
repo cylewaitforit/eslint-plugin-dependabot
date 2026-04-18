@@ -6,7 +6,7 @@ import { requirePackageEcosystemRule } from "./require-package-ecosystem.js";
 
 /**
  * All rules exported by this plugin.
- * Rules are standard ESLint Rule.RuleModule objects that work with eslint-yaml's language plugin.
+ * Rules are standard ESLint Rule.RuleModule objects that work with eslint-plugin-yml's language plugin.
  */
 export const rules = {
 	"require-config-version": requireConfigVersionRule,

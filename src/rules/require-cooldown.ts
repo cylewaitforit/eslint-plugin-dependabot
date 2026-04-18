@@ -1,7 +1,5 @@
 import type { Rule } from "eslint";
-import type { YAMLMap } from "yaml";
-
-import { isMap, isNode, isScalar, isSeq } from "yaml";
+import type { AST } from "yaml-eslint-parser";
 
 import {
 	createRootMapVisitor,
@@ -23,7 +21,7 @@ interface RuleOptions {
  * Reports an error if the cooldown is missing or invalid.
  */
 function validateEcosystemCooldown(
-	ecosystemMap: YAMLMap,
+	ecosystemMap: AST.YAMLMapping,
 	context: Rule.RuleContext,
 	defaultDays: number,
 ): void {
@@ -38,11 +36,13 @@ function validateEcosystemCooldown(
 
 	const cooldownPair = findPairByKey(ecosystemMap, "cooldown");
 
-	if (!cooldownPair?.value) {
+	if (!cooldownPair) {
 		const packageEcosystemValue = packageEcosystemPair.value;
-		const packageEcosystemRange = isScalar(packageEcosystemValue)
-			? packageEcosystemValue.range
-			: undefined;
+		const packageEcosystemRange =
+			packageEcosystemValue !== null &&
+			packageEcosystemValue.type === "YAMLScalar"
+				? packageEcosystemValue.range
+				: undefined;
 		context.report({
 			data: {
 				ecosystem: ecosystemName,
@@ -52,17 +52,14 @@ function validateEcosystemCooldown(
 					let insertPosition = packageEcosystemRange[1];
 
 					// If there's an inline comment, insert after it instead of before it
-					if (
-						isScalar(packageEcosystemValue) &&
-						packageEcosystemValue.comment
-					) {
-						const sourceCode = context.sourceCode.getText();
-						const newlineAfterValue = sourceCode.indexOf("\n", insertPosition);
-						// If a newline is found, insert after it to preserve the inline comment
-						// If no newline is found (edge case: last line), the comment will remain inline
-						if (newlineAfterValue !== -1) {
-							insertPosition = newlineAfterValue;
-						}
+					const sourceCode = context.sourceCode.getText();
+					const newlineAfterValue = sourceCode.indexOf("\n", insertPosition);
+					const textBetween = sourceCode.slice(
+						insertPosition,
+						newlineAfterValue,
+					);
+					if (newlineAfterValue !== -1 && textBetween.trim().length > 0) {
+						insertPosition = newlineAfterValue;
 					}
 
 					return fixer.insertTextAfterRange(
@@ -81,37 +78,40 @@ function validateEcosystemCooldown(
 	const cooldownValue = cooldownPair.value;
 
 	const hasValidDefaultDays =
-		isMap(cooldownValue) &&
-		findPairByKey(cooldownValue, "default-days")?.value !== undefined;
+		cooldownValue !== null &&
+		cooldownValue.type === "YAMLMapping" &&
+		findPairByKey(cooldownValue as AST.YAMLMapping, "default-days")?.value !==
+			undefined;
 
 	if (!hasValidDefaultDays) {
-		const cooldownRange = isNode(cooldownValue)
-			? cooldownValue.range
-			: undefined;
 		const cooldownKeyRange = cooldownPair.key.range;
 		context.report({
 			data: {
 				ecosystem: ecosystemName,
 			},
 			fix(fixer) {
-				if (isMap(cooldownValue) && cooldownRange) {
-					const insertPosition = cooldownRange[0];
+				// Case 1: cooldown is a mapping — insert default-days before existing keys
+				if (cooldownValue !== null && cooldownValue.type === "YAMLMapping") {
 					return fixer.insertTextBeforeRange(
-						[insertPosition, insertPosition],
+						[cooldownValue.range[0], cooldownValue.range[0]],
 						`default-days: ${String(defaultDays)}\n      `,
 					);
 				}
 
-				if (cooldownKeyRange && cooldownRange) {
-					const keyEnd = cooldownKeyRange[1];
-					const valueEnd = cooldownRange[1];
-					return fixer.replaceTextRange(
-						[keyEnd, valueEnd],
-						`:\n      default-days: ${String(defaultDays)}`,
+				// Case 2: cooldown value is null (e.g. `cooldown:` with nothing after)
+				// — insert default-days on the next line after the colon
+				if (cooldownValue === null) {
+					return fixer.insertTextAfterRange(
+						[cooldownPair.range[1], cooldownPair.range[1]],
+						`\n      default-days: ${String(defaultDays)}`,
 					);
 				}
 
-				return null;
+				// Case 3: cooldown is a scalar — replace 'cooldown: <value>' with the map form
+				return fixer.replaceTextRange(
+					[cooldownKeyRange[1], cooldownValue.range[1]],
+					`:\n      default-days: ${String(defaultDays)}`,
+				);
 			},
 			messageId: "missingDefaultDays",
 			node: yamlNodeToRuleNode(cooldownPair),
@@ -122,7 +122,7 @@ function validateEcosystemCooldown(
 /**
  * Rule to require cooldown configuration for each package-ecosystem in Dependabot files.
  * Uses standard ESLint RuleDefinition and handles YAML nodes via runtime type checking.
- * This approach is compatible with both eslint-yaml and other ESLint configurations.
+ * This approach is compatible with eslint-plugin-yml and other ESLint configurations.
  */
 export const requireCooldownRule = {
 	meta: {
@@ -167,16 +167,20 @@ export const requireCooldownRule = {
 			}
 
 			const updatesValue = updatesPair.value;
-			if (!isSeq(updatesValue)) {
+			if (updatesValue?.type !== "YAMLSequence") {
 				return;
 			}
 
-			for (const item of updatesValue.items) {
-				if (!isMap(item)) {
+			for (const item of updatesValue.entries) {
+				if (item?.type !== "YAMLMapping") {
 					continue;
 				}
 
-				validateEcosystemCooldown(item, context, defaultDays);
+				validateEcosystemCooldown(
+					item as AST.YAMLMapping,
+					context,
+					defaultDays,
+				);
 			}
 		});
 	},

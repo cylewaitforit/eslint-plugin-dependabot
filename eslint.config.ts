@@ -1,7 +1,6 @@
 import comments from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import eslint from "@eslint/js";
 import vitest from "@vitest/eslint-plugin";
-import dependabot from "eslint-plugin-dependabot";
 import eslintPlugin from "eslint-plugin-eslint-plugin";
 import jsdoc from "eslint-plugin-jsdoc";
 import jsonc from "eslint-plugin-jsonc";
@@ -15,6 +14,8 @@ import yml from "eslint-plugin-yml";
 import { yaml } from "eslint-yaml";
 import { defineConfig, globalIgnores } from "eslint/config";
 import tseslint from "typescript-eslint";
+
+import dependabot from "./src/index.ts";
 
 export default defineConfig([
 	globalIgnores(

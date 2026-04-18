@@ -54,12 +54,14 @@ function validateEcosystemCooldown(
 					// If there's an inline comment, insert after it instead of before it
 					const sourceCode = context.sourceCode.getText();
 					const newlineAfterValue = sourceCode.indexOf("\n", insertPosition);
-					const textBetween = sourceCode.slice(
-						insertPosition,
-						newlineAfterValue,
-					);
-					if (newlineAfterValue !== -1 && textBetween.trim().length > 0) {
-						insertPosition = newlineAfterValue;
+					if (newlineAfterValue !== -1) {
+						const textBetween = sourceCode.slice(
+							insertPosition,
+							newlineAfterValue,
+						);
+						if (textBetween.trim().startsWith("#")) {
+							insertPosition = newlineAfterValue;
+						}
 					}
 
 					return fixer.insertTextAfterRange(

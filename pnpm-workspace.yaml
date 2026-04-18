@@ -20,7 +20,7 @@ catalog:
   eslint-plugin-perfectionist: 5.5.0
   eslint-plugin-pnpm: ^1.4.3
   eslint-plugin-regexp: 2.10.0
-  eslint-plugin-yml: 1.18.0
+  eslint-plugin-yml: 3.3.1
   eslint-yaml: 0.1.0
   knip: 5.72.0
   lefthook: 1.10.3

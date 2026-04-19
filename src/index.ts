@@ -37,6 +37,24 @@ const plugin = {
 				"dependabot/require-config-version": ["error", { version: 2 }],
 				"dependabot/require-cooldown": "error",
 				"dependabot/require-package-ecosystem": "error",
+				// Dependabot yaml has its own ordering
+				"yml/sort-keys": [
+					"error",
+					{
+						order: ["version", "updates"],
+						pathPattern: "^$",
+					},
+					{
+						order: [
+							"package-ecosystem",
+							"directory",
+							"cooldown",
+							"schedule",
+							"asc",
+						],
+						pathPattern: "^updates\\[\\d+\\]$",
+					},
+				],
 			},
 		},
 	},

@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.0](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.6.1...0.7.0) (2026-04-19)
+
+### Features
+
+- move from eslint-yaml to eslint-plugin-yml v3 as YAML language plugin ([#109](https://github.com/cylewaitforit/eslint-plugin-dependabot/issues/109)) ([70b11f3](https://github.com/cylewaitforit/eslint-plugin-dependabot/commit/70b11f39eac644473c48f2d4f8b2ac3e7c4e06f4))
+
 ## [0.6.1](https://github.com/cylewaitforit/eslint-plugin-dependabot/compare/0.6.0...0.6.1) (2026-02-14)
 
 ### Bug Fixes

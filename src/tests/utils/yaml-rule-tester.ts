@@ -11,7 +11,7 @@ import { RuleTester } from "eslint";
  * ruleTester.run("my-rule", rule, {
  *   valid: [{
  *     code: "version: 2",
- *     language: "yaml/yaml",
+ *     language: "yml/yaml",
  *   }],
  *   invalid: [],
  * });

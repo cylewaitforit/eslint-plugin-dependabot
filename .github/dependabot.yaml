@@ -1,18 +1,18 @@
 version: 2
 updates:
   # Enable version updates for GitHub Actions
-  - package-ecosystem: "github-actions"
+  - package-ecosystem: github-actions
+    # Look for workflow files in the `.github/workflows` directory
+    directory: /
     cooldown:
       default-days: 7
-    # Look for workflow files in the `.github/workflows` directory
-    directory: "/"
     schedule:
       interval: weekly
   # Enable version updates for npm
-  - package-ecosystem: "npm"
+  - package-ecosystem: npm
     # Look for `package.json` and lock files in the root directory
-    directory: "/"
-    schedule:
-      interval: "weekly"
+    directory: /
     cooldown:
       default-days: 7
+    schedule:
+      interval: weekly

@@ -5,20 +5,20 @@ import { rules } from "./rules/all.js";
 
 /**
  * ESLint plugin for Dependabot configuration files.
- * This plugin works with eslint-yaml to lint `.github/dependabot.{yml,yaml}` files.
+ * This plugin works with eslint-plugin-yml to lint `.github/dependabot.{yml,yaml}` files.
  * @example
  * ```js
  * // eslint.config.mjs
  * import dependabot from "eslint-plugin-dependabot";
- * import { yaml } from "eslint-yaml";
+ * import yml from "eslint-plugin-yml";
  * import { defineConfig } from "eslint/config";
  *
  * export default defineConfig([
  *   {
  *     name: "dependabot config",
  *     files: ["**\/.github\/dependabot.{yml,yaml}"],
- *     language: "yaml/yaml",
- *     plugins: { dependabot, yaml },
+ *     language: "yml/yaml",
+ *     plugins: { dependabot, yml },
  *     extends: [dependabot.configs.recommended],
  *   },
  * ]);
@@ -37,6 +37,24 @@ const plugin = {
 				"dependabot/require-config-version": ["error", { version: 2 }],
 				"dependabot/require-cooldown": "error",
 				"dependabot/require-package-ecosystem": "error",
+				// Dependabot yaml has its own ordering
+				"yml/sort-keys": [
+					"error",
+					{
+						order: ["version", "updates"],
+						pathPattern: "^$",
+					},
+					{
+						order: [
+							"package-ecosystem",
+							"directory",
+							"cooldown",
+							"schedule",
+							"asc",
+						],
+						pathPattern: "^updates\\[\\d+\\]$",
+					},
+				],
 			},
 		},
 	},

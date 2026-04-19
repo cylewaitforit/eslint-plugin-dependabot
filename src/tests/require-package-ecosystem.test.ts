@@ -1,4 +1,4 @@
-import { yaml } from "eslint-yaml";
+import yml from "eslint-plugin-yml";
 import fs from "fs";
 import path from "path";
 import { describe, it } from "vitest";
@@ -34,7 +34,7 @@ function getFixtureCwd(fixtureName: string): string {
 describe("require-package-ecosystem", () => {
 	const ruleTester = new YAMLRuleTester({
 		plugins: {
-			yaml,
+			yml,
 		},
 	});
 
@@ -45,7 +45,7 @@ describe("require-package-ecosystem", () => {
 				{
 					code: readFixture("valid-with-npm/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					options: [{ checkDirectory: getFixtureCwd("valid-with-npm") }],
 				},
 			],
@@ -59,7 +59,7 @@ describe("require-package-ecosystem", () => {
 				{
 					code: readFixture("valid-no-package-json/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					options: [{ checkDirectory: getFixtureCwd("valid-no-package-json") }],
 				},
 			],
@@ -77,7 +77,7 @@ describe("require-package-ecosystem", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					options: [{ checkDirectory: getFixtureCwd("invalid-missing-npm") }],
 					output: readFixture("invalid-missing-npm/output.yaml"),
 				},
@@ -97,7 +97,7 @@ describe("require-package-ecosystem", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					options: [{ checkDirectory: getFixtureCwd("invalid-no-updates") }],
 					output: readFixture("invalid-no-updates/output.yaml"),
 				},
@@ -113,7 +113,7 @@ describe("require-package-ecosystem", () => {
 				{
 					code: readFixture("invalid-missing-npm/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					options: [
 						{
 							checkDirectory: getFixtureCwd("invalid-missing-npm"),
@@ -132,7 +132,7 @@ describe("require-package-ecosystem", () => {
 				{
 					code: readFixture("valid-with-github-actions/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					options: [
 						{ checkDirectory: getFixtureCwd("valid-with-github-actions") },
 					],
@@ -148,7 +148,7 @@ describe("require-package-ecosystem", () => {
 				{
 					code: readFixture("valid-no-workflows-directory/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					options: [
 						{ checkDirectory: getFixtureCwd("valid-no-workflows-directory") },
 					],
@@ -168,7 +168,7 @@ describe("require-package-ecosystem", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					options: [
 						{
 							checkDirectory: getFixtureCwd("invalid-missing-github-actions"),
@@ -188,7 +188,7 @@ describe("require-package-ecosystem", () => {
 				{
 					code: readFixture("invalid-missing-github-actions/dependabot.yaml"),
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					options: [
 						{
 							checkDirectory: getFixtureCwd("invalid-missing-github-actions"),
@@ -213,7 +213,7 @@ describe("require-package-ecosystem", () => {
 						},
 					],
 					filename: "dependabot.yaml",
-					language: "yaml/yaml",
+					language: "yml/yaml",
 					options: [
 						{
 							checkDirectory: getFixtureCwd(

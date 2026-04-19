@@ -11,7 +11,6 @@ import perfectionist from "eslint-plugin-perfectionist";
 import { configs } from "eslint-plugin-pnpm";
 import * as regexp from "eslint-plugin-regexp";
 import yml from "eslint-plugin-yml";
-import { yaml } from "eslint-yaml";
 import { defineConfig, globalIgnores } from "eslint/config";
 import tseslint from "typescript-eslint";
 
@@ -196,11 +195,11 @@ export default defineConfig([
 	{
 		extends: [dependabot.configs.recommended],
 		files: ["**/.github/dependabot.{yml,yaml}"],
-		language: "yaml/yaml",
+		language: "yml/yaml",
 		name: "Dependabot config",
 		plugins: {
 			dependabot,
-			yaml,
+			yml,
 		},
 	},
 ]);

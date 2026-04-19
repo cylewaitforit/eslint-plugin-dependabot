@@ -1,6 +1,5 @@
 import type { Rule } from "eslint";
-
-import { isScalar } from "yaml";
+import type { AST } from "yaml-eslint-parser";
 
 import {
 	createRootMapVisitor,
@@ -19,7 +18,7 @@ interface RuleOptions {
 /**
  * Rule to require a version property in Dependabot configuration files.
  * Uses standard ESLint RuleDefinition and handles YAML nodes via runtime type checking.
- * This approach is compatible with both eslint-yaml and other ESLint configurations.
+ * This approach is compatible with eslint-plugin-yml and other ESLint configurations.
  */
 export const requireConfigVersionRule = {
 	meta: {
@@ -60,19 +59,15 @@ export const requireConfigVersionRule = {
 			const versionPair = findPairByKey(rootMap, "version");
 
 			if (!versionPair) {
-				const rootRange = rootMap.range;
 				context.report({
 					data: {
 						version: String(requiredVersion),
 					},
 					fix(fixer) {
-						if (rootRange) {
-							return fixer.insertTextBeforeRange(
-								[rootRange[0], rootRange[0]],
-								`version: ${String(requiredVersion)}\n`,
-							);
-						}
-						return null;
+						return fixer.insertTextBeforeRange(
+							[rootMap.range[0], rootMap.range[0]],
+							`version: ${String(requiredVersion)}\n`,
+						);
 					},
 					messageId: "missingVersion",
 					node: yamlNodeToRuleNode(rootMap),
@@ -81,8 +76,9 @@ export const requireConfigVersionRule = {
 			}
 
 			const versionValue = versionPair.value;
-			if (isScalar(versionValue)) {
-				const actualValue = versionValue.value;
+			if (versionValue !== null && versionValue.type === "YAMLScalar") {
+				const versionScalar = versionValue as AST.YAMLScalar;
+				const actualValue = versionScalar.value;
 				const actualNum =
 					typeof actualValue === "number"
 						? actualValue
@@ -91,20 +87,16 @@ export const requireConfigVersionRule = {
 							: NaN;
 
 				if (actualNum !== requiredVersion) {
-					const versionRange = versionValue.range;
 					context.report({
 						data: {
 							actual: String(actualValue),
 							expected: String(requiredVersion),
 						},
 						fix(fixer) {
-							if (versionRange) {
-								return fixer.replaceTextRange(
-									[versionRange[0], versionRange[1]],
-									String(requiredVersion),
-								);
-							}
-							return null;
+							return fixer.replaceTextRange(
+								[versionScalar.range[0], versionScalar.range[1]],
+								String(requiredVersion),
+							);
 						},
 						messageId: "incorrectVersion",
 						node: yamlNodeToRuleNode(versionPair),

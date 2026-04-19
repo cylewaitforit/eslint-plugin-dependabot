@@ -46,9 +46,6 @@
 		"test": "vitest",
 		"tsc": "tsc"
 	},
-	"dependencies": {
-		"yaml": "catalog:"
-	},
 	"devDependencies": {
 		"@eslint-community/eslint-plugin-eslint-comments": "catalog:",
 		"@eslint/js": "catalog:",
@@ -72,7 +69,6 @@
 		"eslint-plugin-pnpm": "catalog:",
 		"eslint-plugin-regexp": "catalog:",
 		"eslint-plugin-yml": "catalog:",
-		"eslint-yaml": "catalog:",
 		"knip": "catalog:",
 		"lefthook": "catalog:",
 		"markdownlint": "catalog:",
@@ -88,11 +84,12 @@
 		"tsdown": "catalog:",
 		"typescript": "catalog:",
 		"typescript-eslint": "catalog:",
-		"vitest": "catalog:"
+		"vitest": "catalog:",
+		"yaml-eslint-parser": "catalog:"
 	},
 	"peerDependencies": {
 		"eslint": ">=9.0.0",
-		"eslint-yaml": ">=0.1.0"
+		"eslint-plugin-yml": ">=3.0.0"
 	},
 	"packageManager": "pnpm@10.16.0+sha512.8066e7b034217b700a9a4dbb3a005061d641ba130a89915213a10b3ca4919c19c037bec8066afdc559b89635fdb806b16ea673f2468fbb28aabfa13c53e3f769",
 	"engines": {

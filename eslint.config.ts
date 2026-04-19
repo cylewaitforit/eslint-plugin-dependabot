@@ -199,6 +199,7 @@ export default defineConfig([
 		name: "Dependabot config",
 		plugins: {
 			dependabot,
+			yml,
 		},
 	},
 ]);

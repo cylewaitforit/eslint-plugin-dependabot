@@ -1,0 +1,7 @@
+{
+	"src/tests/utils/yaml-rule-tester.ts": {
+		"@typescript-eslint/no-useless-constructor": {
+			"count": 1
+		}
+	}
+}

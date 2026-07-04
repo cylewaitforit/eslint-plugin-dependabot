@@ -82,8 +82,7 @@ function validateEcosystemCooldown(
 	const hasValidDefaultDays =
 		cooldownValue !== null &&
 		cooldownValue.type === "YAMLMapping" &&
-		findPairByKey(cooldownValue as AST.YAMLMapping, "default-days")?.value !==
-			undefined;
+		findPairByKey(cooldownValue, "default-days")?.value !== undefined;
 
 	if (!hasValidDefaultDays) {
 		const cooldownKeyRange = cooldownPair.key.range;
@@ -178,11 +177,7 @@ export const requireCooldownRule = {
 					continue;
 				}
 
-				validateEcosystemCooldown(
-					item as AST.YAMLMapping,
-					context,
-					defaultDays,
-				);
+				validateEcosystemCooldown(item, context, defaultDays);
 			}
 		});
 	},

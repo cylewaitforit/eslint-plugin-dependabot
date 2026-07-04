@@ -23,8 +23,7 @@ export class YAMLRuleTester extends RuleTester {
 	 * ESLint's RuleTester types are strict, but language plugins may not match perfectly.
 	 */
 	constructor(options: Record<string, unknown>) {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
-		super(options as any);
+		super(options);
 	}
 
 	/**

@@ -13,8 +13,8 @@ catalogs:
       specifier: 9.39.4
       version: 9.39.4
     '@release-it/conventional-changelog':
-      specifier: ^10.0.4
-      version: 10.0.4
+      specifier: ^10.0.6
+      version: 10.0.6
     '@types/eslint-plugin-markdown':
       specifier: 2.0.2
       version: 2.0.2
@@ -43,8 +43,8 @@ catalogs:
       specifier: ^0.4.0
       version: 0.4.0
     eslint-plugin-eslint-plugin:
-      specifier: ^7.2.0
-      version: 7.2.0
+      specifier: ^7.4.0
+      version: 7.4.0
     eslint-plugin-jsdoc:
       specifier: 62.4.0
       version: 62.4.0
@@ -64,8 +64,8 @@ catalogs:
       specifier: 5.5.0
       version: 5.5.0
     eslint-plugin-pnpm:
-      specifier: ^1.4.3
-      version: 1.4.3
+      specifier: ^1.6.1
+      version: 1.6.1
     eslint-plugin-regexp:
       specifier: 3.1.0
       version: 3.1.0
@@ -103,8 +103,8 @@ catalogs:
       specifier: 0.17.4
       version: 0.17.4
     release-it:
-      specifier: ^19.2.2
-      version: 19.2.2
+      specifier: ^19.2.4
+      version: 19.2.4
     should-semantic-release:
       specifier: ^0.3.5
       version: 0.3.5
@@ -136,7 +136,7 @@ importers:
         version: 9.39.4
       '@release-it/conventional-changelog':
         specifier: 'catalog:'
-        version: 10.0.4(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.2.1)(release-it@19.2.2(@types/node@25.0.3)(magicast@0.3.5))
+        version: 10.0.6(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)(release-it@19.2.4(@types/node@25.0.3)(magicast@0.3.5))
       '@types/eslint-plugin-markdown':
         specifier: 'catalog:'
         version: 2.0.2
@@ -145,10 +145,10 @@ importers:
         version: 25.0.3
       '@vitest/coverage-v8':
         specifier: 'catalog:'
-        version: 3.2.4(vitest@3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4))
+        version: 3.2.4(vitest@3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0))
       '@vitest/eslint-plugin':
         specifier: 'catalog:'
-        version: 1.2.7(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)(vitest@3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4))
+        version: 1.2.7(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)(vitest@3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0))
       console-fail-test:
         specifier: 'catalog:'
         version: 0.6.1
@@ -166,7 +166,7 @@ importers:
         version: 0.4.0(eslint-yaml@0.1.0)(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-eslint-plugin:
         specifier: 'catalog:'
-        version: 7.2.0(eslint@9.39.2(jiti@2.6.1))
+        version: 7.4.0(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-jsdoc:
         specifier: 'catalog:'
         version: 62.4.0(eslint@9.39.2(jiti@2.6.1))
@@ -187,7 +187,7 @@ importers:
         version: 5.5.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       eslint-plugin-pnpm:
         specifier: 'catalog:'
-        version: 1.4.3(eslint@9.39.2(jiti@2.6.1))
+        version: 1.6.1(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-regexp:
         specifier: 'catalog:'
         version: 3.1.0(eslint@9.39.2(jiti@2.6.1))
@@ -226,7 +226,7 @@ importers:
         version: 0.17.4(prettier@3.6.1)
       release-it:
         specifier: 'catalog:'
-        version: 19.2.2(@types/node@25.0.3)(magicast@0.3.5)
+        version: 19.2.4(@types/node@25.0.3)(magicast@0.3.5)
       should-semantic-release:
         specifier: 'catalog:'
         version: 0.3.5
@@ -241,7 +241,7 @@ importers:
         version: 8.55.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       vitest:
         specifier: 'catalog:'
-        version: 3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4)
+        version: 3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0)
       yaml-eslint-parser:
         specifier: 'catalog:'
         version: 2.0.0
@@ -329,12 +329,12 @@ packages:
     resolution: {integrity: sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA==}
     engines: {node: '>=18'}
 
-  '@conventional-changelog/git-client@2.5.1':
-    resolution: {integrity: sha512-lAw7iA5oTPWOLjiweb7DlGEMDEvzqzLLa6aWOly2FSZ64IwLE8T458rC+o+WvI31Doz6joM7X2DoNog7mX8r4A==}
+  '@conventional-changelog/git-client@2.7.0':
+    resolution: {integrity: sha512-j7A8/LBEQ+3rugMzPXoKYzyUPpw/0CBQCyvtTR7Lmu4olG4yRC/Tfkq79Mr3yuPs0SUitlO2HwGP3gitMJnRFw==}
     engines: {node: '>=18'}
     peerDependencies:
       conventional-commits-filter: ^5.0.0
-      conventional-commits-parser: ^6.1.0
+      conventional-commits-parser: ^6.4.0
     peerDependenciesMeta:
       conventional-commits-filter:
         optional: true
@@ -1242,8 +1242,8 @@ packages:
   '@quansync/fs@1.0.0':
     resolution: {integrity: sha512-4TJ3DFtlf1L5LDMaM6CanJ/0lckGNtJcMjQ1NAV6zDmA0tEHKZtxNKin8EgPaVX1YzljbxckyT2tJrpQKAtngQ==}
 
-  '@release-it/conventional-changelog@10.0.4':
-    resolution: {integrity: sha512-pU1JkAZBHVk9u0O9CZcaLsqSZHWu0s9WNIFVUq0M9r/WlLpJvrCiSH2OCLo5XyOnWacdMvBjijm+kl6m36SdrA==}
+  '@release-it/conventional-changelog@10.0.6':
+    resolution: {integrity: sha512-aUb0IkcsBTMcOH5PPQ9Jv9lEOOVu2+rSgkE1ny+dzsTziQm2BhDRAtaFK/dw/HflthuXMWrqhhyfJhAV1AOEPQ==}
     engines: {node: ^20.12.0 || >=22.0.0}
     peerDependencies:
       release-it: ^18.0.0 || ^19.0.0
@@ -1492,8 +1492,12 @@ packages:
     resolution: {integrity: sha512-3nWd8irxvDI6v856wpPCHZ+08iQR0oHTZfzAZmnbsLzf+Sf1odraP6uKOHDZToXq3RPRV/LbqGVlSCogm9cJjg==}
     engines: {node: '>=18'}
 
-  '@simple-libs/stream-utils@1.1.0':
-    resolution: {integrity: sha512-6rsHTjodIn/t90lv5snQjRPVtOosM7Vp0AKdrObymq45ojlgVwnpAqdc+0OBBrpEiy31zZ6/TKeIVqV1HwvnuQ==}
+  '@simple-libs/hosted-git-info@1.0.2':
+    resolution: {integrity: sha512-aAmGQdMH+ZinytKuA2832u0ATeOFNYNk4meBEXtB5xaPotUgggYNhq5tYU/v17wEbmTW5P9iHNqNrFyrhnqBAg==}
+    engines: {node: '>=18'}
+
+  '@simple-libs/stream-utils@1.2.0':
+    resolution: {integrity: sha512-KxXvfapcixpz6rVEB6HPjOUZT22yN6v0vI0urQSk1L8MlEWPDFCZkhw2xmkyoTGYeFw7tWTZd7e3lVzRZRN/EA==}
     engines: {node: '>=18'}
 
   '@sinclair/typebox@0.27.8':
@@ -1935,25 +1939,25 @@ packages:
     resolution: {integrity: sha512-KxgTskG1eCVCKB6f3XuM3lkzuM+0ASGCPVLIJU8r6Lv6lzCCk4FEoYkHJubEnUKzqHAQNVl1lw5UOyufTTILjg==}
     engines: {node: '>=20.19.0'}
 
-  conventional-changelog-angular@8.1.0:
-    resolution: {integrity: sha512-GGf2Nipn1RUCAktxuVauVr1e3r8QrLP/B0lEUsFktmGqc3ddbQkhoJZHJctVU829U1c6mTSWftrVOCHaL85Q3w==}
+  conventional-changelog-angular@8.3.1:
+    resolution: {integrity: sha512-6gfI3otXK5Ph5DfCOI1dblr+kN3FAm5a97hYoQkqNZxOaYa5WKfXH+AnpsmS+iUH2mgVC2Cg2Qw9m5OKcmNrIg==}
     engines: {node: '>=18'}
 
-  conventional-changelog-conventionalcommits@9.1.0:
-    resolution: {integrity: sha512-MnbEysR8wWa8dAEvbj5xcBgJKQlX/m0lhS8DsyAAWDHdfs2faDJxTgzRYlRYpXSe7UiKrIIlB4TrBKU9q9DgkA==}
+  conventional-changelog-conventionalcommits@9.3.1:
+    resolution: {integrity: sha512-dTYtpIacRpcZgrvBYvBfArMmK2xvIpv2TaxM0/ZI5CBtNUzvF2x0t15HsbRABWprS6UPmvj+PzHVjSx4qAVKyw==}
     engines: {node: '>=18'}
 
   conventional-changelog-preset-loader@5.0.0:
     resolution: {integrity: sha512-SetDSntXLk8Jh1NOAl1Gu5uLiCNSYenB5tm0YVeZKePRIgDW9lQImromTwLa3c/Gae298tsgOM+/CYT9XAl0NA==}
     engines: {node: '>=18'}
 
-  conventional-changelog-writer@8.2.0:
-    resolution: {integrity: sha512-Y2aW4596l9AEvFJRwFGJGiQjt2sBYTjPD18DdvxX9Vpz0Z7HQ+g1Z+6iYDAm1vR3QOJrDBkRHixHK/+FhkR6Pw==}
+  conventional-changelog-writer@8.4.0:
+    resolution: {integrity: sha512-HHBFkk1EECxxmCi4CTu091iuDpQv5/OavuCUAuZmrkWpmYfyD816nom1CvtfXJ/uYfAAjavgHvXHX291tSLK8g==}
     engines: {node: '>=18'}
     hasBin: true
 
-  conventional-changelog@7.1.1:
-    resolution: {integrity: sha512-rlqa8Lgh8YzT3Akruk05DR79j5gN9NCglHtJZwpi6vxVeaoagz+84UAtKQj/sT+RsfGaZkt3cdFCjcN6yjr5sw==}
+  conventional-changelog@7.2.1:
+    resolution: {integrity: sha512-smcpqCeNRCAoL586/Iql8GfVsduP1JDrr7SAzKHWM5C5voDzKhc3QtqwVWeKMhvVw4iYfAr+znz1TF4kPXVm3A==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -1961,8 +1965,8 @@ packages:
     resolution: {integrity: sha512-tQMagCOC59EVgNZcC5zl7XqO30Wki9i9J3acbUvkaosCT6JX3EeFwJD7Qqp4MCikRnzS18WXV3BLIQ66ytu6+Q==}
     engines: {node: '>=18'}
 
-  conventional-commits-parser@6.2.1:
-    resolution: {integrity: sha512-20pyHgnO40rvfI0NGF/xiEoFMkXDtkF8FwHvk5BokoFoCuTQRI8vrNCNFWUOfuolKJMm1tPCHc8GgYEtr1XRNA==}
+  conventional-commits-parser@6.4.0:
+    resolution: {integrity: sha512-tvRg7FIBNlyPzjdG8wWRlPHQJJHI7DylhtRGeU9Lq+JuoPh5BKpPRX83ZdLrvXuOSu5Eo/e7SzOQhU4Hd2Miuw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -2143,8 +2147,8 @@ packages:
   emoji-regex@9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
 
-  empathic@2.0.0:
-    resolution: {integrity: sha512-i6UzDscO/XfAcNYD75CfICkmfLedpyPDdozrLMmQc5ORaQcdMoc21OnlEylMIqI7U8eniKrPMxxtj8k0vhmJhA==}
+  empathic@2.0.1:
+    resolution: {integrity: sha512-YGRs8knHhKHVShLkFET/rWAU8kmHbOV5LwN938RHI0pljAJ1Gf6SzXsSmRaEzcXTtOOmVqJ5+WtQPL5uigY50Q==}
     engines: {node: '>=14'}
 
   enhanced-resolve@5.18.3:
@@ -2242,9 +2246,9 @@ packages:
     peerDependencies:
       eslint: '>=8'
 
-  eslint-plugin-eslint-plugin@7.2.0:
-    resolution: {integrity: sha512-3WOuoauBlxCItqpIdyajCOVQbCmAlqHNQq82QunpzuGkBNr6OqHRjdPZKpy2Z0rGb005mIO0HEP9aaDCzkApxQ==}
-    engines: {node: ^20.19.0 || ^22.13.1 || >=24.0.0}
+  eslint-plugin-eslint-plugin@7.4.0:
+    resolution: {integrity: sha512-yLFVy13SVSgGWiufaB3lGIUef6dmjBTrfYdFD0xPxBSHdrfyIonl3zGszesOXS2iYy/iVPd5ZLBKryS12s0Scg==}
+    engines: {node: ^20.19.0 || ^22.13.0 || >=24.0.0}
     peerDependencies:
       eslint: '>=9.0.0'
 
@@ -2286,10 +2290,10 @@ packages:
     peerDependencies:
       eslint: '>=8.45.0'
 
-  eslint-plugin-pnpm@1.4.3:
-    resolution: {integrity: sha512-wdWrkWN5mxRgEADkQvxwv0xA+0++/hYDD5OyXTL6UqPLUPdcCFQJO61NO7IKhEqb3GclWs02OoFs1METN+a3zQ==}
+  eslint-plugin-pnpm@1.6.1:
+    resolution: {integrity: sha512-pgcaJclu3YxZ/WMsiKMF58bHQasbGVARSMqCJvFaETYxSc7KcR2H74UVWV6exuGv9nNv9c0KKqn4PVHQlzMSEg==}
     peerDependencies:
-      eslint: ^9.0.0
+      eslint: ^9.0.0 || ^10.0.0
 
   eslint-plugin-regexp@3.1.0:
     resolution: {integrity: sha512-qGXIC3DIKZHcK1H9A9+Byz9gmndY6TTSRkSMTZpNXdyCw2ObSehRgccJv35n9AdUakEjQp5VFNLas6BMXizCZg==}
@@ -2339,10 +2343,6 @@ packages:
   espree@11.1.0:
     resolution: {integrity: sha512-WFWYhO1fV4iYkqOOvq8FbqIhr2pYfoDY0kCotMkDeNtGpiGGkZ1iov2u8ydjtgM8yF8rzK7oaTbw2NAzbAbehw==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
-
-  espree@9.6.1:
-    resolution: {integrity: sha512-oruZaFkjorTpF32kDSI5/75ViwGeZginGGy2NoOSg3Q9bnwlnmDm4HLnkl0RE3n+njDXR037aY1+x58Z/zFdwQ==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
   esprima@4.0.1:
     resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
@@ -2773,10 +2773,6 @@ packages:
 
   json-stable-stringify-without-jsonify@1.0.1:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
-
-  jsonc-eslint-parser@2.4.2:
-    resolution: {integrity: sha512-1e4qoRgnn448pRuMvKGsFFymUCquZV0mpGgOyIKNgD3JVDTsVJyRBGH/Fm0tBb8WsWGgmB1mDe6/yJMQM37DUA==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
   jsonc-eslint-parser@3.1.0:
     resolution: {integrity: sha512-75EA7EWZExL/j+MDKQrRbdzcRI2HOkRlmUw8fZJc1ioqFEOvBsq7Rt+A6yCxOt9w/TYNpkt52gC6nm/g5tFIng==}
@@ -3280,8 +3276,8 @@ packages:
   pkg-types@2.3.0:
     resolution: {integrity: sha512-SIqCzDRg0s9npO5XQ3tNZioRY1uK06lA41ynBC1YmFTmnY6FjUjVt6s4LoADmwoig1qqD0oK8h1p/8mlMx8Oig==}
 
-  pnpm-workspace-yaml@1.4.3:
-    resolution: {integrity: sha512-Q8B3SWuuISy/Ciag4DFP7MCrJX07wfaekcqD2o/msdIj4x8Ql3bZ/NEKOXV7mTVh7m1YdiFWiMi9xH+0zuEGHw==}
+  pnpm-workspace-yaml@1.6.1:
+    resolution: {integrity: sha512-yTeZntGWi8m9WNuhoVsP0DpFc4sC1U0+rr/qR6Zi9n2g3sxXY+JfccjXjjruNz96tM8I09yaJUA86doRnNLkbg==}
 
   postcss@8.5.6:
     resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
@@ -3378,8 +3374,8 @@ packages:
     resolution: {integrity: sha512-sZuz1dYW/ZsfG17WSAG7eS85r5a0dDsvg+7BiiYR5o6lKCAtUrEwdmRmaGF6rwVj3LcmAeYkOWKEPlbPzN3Y3A==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
 
-  release-it@19.2.2:
-    resolution: {integrity: sha512-57TBUTBbBXLJsPufYS+Hsb1dSZKZ0ktiYgPkNc3Pmlq/QQtH9X0oD0SG2ib5CsXHTI11m19pyK60NXmvtE6cLg==}
+  release-it@19.2.4:
+    resolution: {integrity: sha512-BwaJwQYUIIAKuDYvpqQTSoy0U7zIy6cHyEjih/aNaFICphGahia4cjDANuFXb7gVZ51hIK9W0io6fjNQWXqICg==}
     engines: {node: ^20.12.0 || >=22.0.0}
     hasBin: true
 
@@ -3646,6 +3642,10 @@ packages:
     resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
     engines: {node: '>=12.0.0'}
 
+  tinyglobby@0.2.17:
+    resolution: {integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==}
+    engines: {node: '>=12.0.0'}
+
   tinypool@1.1.1:
     resolution: {integrity: sha512-Zba82s87IFq9A9XmjiX5uZA/ARWDrB03OHlq+Vw1fSdt0I+4/Kutwy8BP4Y/y/aORMo61FQ0vIb5j44vSo5Pkg==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -3771,8 +3771,8 @@ packages:
     resolution: {integrity: sha512-raqeBD6NQK4SkWhQzeYKd1KmIG6dllBOTt55Rmkt4HtI9mwdWtJljnrXjAFUBLTSN67HWrOIZ3EPF4kjUw80Bg==}
     engines: {node: '>=14.0'}
 
-  undici@6.22.0:
-    resolution: {integrity: sha512-hU/10obOIu62MGYjdskASR3CUAiYaFTtC9Pa6vHyf//mAipSvSQg6od2CnJswq7fvzNS3zJhxoRkgNVaHurWKw==}
+  undici@6.23.0:
+    resolution: {integrity: sha512-VfQPToRA5FZs/qJxLIinmU59u0r7LXqoJkCzinq3ckNJp3vKEh7jTWN589YQ5+aoAC/TGRLyJLCPKcLQbM8r9g==}
     engines: {node: '>=18.17'}
 
   unist-util-stringify-position@2.0.3:
@@ -3953,10 +3953,6 @@ packages:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
     engines: {node: '>=10'}
 
-  yaml-eslint-parser@1.3.2:
-    resolution: {integrity: sha512-odxVsHAkZYYglR30aPYRY4nUGJnoJ2y1ww2HDvZALo0BDETv9kWbi16J52eHs+PWRNmF4ub6nZqfVOeesOvntg==}
-    engines: {node: ^14.17.0 || >=16.0.0}
-
   yaml-eslint-parser@2.0.0:
     resolution: {integrity: sha512-h0uDm97wvT2bokfwwTmY6kJ1hp6YDFL0nRHwNKz8s/VD1FH/vvZjAKoMUE+un0eaYBSG7/c6h+lJTP+31tjgTw==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
@@ -3966,8 +3962,8 @@ packages:
     engines: {node: '>= 14.6'}
     hasBin: true
 
-  yaml@2.8.4:
-    resolution: {integrity: sha512-ml/JPOj9fOQK8RNnWojA67GbZ0ApXAUlN2UQclwv2eVgTgn7O9gg9o7paZWKMp4g0H3nTLtS9LVzhkpOFIKzog==}
+  yaml@2.9.0:
+    resolution: {integrity: sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==}
     engines: {node: '>= 14.6'}
     hasBin: true
 
@@ -4101,14 +4097,14 @@ snapshots:
 
   '@bcoe/v8-coverage@1.0.2': {}
 
-  '@conventional-changelog/git-client@2.5.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.2.1)':
+  '@conventional-changelog/git-client@2.7.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)':
     dependencies:
       '@simple-libs/child-process-utils': 1.0.1
-      '@simple-libs/stream-utils': 1.1.0
+      '@simple-libs/stream-utils': 1.2.0
       semver: 7.7.4
     optionalDependencies:
       conventional-commits-filter: 5.0.0
-      conventional-commits-parser: 6.2.1
+      conventional-commits-parser: 6.4.0
 
   '@cspell/cspell-bundled-dicts@9.1.2':
     dependencies:
@@ -4701,7 +4697,7 @@ snapshots:
       '@octokit/plugin-paginate-rest': 9.2.2(@octokit/core@5.2.2)
       '@octokit/plugin-rest-endpoint-methods': 10.4.1(@octokit/core@5.2.2)
       '@octokit/types': 12.6.0
-      undici: 6.22.0
+      undici: 6.23.0
 
   '@octokit/auth-action@4.1.0':
     dependencies:
@@ -4909,15 +4905,15 @@ snapshots:
     dependencies:
       quansync: 1.0.0
 
-  '@release-it/conventional-changelog@10.0.4(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.2.1)(release-it@19.2.2(@types/node@25.0.3)(magicast@0.3.5))':
+  '@release-it/conventional-changelog@10.0.6(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)(release-it@19.2.4(@types/node@25.0.3)(magicast@0.3.5))':
     dependencies:
-      '@conventional-changelog/git-client': 2.5.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.2.1)
+      '@conventional-changelog/git-client': 2.7.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)
       concat-stream: 2.0.0
-      conventional-changelog: 7.1.1(conventional-commits-filter@5.0.0)
-      conventional-changelog-angular: 8.1.0
-      conventional-changelog-conventionalcommits: 9.1.0
+      conventional-changelog: 7.2.1(conventional-commits-filter@5.0.0)
+      conventional-changelog-angular: 8.3.1
+      conventional-changelog-conventionalcommits: 9.3.1
       conventional-recommended-bump: 11.2.0
-      release-it: 19.2.2(@types/node@25.0.3)(magicast@0.3.5)
+      release-it: 19.2.4(@types/node@25.0.3)(magicast@0.3.5)
       semver: 7.7.4
     transitivePeerDependencies:
       - conventional-commits-filter
@@ -5054,12 +5050,12 @@ snapshots:
 
   '@simple-libs/child-process-utils@1.0.1':
     dependencies:
-      '@simple-libs/stream-utils': 1.1.0
+      '@simple-libs/stream-utils': 1.2.0
       '@types/node': 22.19.3
 
-  '@simple-libs/stream-utils@1.1.0':
-    dependencies:
-      '@types/node': 22.19.3
+  '@simple-libs/hosted-git-info@1.0.2': {}
+
+  '@simple-libs/stream-utils@1.2.0': {}
 
   '@sinclair/typebox@0.27.8': {}
 
@@ -5194,7 +5190,7 @@ snapshots:
       debug: 4.4.3
       minimatch: 9.0.9
       semver: 7.7.4
-      tinyglobby: 0.2.15
+      tinyglobby: 0.2.17
       ts-api-utils: 2.4.0(typescript@5.9.3)
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -5216,7 +5212,7 @@ snapshots:
       '@typescript-eslint/types': 8.55.0
       eslint-visitor-keys: 4.2.1
 
-  '@vitest/coverage-v8@3.2.4(vitest@3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4))':
+  '@vitest/coverage-v8@3.2.4(vitest@3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 1.0.2
@@ -5231,17 +5227,17 @@ snapshots:
       std-env: 3.10.0
       test-exclude: 7.0.1
       tinyrainbow: 2.0.0
-      vitest: 3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4)
+      vitest: 3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/eslint-plugin@1.2.7(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)(vitest@3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4))':
+  '@vitest/eslint-plugin@1.2.7(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)(vitest@3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0))':
     dependencies:
       '@typescript-eslint/utils': 8.55.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       eslint: 9.39.2(jiti@2.6.1)
     optionalDependencies:
       typescript: 5.9.3
-      vitest: 3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4)
+      vitest: 3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -5253,13 +5249,13 @@ snapshots:
       chai: 5.3.3
       tinyrainbow: 2.0.0
 
-  '@vitest/mocker@3.2.6(vite@7.3.5(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4))':
+  '@vitest/mocker@3.2.6(vite@7.3.5(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0))':
     dependencies:
       '@vitest/spy': 3.2.6
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.3.5(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4)
+      vite: 7.3.5(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0)
 
   '@vitest/pretty-format@3.2.6':
     dependencies:
@@ -5521,30 +5517,32 @@ snapshots:
 
   console-fail-test@0.6.1: {}
 
-  conventional-changelog-angular@8.1.0:
+  conventional-changelog-angular@8.3.1:
     dependencies:
       compare-func: 2.0.0
 
-  conventional-changelog-conventionalcommits@9.1.0:
+  conventional-changelog-conventionalcommits@9.3.1:
     dependencies:
       compare-func: 2.0.0
 
   conventional-changelog-preset-loader@5.0.0: {}
 
-  conventional-changelog-writer@8.2.0:
+  conventional-changelog-writer@8.4.0:
     dependencies:
+      '@simple-libs/stream-utils': 1.2.0
       conventional-commits-filter: 5.0.0
       handlebars: 4.7.9
       meow: 13.2.0
       semver: 7.7.4
 
-  conventional-changelog@7.1.1(conventional-commits-filter@5.0.0):
+  conventional-changelog@7.2.1(conventional-commits-filter@5.0.0):
     dependencies:
-      '@conventional-changelog/git-client': 2.5.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.2.1)
+      '@conventional-changelog/git-client': 2.7.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)
+      '@simple-libs/hosted-git-info': 1.0.2
       '@types/normalize-package-data': 2.4.4
       conventional-changelog-preset-loader: 5.0.0
-      conventional-changelog-writer: 8.2.0
-      conventional-commits-parser: 6.2.1
+      conventional-changelog-writer: 8.4.0
+      conventional-commits-parser: 6.4.0
       fd-package-json: 2.0.0
       meow: 13.2.0
       normalize-package-data: 7.0.1
@@ -5553,16 +5551,17 @@ snapshots:
 
   conventional-commits-filter@5.0.0: {}
 
-  conventional-commits-parser@6.2.1:
+  conventional-commits-parser@6.4.0:
     dependencies:
+      '@simple-libs/stream-utils': 1.2.0
       meow: 13.2.0
 
   conventional-recommended-bump@11.2.0:
     dependencies:
-      '@conventional-changelog/git-client': 2.5.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.2.1)
+      '@conventional-changelog/git-client': 2.7.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)
       conventional-changelog-preset-loader: 5.0.0
       conventional-commits-filter: 5.0.0
-      conventional-commits-parser: 6.2.1
+      conventional-commits-parser: 6.4.0
       meow: 13.2.0
 
   core-util-is@1.0.3: {}
@@ -5586,7 +5585,7 @@ snapshots:
     dependencies:
       '@cspell/cspell-types': 9.1.2
       comment-json: 4.4.1
-      yaml: 2.8.4
+      yaml: 2.9.0
 
   cspell-dictionary@9.1.2:
     dependencies:
@@ -5668,7 +5667,7 @@ snapshots:
       fast-json-stable-stringify: 2.1.0
       file-entry-cache: 9.1.0
       semver: 7.7.4
-      tinyglobby: 0.2.15
+      tinyglobby: 0.2.17
 
   data-uri-to-buffer@6.0.2: {}
 
@@ -5752,7 +5751,7 @@ snapshots:
 
   emoji-regex@9.2.2: {}
 
-  empathic@2.0.0: {}
+  empathic@2.0.1: {}
 
   enhanced-resolve@5.18.3:
     dependencies:
@@ -5866,7 +5865,7 @@ snapshots:
       eslint: 9.39.2(jiti@2.6.1)
       eslint-compat-utils: 0.5.1(eslint@9.39.2(jiti@2.6.1))
 
-  eslint-plugin-eslint-plugin@7.2.0(eslint@9.39.2(jiti@2.6.1)):
+  eslint-plugin-eslint-plugin@7.4.0(eslint@9.39.2(jiti@2.6.1)):
     dependencies:
       '@eslint-community/eslint-utils': 4.9.1(eslint@9.39.2(jiti@2.6.1))
       eslint: 9.39.2(jiti@2.6.1)
@@ -5955,16 +5954,16 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-pnpm@1.4.3(eslint@9.39.2(jiti@2.6.1)):
+  eslint-plugin-pnpm@1.6.1(eslint@9.39.2(jiti@2.6.1)):
     dependencies:
-      empathic: 2.0.0
+      empathic: 2.0.1
       eslint: 9.39.2(jiti@2.6.1)
-      jsonc-eslint-parser: 2.4.2
+      jsonc-eslint-parser: 3.1.0
       pathe: 2.0.3
-      pnpm-workspace-yaml: 1.4.3
-      tinyglobby: 0.2.15
-      yaml: 2.8.4
-      yaml-eslint-parser: 1.3.2
+      pnpm-workspace-yaml: 1.6.1
+      tinyglobby: 0.2.17
+      yaml: 2.9.0
+      yaml-eslint-parser: 2.0.0
 
   eslint-plugin-regexp@3.1.0(eslint@9.39.2(jiti@2.6.1)):
     dependencies:
@@ -6006,7 +6005,7 @@ snapshots:
     dependencies:
       '@eslint/core': 0.15.2
       '@eslint/plugin-kit': 0.3.5
-      yaml: 2.8.4
+      yaml: 2.9.0
 
   eslint@9.39.2(jiti@2.6.1):
     dependencies:
@@ -6060,12 +6059,6 @@ snapshots:
       acorn: 8.15.0
       acorn-jsx: 5.3.2(acorn@8.15.0)
       eslint-visitor-keys: 5.0.0
-
-  espree@9.6.1:
-    dependencies:
-      acorn: 8.15.0
-      acorn-jsx: 5.3.2(acorn@8.15.0)
-      eslint-visitor-keys: 3.4.3
 
   esprima@4.0.1: {}
 
@@ -6453,13 +6446,6 @@ snapshots:
 
   json-stable-stringify-without-jsonify@1.0.1: {}
 
-  jsonc-eslint-parser@2.4.2:
-    dependencies:
-      acorn: 8.15.0
-      eslint-visitor-keys: 3.4.3
-      espree: 9.6.1
-      semver: 7.7.4
-
   jsonc-eslint-parser@3.1.0:
     dependencies:
       acorn: 8.15.0
@@ -6621,7 +6607,7 @@ snapshots:
       minimatch: 10.1.3
       run-con: 1.3.2
       smol-toml: 1.5.2
-      tinyglobby: 0.2.15
+      tinyglobby: 0.2.17
     transitivePeerDependencies:
       - supports-color
 
@@ -7132,7 +7118,7 @@ snapshots:
       isbinaryfile: 5.0.7
       pkg-types: 1.3.1
       query-registry: 3.0.1
-      tinyglobby: 0.2.15
+      tinyglobby: 0.2.17
 
   pkg-types@1.3.1:
     dependencies:
@@ -7146,9 +7132,9 @@ snapshots:
       exsolve: 1.0.8
       pathe: 2.0.3
 
-  pnpm-workspace-yaml@1.4.3:
+  pnpm-workspace-yaml@1.6.1:
     dependencies:
-      yaml: 2.8.4
+      yaml: 2.9.0
 
   postcss@8.5.6:
     dependencies:
@@ -7253,7 +7239,7 @@ snapshots:
       '@eslint-community/regexpp': 4.12.2
       refa: 0.12.1
 
-  release-it@19.2.2(@types/node@25.0.3)(magicast@0.3.5):
+  release-it@19.2.4(@types/node@25.0.3)(magicast@0.3.5):
     dependencies:
       '@nodeutils/defaults-deep': 1.1.0
       '@octokit/rest': 22.0.1
@@ -7274,7 +7260,7 @@ snapshots:
       proxy-agent: 6.5.0
       semver: 7.7.3
       tinyglobby: 0.2.15
-      undici: 6.22.0
+      undici: 6.23.0
       url-join: 5.0.0
       wildcard-match: 5.1.4
       yargs-parser: 21.1.1
@@ -7423,7 +7409,7 @@ snapshots:
   should-semantic-release@0.3.5:
     dependencies:
       '@pkgjs/parseargs': 0.11.0
-      conventional-commits-parser: 6.2.1
+      conventional-commits-parser: 6.4.0
 
   siginfo@2.0.0: {}
 
@@ -7456,7 +7442,7 @@ snapshots:
       is-plain-obj: 4.1.0
       semver: 7.7.4
       sort-object-keys: 2.0.1
-      tinyglobby: 0.2.15
+      tinyglobby: 0.2.17
 
   source-map-js@1.2.1: {}
 
@@ -7563,6 +7549,11 @@ snapshots:
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
 
+  tinyglobby@0.2.17:
+    dependencies:
+      fdir: 6.5.0(picomatch@4.0.4)
+      picomatch: 4.0.4
+
   tinypool@1.1.1: {}
 
   tinyrainbow@2.0.0: {}
@@ -7594,7 +7585,7 @@ snapshots:
       ansis: 4.2.0
       cac: 7.0.0
       defu: 6.1.7
-      empathic: 2.0.0
+      empathic: 2.0.1
       hookable: 6.1.0
       import-without-cache: 0.2.5
       obug: 2.1.1
@@ -7603,7 +7594,7 @@ snapshots:
       rolldown-plugin-dts: 0.23.2(oxc-resolver@11.15.0(@emnapi/core@1.7.1)(@emnapi/runtime@1.7.1))(rolldown@1.0.0-rc.12(@emnapi/core@1.7.1)(@emnapi/runtime@1.7.1))(typescript@5.9.3)
       semver: 7.7.4
       tinyexec: 1.1.1
-      tinyglobby: 0.2.15
+      tinyglobby: 0.2.17
       tree-kill: 1.2.2
       unconfig-core: 7.5.0
       unrun: 0.2.34(@emnapi/core@1.7.1)(@emnapi/runtime@1.7.1)(synckit@0.11.12)
@@ -7667,7 +7658,7 @@ snapshots:
     dependencies:
       '@fastify/busboy': 2.1.1
 
-  undici@6.22.0: {}
+  undici@6.23.0: {}
 
   unist-util-stringify-position@2.0.3:
     dependencies:
@@ -7703,13 +7694,13 @@ snapshots:
 
   validate-npm-package-name@7.0.1: {}
 
-  vite-node@3.2.4(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4):
+  vite-node@3.2.4(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0):
     dependencies:
       cac: 6.7.14
       debug: 4.4.3
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 7.3.5(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4)
+      vite: 7.3.5(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -7724,25 +7715,25 @@ snapshots:
       - tsx
       - yaml
 
-  vite@7.3.5(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4):
+  vite@7.3.5(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0):
     dependencies:
       esbuild: 0.27.7
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
       postcss: 8.5.6
       rollup: 4.60.1
-      tinyglobby: 0.2.15
+      tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 25.0.3
       fsevents: 2.3.3
       jiti: 2.6.1
-      yaml: 2.8.4
+      yaml: 2.9.0
 
-  vitest@3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4):
+  vitest@3.2.6(@types/debug@4.1.12)(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0):
     dependencies:
       '@types/chai': 5.2.3
       '@vitest/expect': 3.2.6
-      '@vitest/mocker': 3.2.6(vite@7.3.5(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4))
+      '@vitest/mocker': 3.2.6(vite@7.3.5(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0))
       '@vitest/pretty-format': 3.2.6
       '@vitest/runner': 3.2.6
       '@vitest/snapshot': 3.2.6
@@ -7757,11 +7748,11 @@ snapshots:
       std-env: 3.10.0
       tinybench: 2.9.0
       tinyexec: 0.3.2
-      tinyglobby: 0.2.15
+      tinyglobby: 0.2.17
       tinypool: 1.1.1
       tinyrainbow: 2.0.0
-      vite: 7.3.5(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4)
-      vite-node: 3.2.4(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.8.4)
+      vite: 7.3.5(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0)
+      vite-node: 3.2.4(@types/node@25.0.3)(jiti@2.6.1)(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/debug': 4.1.12
@@ -7839,19 +7830,14 @@ snapshots:
 
   y18n@5.0.8: {}
 
-  yaml-eslint-parser@1.3.2:
-    dependencies:
-      eslint-visitor-keys: 3.4.3
-      yaml: 2.8.4
-
   yaml-eslint-parser@2.0.0:
     dependencies:
       eslint-visitor-keys: 5.0.0
-      yaml: 2.8.4
+      yaml: 2.9.0
 
   yaml@2.8.0: {}
 
-  yaml@2.8.4: {}
+  yaml@2.9.0: {}
 
   yargs-parser@21.1.1: {}
 

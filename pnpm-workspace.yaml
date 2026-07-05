@@ -23,7 +23,7 @@ catalog:
   eslint-plugin-yml: 3.5.0
   knip: 5.88.1
   lefthook: 2.1.9
-  markdownlint: 0.39.0
+  markdownlint: 0.41.0
   markdownlint-cli: 0.47.0
   markdownlint-sentences-per-line: 0.1.4
   pkg-pr-new: ^0.0.75

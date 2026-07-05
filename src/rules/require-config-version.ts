@@ -1,5 +1,4 @@
 import type { Rule } from "eslint";
-import type { AST } from "yaml-eslint-parser";
 
 import {
 	createRootMapVisitor,
@@ -77,7 +76,7 @@ export const requireConfigVersionRule = {
 
 			const versionValue = versionPair.value;
 			if (versionValue !== null && versionValue.type === "YAMLScalar") {
-				const versionScalar = versionValue as AST.YAMLScalar;
+				const versionScalar = versionValue;
 				const actualValue = versionScalar.value;
 				const actualNum =
 					typeof actualValue === "number"

@@ -34,7 +34,7 @@ catalog:
   release-it: ^19.2.4
   should-semantic-release: ^0.3.5
   tsdown: 0.22.3
-  typescript: 5.9.3
+  typescript: 6.0.3
   typescript-eslint: 8.62.0
   vitest: 3.2.6
   yaml-eslint-parser: 2.0.0
